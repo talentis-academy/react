@@ -2,7 +2,7 @@
 
 # Découper CarCard en composants
 
-*Le code du projet Voitures, à l’étape de l’exercice 3.*
+*Le projet Voitures du formateur (cars-basic), tel quel.*
 
 | | |
 |---|---|
@@ -41,9 +41,9 @@ export default CarColor;
 import CarBrand from "./CarBrand";
 import CarColor from "./CarColor";
 import "./styles.css";
-function CarCard({ brand, color }) {
+function CarCard({ brand, color, onSelect }) {
   return (
-    <div className="car-item">
+    <div className="car-item" onClick={() => onSelect(brand)}>
       <CarBrand brand={brand} />
       <CarColor color={color} />
     </div>
@@ -66,9 +66,13 @@ const cars = [
 ];
 
 function Home() {
+  //console.log(/\d/.test(password));
+  const onSelect = (brand) => {
+    console.log(brand);
+  };
   return (
     <div>
-      <h1>Welcome to the Home Page</h1>
+      <h1 onCopy={(event) => console.log(event)}>Welcome to the Home Page</h1>
       <h2>Car List</h2>
       <div className="container">
         {cars.map((car, index) => (
@@ -76,6 +80,7 @@ function Home() {
             key={index}
             brand={car.brand}
             color={car.color}
+            onSelect={onSelect}
           />
         ))}
       </div>
@@ -91,7 +96,7 @@ export default Home;
 - Un composant = une responsabilité : plus simple à lire et à réutiliser
 - Les props descendent du parent vers l’enfant
 - Le destructuring `({ brand })` évite d’écrire `props.brand`
-- Bonus « Néant » : `{color ? color : "Néant"}` dans CarColor
+- Le projet contient aussi les étapes suivantes du cours : `onSelect` (fonction passée en props) et `onCopy` (événement)
 
 ## Ressources utiles
 
