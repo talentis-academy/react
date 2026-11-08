@@ -1,7 +1,8 @@
-import RegisterForm from "./RegisterForm.jsx";
+import "./App.css";
+import FormFinal from "./components/FormFinal";
 
 function App() {
-  return <RegisterForm />;
+  return <FormFinal />;
 }
 
 export default App;

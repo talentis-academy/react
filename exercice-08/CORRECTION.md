@@ -2,96 +2,146 @@
 
 # Formulaire d’enregistrement
 
-*Correction complète, bonus compris. Le projet est dans le dossier « correction ».*
+*Le formulaire React Hook Form + Zod, adapté aux champs de l’énoncé.*
 
 | | |
 |---|---|
 | **Énoncé** | Exercice_08_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-
-## Le schéma Zod
-
-**`src/schema.js`**
-
-```jsx
-import { z } from "zod";
-
-export const schema = z.object({
-  fullName: z
-    .string()
-    .min(3, "Le nom doit contenir au moins 3 caractères")
-    .max(50, "Le nom ne doit pas dépasser 50 caractères")
-    .regex(/^[A-Za-zÀ-ÿ\s-]+$/, "Lettres uniquement"),
-  email: z.string().email("Adresse email invalide"),
-  experience: z
-    .number({ message: "Indiquez un nombre" })
-    .int("Nombre entier uniquement")
-    .min(0, "Minimum 0")
-    .max(10, "Maximum 10"),
-  terms: z.boolean().refine((v) => v === true, "Vous devez accepter les conditions"),
-});
-```
+| **Source** | Code du formateur : Formation/Exemples/Form/FormFinal.tsx (Code_003, « React hook form »), avec fullName à la place de password |
 
 ## Le formulaire
 
-**`src/RegisterForm.jsx`**
+**`src/components/FormFinal.tsx`**
 
-```jsx
+```
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schema } from "./schema";
 
-const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const schema = z.object({
+  // Champ "Nom complet"
+  fullName: z
+    .string()
+    .min(3, "Min 3 caractères")
+    .max(50, "Max 50 caractères")
+    .regex(/^[A-Za-zÀ-ÿ\s-]+$/, "Lettres uniquement"),
+  email: z.string().email("Email invalide"),
+  // Champ supplémentaire "Experience"
+  experience: z
+    .number()
+    .int("Nombre entier uniquement")
+    .min(0, "Min = 0")
+    .max(10, "Max = 10"),
+  // Checkbox "Terms & Conditions"
+  terms: z
+    .boolean()
+    .refine(
+      (v) => v === true,
+      "Vous devez accepter les Conditions d'utilisation"
+    ),
+});
 
-function RegisterForm() {
+function Form() {
   const {
     register,
     handleSubmit,
-    reset,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitSuccessful, isValid },
   } = useForm({
     resolver: zodResolver(schema),
     defaultValues: { fullName: "", email: "", experience: 0, terms: false },
     mode: "onSubmit",
   });
 
-  const onSubmit = async (data) => {
-    await wait(800); // simule un appel API
-    console.log("Envoyé :", data);
-    reset(); // bonus 3
+  const onSubmit = (data: any) => {
+    console.log("Send to server:", data); // ici tu fais ton appel API
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      <h1>Inscription</h1>
+    <div className="container">
+      <h1>Register Component</h1>
+      <h2>Enter your information</h2>
 
-      <label>Nom complet</label>
-      <input {...register("fullName")} />
-      {errors.fullName && <p className="error">{errors.fullName.message}</p>}
+      {isSubmitSuccessful ? (
+        <div className="success">Enregistrement OK</div>
+      ) : (
+        <form name="login-form" onSubmit={handleSubmit(onSubmit)}>
+          <div className="form">
+            <div className="form-group">
+              <label>Full name</label>
+              <input type="text" {...register("fullName")} />
+              {errors.fullName && (
+                <p className="error">{errors.fullName.message as string}</p>
+              )}
+            </div>
 
-      <label>Email</label>
-      <input type="email" {...register("email")} />
-      {errors.email && <p className="error">{errors.email.message}</p>}
+            <div className="form-group">
+              <label>Email</label>
+              <input type="text" {...register("email")} />
+              {errors.email && (
+                <p className="error">{errors.email.message as string}</p>
+              )}
+            </div>
 
-      <label>Années d’expérience</label>
-      <input type="number" {...register("experience", { valueAsNumber: true })} />
-      {errors.experience && <p className="error">{errors.experience.message}</p>}
+            <div className="form-group">
+              <label>Experience</label>
+              <input
+                type="number" // Changé de "text" à "number"
+                {...register("experience", { valueAsNumber: true })} // Ajouté valueAsNumber
+              />
+              {errors.experience && (
+                <p className="error">{errors.experience.message as string}</p>
+              )}
+            </div>
 
-      <label className="checkbox">
-        <input type="checkbox" {...register("terms")} /> J’accepte les conditions
-      </label>
-      {errors.terms && <p className="error">{errors.terms.message}</p>}
+            {/* Terms & Conditions */}
+            <div className="form-group">
+              <label className="checkbox">
+                <input type="checkbox" {...register("terms")} />
+                <span>
+                  J’accepte les{" "}
+                  <a href="#" target="_blank" rel="noreferrer">
+                    Conditions d’utilisation
+                  </a>
+                </span>
+              </label>
+              {errors.terms && (
+                <p className="error">{errors.terms.message as string}</p>
+              )}
+            </div>
 
-      <button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Envoi…" : "S’enregistrer"}
-      </button>
+            {Object.keys(errors).length > 0 && (
+              <p className="error">Veuillez corriger les champs invalides.</p>
+            )}
 
-      {isSubmitSuccessful && <p className="success">Enregistrement réussi !</p>}
-    </form>
+            {isValid && <p className="success">Form valid (ready to send)</p>}
+
+            <button className="btn" type="submit">
+              Register
+            </button>
+          </div>
+        </form>
+      )}
+    </div>
   );
 }
 
-export default RegisterForm;
+export default Form;
+```
+
+## App
+
+**`src/App.jsx`**
+
+```jsx
+import "./App.css";
+import FormFinal from "./components/FormFinal";
+
+function App() {
+  return <FormFinal />;
+}
+
+export default App;
 ```
 
 ## Points clés
@@ -99,9 +149,7 @@ export default RegisterForm;
 - Toutes les règles sont dans un seul schéma Zod
 - `zodResolver(schema)` relie Zod à React Hook Form
 - `valueAsNumber: true` transforme la saisie en nombre avant la validation
-- `isSubmitting` désactive le bouton et change son texte (bonus 2)
-- `reset()` vide le formulaire après succès (bonus 3)
-- `noValidate` désactive la validation native du navigateur : c’est Zod qui s’en charge
+- Un message d’erreur sous chaque champ, et « Enregistrement OK » quand tout est valide
 
 ## Ressources utiles
 

@@ -1,6 +1,6 @@
 import CarBrand from "./CarBrand";
 import CarColor from "./CarColor";
-
+import "./styles.css";
 function CarCard({ brand, color }) {
   return (
     <div className="car-item">

@@ -1,5 +1,5 @@
 function CarColor({ color }) {
-  return <div className="car-color">Couleur : {color ? color : "Néant"}</div>;
+  return <div>{color}</div>;
 }
 
 export default CarColor;

@@ -2,36 +2,36 @@
 
 # Découper CarCard en composants
 
-*Correction pas à pas. Le projet complet est dans le dossier « correction ».*
+*Le code du projet Voitures, à l’étape de l’exercice 3.*
 
 | | |
 |---|---|
 | **Énoncé** | Exercice_03_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
+| **Source** | Projet du formateur : Formation/Projets/cars-basic |
 
-## CarBrand et CarColor
+## CarBrand
 
 **`src/components/CarBrand.jsx`**
 
 ```jsx
 function CarBrand({ brand }) {
-  return <div className="car-brand">{brand}</div>;
+  return <div>{brand}</div>;
 }
-
 export default CarBrand;
 ```
+
+## CarColor
 
 **`src/components/CarColor.jsx`**
 
 ```jsx
 function CarColor({ color }) {
-  return <div className="car-color">Couleur : {color ? color : "Néant"}</div>;
+  return <div>{color}</div>;
 }
 
 export default CarColor;
 ```
-
-Le bonus est inclus : sans couleur, on affiche « Néant » grâce au ternaire.
 
 ## CarCard
 
@@ -40,7 +40,7 @@ Le bonus est inclus : sans couleur, on affiche « Néant » grâce au ternaire.
 ```jsx
 import CarBrand from "./CarBrand";
 import CarColor from "./CarColor";
-
+import "./styles.css";
 function CarCard({ brand, color }) {
   return (
     <div className="car-item">
@@ -59,20 +59,24 @@ export default CarCard;
 
 ```jsx
 import CarCard from "../components/CarCard";
-
 const cars = [
   { id: 1, brand: "BMW", color: "Blue" },
   { id: 2, brand: "Audi", color: "White" },
-  { id: 3, brand: "Toyota", color: "" },
+  { id: 3, brand: "Toyota", color: "Red" },
 ];
 
 function Home() {
   return (
     <div>
-      <h1>Mes voitures</h1>
+      <h1>Welcome to the Home Page</h1>
+      <h2>Car List</h2>
       <div className="container">
-        {cars.map((car) => (
-          <CarCard key={car.id} brand={car.brand} color={car.color} />
+        {cars.map((car, index) => (
+          <CarCard
+            key={index}
+            brand={car.brand}
+            color={car.color}
+          />
         ))}
       </div>
     </div>
@@ -82,13 +86,12 @@ function Home() {
 export default Home;
 ```
 
-> **Remarque :** On utilise `car.id` comme `key` : c’est un identifiant unique et stable (mieux que l’index du tableau).
+## Points clés
 
-## À retenir
-
-- Un composant = une responsabilité : plus simple à lire, à tester et à réutiliser
+- Un composant = une responsabilité : plus simple à lire et à réutiliser
 - Les props descendent du parent vers l’enfant
 - Le destructuring `({ brand })` évite d’écrire `props.brand`
+- Bonus « Néant » : `{color ? color : "Néant"}` dans CarColor
 
 ## Ressources utiles
 

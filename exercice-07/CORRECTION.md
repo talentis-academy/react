@@ -2,44 +2,60 @@
 
 # La maman et l’enfant
 
-*Correction complète, bonus compris. Le projet est dans le dossier « correction ».*
+*Le code du projet Parent Todo.*
 
 | | |
 |---|---|
 | **Énoncé** | Exercice_07_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
+| **Source** | Projet du formateur : Formation/Projets/parent-todo |
 
-## Le parent
+## Parent et Child
 
-**`src/components/Parent.jsx`**
+**`src/components/Parent.tsx`**
 
-```jsx
+```
 import { useState } from "react";
-import Child from "./Child";
 
 function Parent() {
-  const [parentMessage, setParentMessage] = useState("");
+  const [parentMessage, setParentMessage] = useState("Hello from Parent");
   const [orderStatus, setOrderStatus] = useState("");
 
   const getStatus = () => {
-    if (orderStatus === "accepted") return "Accepté";
-    if (orderStatus === "denied") return "Refusé";
-    return "En attente";
+    if (orderStatus === "accepted") return "Accepted";
+    if (orderStatus === "denied") return "Denied";
+    return "Pending";
   };
-
   return (
     <div>
-      <h2>Maman</h2>
-      <button onClick={() => setParentMessage("Range ta chambre !")}>
-        Envoyer l’ordre
-      </button>
-      <h3>{`Statut de l’ordre : ${getStatus()}`}</h3>
+      <div className="container">
+        <h2>{parentMessage}</h2>
+        <button
+          className="button"
+          onClick={() => setParentMessage("Go to your room !")}
+        >
+          Send Order
+        </button>
+      </div>
+      <div>
+        <h3>{`Order Status: ${getStatus()}`}</h3>
+      </div>
       <hr />
-      <Child
-        name="Samir"
-        message={parentMessage}
-        setOrderStatus={setOrderStatus}
-      />
+      <Child name={"Samir"} setOrderStatus={setOrderStatus} />
+    </div>
+  );
+}
+
+function Child({ name, setOrderStatus }) {
+  return (
+    <div>
+      <h3>{`Hello ${name}, I am your Child`}</h3>
+      <button className="button" onClick={() => setOrderStatus("accepted")}>
+        Accepter
+      </button>
+      <button className="button" onClick={() => setOrderStatus("denied")}>
+        Deny
+      </button>
     </div>
   );
 }
@@ -47,36 +63,27 @@ function Parent() {
 export default Parent;
 ```
 
-## L’enfant
+## App
 
-**`src/components/Child.jsx`**
+**`src/App.jsx`**
 
 ```jsx
-function Child({ name, message, setOrderStatus }) {
-  return (
-    <div>
-      <h3>{`Bonjour ${name}`}</h3>
-      {message && <p>Maman dit : {message}</p>}
-      <button disabled={!message} onClick={() => setOrderStatus("accepted")}>
-        Accepter
-      </button>
-      <button disabled={!message} onClick={() => setOrderStatus("denied")}>
-        Refuser
-      </button>
-    </div>
-  );
+import "./App.css";
+import Parent from "./components/Parent";
+
+function App() {
+  return <Parent />;
 }
 
-export default Child;
+export default App;
 ```
 
 ## Points clés
 
-- Le state vit dans le parent : c’est lui qui « possède » l’information
-- Les données descendent en props (`name`, `message`)
+- Le state vit dans le parent : c’est lui qui garde l’information
+- Les données descendent en props (`name`)
 - L’information remonte grâce à la fonction `setOrderStatus` passée en props
 - `() => setOrderStatus("accepted")` : la fonction est appelée seulement au clic
-- Bonus : `disabled={!message}` bloque les boutons tant qu’il n’y a pas d’ordre
 
 ## Ressources utiles
 

@@ -8,7 +8,7 @@ const members = [
 ];
 
 function Home() {
-  return <TeamList title="Notre équipe" members={members} />;
+  return <TeamList title="Team Directory" members={members} />;
 }
 
 export default Home;

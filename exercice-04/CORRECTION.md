@@ -1,15 +1,16 @@
 > **Exercice 4 · Correction**
 
-# Annuaire d’équipe
+# Annuaire d’équipe (Team Directory)
 
-*Correction complète, bonus compris. Le projet est dans le dossier « correction ».*
+*Correction complète, bonus compris.*
 
 | | |
 |---|---|
 | **Énoncé** | Exercice_04_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
+| **Source** | Énoncé du formateur (Programme.docx, Exercice_04.docx) |
 
-## Les données
+## Les données (Home)
 
 **`src/Home.jsx`**
 
@@ -24,7 +25,7 @@ const members = [
 ];
 
 function Home() {
-  return <TeamList title="Notre équipe" members={members} />;
+  return <TeamList title="Team Directory" members={members} />;
 }
 
 export default Home;
@@ -80,9 +81,8 @@ export default MemberCard;
 
 - `{...member}` transmet toutes les propriétés du membre en props
 - `email ? email : "N/A"` gère l’email manquant
-- `remote && <span>` n’affiche rien quand `remote` vaut `false`
-- `showEmail = true` : valeur par défaut d’une prop (bonus 2)
-- `members.length === 0` : gestion de la liste vide (bonus 1)
+- `remote && <span>` n’affiche rien quand remote vaut false
+- Bonus : `members.length === 0` → « No members », et `showEmail = true` par défaut
 
 ## Ressources utiles
 
