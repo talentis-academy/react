@@ -21,9 +21,15 @@ Planning et supports : **[react.talentis.io](https://react.talentis.io)**
 
 Les démos du cours, étape par étape (code du formateur) :
 
-| Démo | Journée | Étapes |
+| Démo | Journée | Contenu |
 |---|---|---|
-| [Formulaire](demos/formulaire) | Jour 2 | 1 · useState → 2 · Zod seul → 3 · React Hook Form + Zod |
+| [Babel](demos/babel) | Jour 1 | JSX et `React.createElement` (page HTML) |
+| [Counter](demos/counter) | Jour 1 | `useState`, re-render, handlers |
+| [Tableaux](demos/tableaux) | Jour 2 | Tableaux et tableaux d’objets (console) |
+| [Destructuring](demos/destructuring) | Jour 2 | Tableaux, rest, spread, objets + exercice bonus |
+| [Voitures](demos/voitures) | Jour 2 | Le projet Voitures complet (props, map, événements) |
+| [Panier e-commerce](demos/panier-e-commerce) | Jour 2 | Rendu conditionnel (`if / else`, `? :`, `&&`) |
+| [Formulaire](demos/formulaire) | Jour 2 | 3 étapes : useState → Zod seul → React Hook Form + Zod |
 
 ## Lancer une correction
 

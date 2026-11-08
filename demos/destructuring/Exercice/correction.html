@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Correction - Destructuring</title>
+  </head>
+
+  <body>
+    <h1>Correction : Destructuring (ES6)</h1>
+
+    <script>
+      // PARTIE 1 : ARRAY DESTRUCTURING
+
+      const fruits = ["Apple", "Banana", "Orange"];
+
+      // TODO 1 : Sans destructuring
+      const firstFruit = fruits[0];
+      console.log("Sans destructuring:", firstFruit); // Apple
+
+      // TODO 2 : Avec destructuring (1er et 2ème)
+      const [f1, f2] = fruits;
+      console.log("Avec destructuring:", f1, f2); // Apple Banana
+
+      // TODO 3 : Destructuring + rest operator
+      const [first, ...others] = fruits;
+      console.log("First:", first); // Apple
+      console.log("Others:", others); // ["Banana", "Orange"]
+
+      // PARTIE 2 : OBJECT DESTRUCTURING
+
+      const user = { name: "Ayoub", role: "Developer", city: "Casablanca" };
+
+      // TODO 4 : Sans destructuring
+      const userName = user.name;
+      const userRole = user.role;
+      console.log("Sans destructuring:", userName, userRole); // Ayoub Developer
+
+      // TODO 5 : Avec destructuring (name + city)
+      const { name, city } = user;
+      console.log("Avec destructuring:", name, city); // Ayoub Casablanca
+
+      // TODO 6 : Alias (renommer)
+      const { name: fullName } = user;
+      console.log("Alias:", fullName); // Ayoub
+    </script>
+  </body>
+</html>

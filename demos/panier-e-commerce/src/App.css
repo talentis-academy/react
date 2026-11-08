@@ -1,0 +1,59 @@
+/* VERSION RESPONSIVE - S'adapte à tous les écrans (mobile, tablette, desktop) */
+
+/* Importation de la police Google Fonts Inter avec plusieurs graisses */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* Sélecteur universel qui cible tous les éléments HTML */
+* {
+  /* Force tous les éléments à inclure padding et border dans leur largeur/hauteur totale */
+  box-sizing: border-box;
+  /* Supprime les marges par défaut du navigateur pour avoir un contrôle total */
+  margin: 0;
+  /* Supprime les espacements internes par défaut du navigateur */
+  padding: 0;
+}
+
+/* Style global du corps de la page */
+body {
+  /* Applique la police Inter importée, avec sans-serif comme police de secours */
+  font-family: "Inter", sans-serif;
+  /* Améliore le rendu des polices sur les navigateurs WebKit (Safari, Chrome) */
+  -webkit-font-smoothing: antialiased;
+  /* Améliore le rendu des polices sur Firefox pour Mac */
+  -moz-osx-font-smoothing: grayscale;
+
+  text-align: center;
+
+  color: #342a2a;
+}
+
+h1 {
+  margin: 36px 0 20px 0;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+.products {
+  margin: 24px;
+  place-items: center;
+}
+
+.product {
+  background-color: beige;
+  padding: 10px;
+  margin: 16px;
+  width: 200px;
+}
+
+.empty {
+  margin: 36px;
+  font-weight: 500;
+  color: darkolivegreen;
+}
+
+.btn {
+  padding: 10px;
+  margin: 10px;
+}
