@@ -1,0 +1,16 @@
+:root { font-family: Inter, system-ui, Arial, sans-serif; color: #1c1c1c; background: #f4f4f7; }
+body { margin: 0; display: flex; justify-content: center; padding: 40px 16px; }
+#root { width: 100%; max-width: 720px; }
+h1 { color: #1c1c1c; }
+button { background: #5057f4; color: #fff; border: 0; border-radius: 8px; padding: 10px 16px; font-weight: 600; cursor: pointer; margin-right: 8px; }
+button:disabled { opacity: .5; cursor: not-allowed; }
+input { font: inherit; padding: 10px 12px; border: 2px solid #eaeaf0; border-radius: 8px; width: 100%; box-sizing: border-box; }
+label { display: block; font-weight: 600; margin: 14px 0 6px; }
+.error { color: #c62828; font-size: 14px; margin: 6px 0 0; }
+.success { color: #2e7d5b; font-weight: 600; }
+.card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 8px 32px #6d6d831a; }
+.team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.member-card { background: #fff; border-radius: 14px; padding: 18px; box-shadow: 0 8px 32px #6d6d831a; }
+.member-card h2 { font-size: 18px; margin: 0 0 4px; }
+.role { color: #5057f4; font-weight: 600; margin: 0 0 8px; }
+.badge { display: inline-block; background: #edeefe; color: #2027a6; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
