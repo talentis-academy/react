@@ -24,7 +24,7 @@ Vous démarrez un nouveau projet dans votre équipe. Le port par défaut de Vite
 
 ## Étape 1 : Créer le projet
 
-Dans un terminal, se placer dans le dossier de votre choix, puis lancer la commande (voir le guide officiel : [https://vite.dev/guide](https://vite.dev/guide)) :
+Dans un terminal, se placer dans le dossier de votre choix, puis lancer la commande (voir le guide officiel : <https://vite.dev/guide>) :
 
 ```bash
 npm create vite@latest
@@ -54,7 +54,7 @@ Ouvrir `src/App.jsx`, changer le texte du titre, puis enregistrer. Le navigateur
 
 ## Étape 4 : Changer le port
 
-En vous aidant de la documentation Vite sur les options du serveur ([https://vite.dev/config/server-options](https://vite.dev/config/server-options)), modifier le fichier `vite.config.js` pour que le projet tourne sur le port **3000**.
+En vous aidant de la documentation Vite sur les options du serveur (<https://vite.dev/config/server-options>), modifier le fichier `vite.config.js` pour que le projet tourne sur le port **3000**.
 
 Relancer `npm run dev` et vérifier que l’application est accessible sur `http://localhost:3000`.
 
@@ -70,11 +70,11 @@ Relancer `npm run dev` et vérifier que l’application est accessible sur `http
 
 ## Ressources utiles
 
-- Vite, guide de démarrage : [https://vite.dev/guide](https://vite.dev/guide)
-- Vite, options du serveur (port, strictPort, open…) : [https://vite.dev/config/server-options](https://vite.dev/config/server-options)
-- Vite, configuration (vite.config.js) : [https://vite.dev/config](https://vite.dev/config)
-- Vite, pourquoi Vite : [https://vite.dev/guide/why](https://vite.dev/guide/why)
-- React, documentation officielle : [https://react.dev](https://react.dev)
+- Vite, guide de démarrage : <https://vite.dev/guide>
+- Vite, options du serveur (port, strictPort, open…) : <https://vite.dev/config/server-options>
+- Vite, configuration (vite.config.js) : <https://vite.dev/config>
+- Vite, pourquoi Vite : <https://vite.dev/guide/why>
+- React, documentation officielle : <https://react.dev>
 
 ## Erreurs fréquentes à éviter
 

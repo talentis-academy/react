@@ -46,7 +46,7 @@ export default App;
 
 ## Étape 4 : Changer le port
 
-On ajoute la clé `server` dans `vite.config.js` (doc : [server.port](https://vite.dev/config/server-options#server-port)) :
+On ajoute la clé `server` dans `vite.config.js` (doc : <https://vite.dev/config/server-options#server-port>) :
 
 **`vite.config.js`**
 
@@ -75,11 +75,11 @@ npm run dev
 
 ### Refuser un port déjà occupé
 
-Par défaut, si le port 3000 est pris, Vite essaie automatiquement 3001, 3002… Avec `strictPort: true`, Vite s’arrête avec une erreur au lieu de changer de port (doc : [server.strictPort](https://vite.dev/config/server-options#server-strictport)).
+Par défaut, si le port 3000 est pris, Vite essaie automatiquement 3001, 3002… Avec `strictPort: true`, Vite s’arrête avec une erreur au lieu de changer de port (doc : <https://vite.dev/config/server-options#server-strictport>).
 
 ### Ouvrir le navigateur automatiquement
 
-L’option `open: true` ouvre le navigateur au lancement (doc : [server.open](https://vite.dev/config/server-options#server-open)).
+L’option `open: true` ouvre le navigateur au lancement (doc : <https://vite.dev/config/server-options#server-open>).
 
 **`vite.config.js (avec les bonus)`**
 
@@ -96,7 +96,7 @@ export default defineConfig({
 
 ## Autre solution possible
 
-On peut aussi passer le port en ligne de commande, sans toucher à la config (doc : [CLI de Vite](https://vite.dev/guide/cli)) :
+On peut aussi passer le port en ligne de commande, sans toucher à la config (doc : <https://vite.dev/guide/cli>) :
 
 ```bash
 npm run dev -- --port 3000
@@ -106,9 +106,9 @@ npm run dev -- --port 3000
 
 ## Ressources utiles
 
-- Vite, options du serveur : [https://vite.dev/config/server-options](https://vite.dev/config/server-options)
-- Vite, interface en ligne de commande : [https://vite.dev/guide/cli](https://vite.dev/guide/cli)
-- Vite, guide : [https://vite.dev/guide](https://vite.dev/guide)
+- Vite, options du serveur : <https://vite.dev/config/server-options>
+- Vite, interface en ligne de commande : <https://vite.dev/guide/cli>
+- Vite, guide : <https://vite.dev/guide>
 
 ## À retenir
 
