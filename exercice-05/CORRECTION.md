@@ -11,46 +11,55 @@
 
 ## Correction
 
-**`correction/correction.html (extrait du script)`**
+**`correction/correction.html`**
 
 ```
-const products = [
-  { id: 1, name: "Laptop" },
-  { id: 2, name: "Phone" },
-  { id: 3, name: "Tablet" },
-];
+<script>
+  // Exercice avec un tableau d'OBJETS
+  const products = [
+    { id: 1, name: "Laptop" },
+    { id: 2, name: "Phone" },
+    { id: 3, name: "Tablet" },
+  ];
 
-// 1. Afficher le tableau
-console.log("1) Initial :", products);
+  // 1️ Afficher le tableau dans la console
+  console.log("1) Initial:", products);
 
-// 2. Ajouter à la fin
-products.push({ id: 4, name: "Headphones" });
+  // 2️ Ajouter { id: 4, name: "Headphones" } à la fin du tableau
+  products.push({ id: 4, name: "Headphones" });
+  console.log("2) Après push:", products);
 
-// 3. Ajouter au début
-products.unshift({ id: 0, name: "Monitor" });
+  // 3️ Ajouter { id: 0, name: "Monitor" } au début du tableau
+  products.unshift({ id: 0, name: "Monitor" });
+  console.log("3) Après unshift:", products);
 
-// 4. Trouver l’index de "Phone"
-// (indexOf ne marche pas pour un objet : on utilise findIndex)
-const indexPhone = products.findIndex((p) => p.name === "Phone");
+  // 4️ Trouver l’index de l'objet dont name === "Phone"
+  // (indexOf ne marche pas ici, on utilise findIndex)
+  const indexPhone = products.findIndex((p) => p.name === "Phone");
+  console.log('4) Index de "Phone":', indexPhone);
 
-// 5. Supprimer "Phone" (si trouvé : -1 = pas trouvé)
-if (indexPhone !== -1) {
-  products.splice(indexPhone, 1);
-}
+  // 5️ Supprimer "Phone" du tableau
+  // Si indexPhone === -1 => pas trouvé
+  if (indexPhone !== -1) {
+    products.splice(indexPhone, 1);
+  }
+  console.log('5) Après suppression de "Phone":', products);
 
-// 6. Inverser l’ordre
-products.reverse();
+  // 6️ Inverser l’ordre du tableau
+  products.reverse();
+  console.log("6) Après reverse:", products);
 
-// 7. Afficher le tableau final
-console.log("7) Final :", products);
+  // 7️ Afficher le tableau final
+  console.log("7) Final:", products);
+</script>
 ```
 
-## Résultat dans la console
+## Résultat final dans la console
 
 **`Console`**
 
 ```
-7) Final : [
+7) Final: [
   { id: 4, name: "Headphones" },
   { id: 3, name: "Tablet" },
   { id: 1, name: "Laptop" },
