@@ -1,6 +1,6 @@
 # Formation React.js · Exercices
 
-Énoncés et corrections des exercices de la formation React.js (5 jours · 35 h).
+Énoncés et corrections des exercices et du projet de la formation React.js (5 jours · 35 h).
 
 Planning et supports : **[react.talentis.io](https://react.talentis.io)**
 
@@ -22,6 +22,16 @@ Planning et supports : **[react.talentis.io](https://react.talentis.io)**
 | 12 · Error Boundary avec react-error-boundary | Jour 3 | [Énoncé](exercice-12/README.md) | [Correction](exercice-12/CORRECTION.md) · [Code](exercice-12/correction) |
 | 13 · Login et Home sécurisée (React Router) | Jour 4 | [Énoncé](exercice-13/README.md) | [Correction](exercice-13/CORRECTION.md) · [Code](exercice-13/correction) |
 | 14 · Le panier d’achat avec Redux Toolkit | Jour 4 | [Énoncé](exercice-14/README.md) · [Template](exercice-14/template) | [Correction](exercice-14/CORRECTION.md) · [Code](exercice-14/correction) · [Changements](exercice-14/CHANGEMENTS.md) |
+
+## Projet · Car Catalog (Jour 5)
+
+Le projet de fin de formation, découpé en 10 étapes comme des commits : chaque dossier est un projet complet qui ajoute une fonctionnalité. [Énoncé](projet-car-catalog/ENONCE.md) · [Les étapes](projet-car-catalog/README.md) · [Changements entre les étapes](projet-car-catalog/CHANGEMENTS.md)
+
+| Étapes | Contenu |
+|---|---|
+| 1 à 8 | Template et routes → API (React Query) → détails → favoris (Redux Toolkit) → login → routes protégées (loaders) → Error Boundary → tests (Vitest, Playwright) |
+| 9 | Architecture feature-based : atomic design, un écran = View / Scene / Adapter, tests des adapters |
+| 10 | L’IA : `CLAUDE.md`, MCP (Playwright, Chrome DevTools, Figma), skill `react-feature`, exemples de prompts |
 
 ## Démos pas à pas
 
