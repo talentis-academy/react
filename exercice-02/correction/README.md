@@ -11,4 +11,3 @@ npm run dev
 Ce qui change par rapport au projet généré par Vite :
 
 - `vite.config.js` : `server.port: 3000` et `server.strictPort: true` (bonus)
-- `src/App.jsx` : titre modifié pour tester le hot reloading

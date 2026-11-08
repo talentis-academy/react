@@ -1,5 +1,5 @@
 {
-  "name": "exercice-08-formulaire",
+  "name": "vite-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,9 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "@hookform/resolvers": "^5.2.2",
     "react-hook-form": "^7.68.0",
     "zod": "^4.2.1"
   },
