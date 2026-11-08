@@ -8,6 +8,10 @@ La liste de voitures, avec des logs dans la console pour suivre les renders, le 
 | 2 | `etape-2-react-memo` | `React.memo` et le state `seeMore` pour observer les renders inutiles | `src/components/CarsMemo.tsx` |
 | 3 | `etape-3-usecallback-usememo` | `useCallback` (onSelect) et `useMemo` (carStyle) pour stabiliser les props | `src/components/CarsUseMemo.tsx` |
 
+## Les changements entre les étapes
+
+Ce qui est ajouté (en vert) et retiré (en rouge) d’une étape à l’autre, façon GitHub : [CHANGEMENTS.md](CHANGEMENTS.md) (ou `CHANGEMENTS.pdf` à imprimer).
+
 ## Lancer une étape
 
 ```bash

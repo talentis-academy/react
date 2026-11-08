@@ -20,10 +20,11 @@ Planning et supports : **[react.talentis.io](https://react.talentis.io)**
 | 10 · Todo App | Jour 3 | [Énoncé](exercice-10/README.md) | [Correction](exercice-10/CORRECTION.md) · [Code](exercice-10/correction) |
 | 11 · Page Comments avec un custom hook | Jour 3 | [Énoncé](exercice-11/README.md) | [Correction](exercice-11/CORRECTION.md) · [Code](exercice-11/correction) |
 | 12 · Error Boundary avec react-error-boundary | Jour 3 | [Énoncé](exercice-12/README.md) | [Correction](exercice-12/CORRECTION.md) · [Code](exercice-12/correction) |
+| 13 · Login et Home sécurisée (React Router) | Jour 4 | [Énoncé](exercice-13/README.md) | [Correction](exercice-13/CORRECTION.md) · [Code](exercice-13/correction) |
 
 ## Démos pas à pas
 
-Les démos du cours, étape par étape (code du formateur) :
+Les démos du cours, étape par étape (code du formateur). Pour les démos en plusieurs étapes, le fichier `CHANGEMENTS.md` montre ce qui est ajouté et retiré d’une étape à l’autre, façon GitHub.
 
 | Démo | Journée | Contenu |
 |---|---|---|
@@ -40,6 +41,8 @@ Les démos du cours, étape par étape (code du formateur) :
 | [Refs](demos/refs) | Jour 3 | 3 étapes : useRef → ref en prop (forwardRef) → useImperativeHandle |
 | [HOC](demos/hoc) | Jour 3 | Higher-Order Component `withAuth` |
 | [Error Boundary](demos/error-boundary) | Jour 3 | Error Boundary en class component |
+| [React Router](demos/router) | Jour 4 | 2 étapes : routes simples → routes imbriquées (Layout, Outlet, errorElement) |
+| [Redux](demos/redux) | Jour 4 | 7 étapes : createStore → combineReducers → Provider → payload → middleware → Redux Toolkit |
 
 ## Lancer une correction
 

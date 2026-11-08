@@ -11,6 +11,10 @@ Note : `Layout.jsx` est la version complète de `Code_004` (celle du projet d’
 | 3 | `etape-3-network-status` | Le hook `useNetworkStatus` : listeners `online` / `offline` dans `useEffect` | `src/components/Layout.jsx, src/hooks/usetNetworkStatus.ts` |
 | 4 | `etape-4-users` | La page Users : fetch avec loading / error (point de départ de l’exercice 11) | `src/components/Users.jsx` |
 
+## Les changements entre les étapes
+
+Ce qui est ajouté (en vert) et retiré (en rouge) d’une étape à l’autre, façon GitHub : [CHANGEMENTS.md](CHANGEMENTS.md) (ou `CHANGEMENTS.pdf` à imprimer).
+
 ## Lancer une étape
 
 ```bash

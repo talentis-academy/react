@@ -8,6 +8,10 @@ Le même écran de login, construit en 3 étapes. Chaque dossier est un projet V
 | 2 | `etape-2-zod` | Validation avec **Zod** seul (`safeParse`), sans librairie de formulaire | `src/components/FormOnlyZod.tsx` |
 | 3 | `etape-3-react-hook-form` | Version finale : **React Hook Form + Zod + zodResolver** (`register`, `handleSubmit`, `errors`) | `src/components/FormFinal.tsx` |
 
+## Les changements entre les étapes
+
+Ce qui est ajouté (en vert) et retiré (en rouge) d’une étape à l’autre, façon GitHub : [CHANGEMENTS.md](CHANGEMENTS.md) (ou `CHANGEMENTS.pdf` à imprimer).
+
 ## Lancer une étape
 
 ```bash

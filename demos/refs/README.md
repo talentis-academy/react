@@ -8,6 +8,10 @@ La page Search : mettre le focus dans un input. Chaque dossier est un projet Vit
 | 2 | `etape-2-forwardref` | L’input devient un composant `SearchInput` qui reçoit la ref (React 19 : `ref` est une prop) | `src/components/SearchForwardRef.jsx` |
 | 3 | `etape-3-useimperativehandle` | `useImperativeHandle` : le parent n’a accès qu’à `focus` et `clear` | `src/components/SearchUseImperativeHandle.jsx` |
 
+## Les changements entre les étapes
+
+Ce qui est ajouté (en vert) et retiré (en rouge) d’une étape à l’autre, façon GitHub : [CHANGEMENTS.md](CHANGEMENTS.md) (ou `CHANGEMENTS.pdf` à imprimer).
+
 ## Lancer une étape
 
 ```bash
