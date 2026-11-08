@@ -19,17 +19,17 @@ Comprendre le passage de props du parent vers l’enfant, et la remontée d’in
 
 ## Contexte
 
-Une maman (composant parent) donne un ordre à son fils (composant enfant), par exemple « Range ta chambre ! ». Le fils peut accepter ou refuser. La maman voit la réponse.
+Une maman (composant parent) donne un ordre à son fils (composant enfant), par exemple « Go to your room ! ». Le fils peut accepter ou refuser. La maman voit la réponse.
 
 ## Étapes
 
 1. Créer un nouveau projet React avec Vite
 2. Créer un composant `Parent` avec deux states : le message de l’ordre et le statut de l’ordre (accepté, refusé ou en attente)
-3. Ajouter dans `Parent` un bouton « Envoyer l’ordre » qui change le message
+3. Ajouter dans `Parent` un bouton « Send Order » qui change le message (au départ « Hello from Parent », puis « Go to your room ! »)
 4. Créer un composant `Child` qui reçoit son prénom en props et l’affiche
 5. Passer à `Child` une fonction du parent qui met à jour le statut
-6. Dans `Child`, ajouter deux boutons « Accepter » et « Refuser » qui appellent cette fonction
-7. Afficher le statut dans `Parent` : « En attente », « Accepté » ou « Refusé »
+6. Dans `Child`, ajouter deux boutons « Accepter » et « Deny » qui appellent cette fonction
+7. Afficher le statut dans `Parent` : « Order Status: Pending », « Accepted » ou « Denied »
 
 ## Bonus (optionnel)
 

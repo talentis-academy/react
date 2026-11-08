@@ -1,8 +1,10 @@
 import "./App.css";
-import Form from "./components/FormOnlyZod";
+import Form from "./components/Form";
+import FormFinal from "./components/FormFinal";
+import FormOnlyZod from "./components/FormOnlyZod";
 
 function App() {
-  return <Form />;
+  return <FormOnlyZod />;
 }
 
 export default App;
