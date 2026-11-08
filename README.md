@@ -34,9 +34,7 @@ Les démos du cours, étape par étape (code du formateur) :
 | [Voitures](demos/voitures) | Jour 2 | Le projet Voitures complet (props, map, événements) |
 | [Panier e-commerce](demos/panier-e-commerce) | Jour 2 | Rendu conditionnel (`if / else`, `? :`, `&&`) |
 | [Formulaire](demos/formulaire) | Jour 2 | 3 étapes : useState → Zod seul → React Hook Form + Zod |
-| [Tailwind CSS](demos/tailwind) | Jour 2 | Classes utilitaires, `@theme`, `@apply` |
-| [Chakra UI](demos/chakra-ui) | Jour 2 | Composants, props et thème (tokens) |
-| [Cartes CSS (Figma)](demos/cars-css) | Jour 2 | Carte catalogue et carte détail, de la maquette au code |
+| [Styles](demos/styles) | Jour 2 | Tailwind CSS, Chakra UI et les cartes Figma en CSS (3 projets) |
 | [Custom hooks](demos/custom-hooks) | Jour 3 | 4 étapes : toggle → useToggle → useNetworkStatus → page Users |
 | [Cycle de vie](demos/cycle-de-vie) | Jour 3 | 3 étapes : logs du cycle de vie → React.memo → useCallback / useMemo |
 | [Refs](demos/refs) | Jour 3 | 3 étapes : useRef → ref en prop (forwardRef) → useImperativeHandle |
