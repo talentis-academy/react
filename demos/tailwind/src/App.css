@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* Configuration de couleurs personnalisées */
+@theme {
+  --color-primary: #2563eb;
+}
+
+/* Classe réutilisable pour les cartes rouges */
+@layer components {
+  .card-gradient {
+    @apply h-48 bg-gradient-to-r from-blue-500 to-purple-500;
+  }
+}

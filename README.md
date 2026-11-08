@@ -16,6 +16,10 @@ Planning et supports : **[react.talentis.io](https://react.talentis.io)**
 | 6 · Force du mot de passe | Jour 2 | [Énoncé](exercice-06/README.md) | [Correction](exercice-06/CORRECTION.md) · [Code](exercice-06/correction) |
 | 7 · La maman et l’enfant | Jour 2 | [Énoncé](exercice-07/README.md) | [Correction](exercice-07/CORRECTION.md) · [Code](exercice-07/correction) |
 | 8 · Formulaire d’enregistrement | Jour 2 | [Énoncé](exercice-08/README.md) | [Correction](exercice-08/CORRECTION.md) · [Code](exercice-08/correction) |
+| 9 · De la maquette au composant React | Jour 2 | [Énoncé](exercice-09/README.md) | [Correction](exercice-09/CORRECTION.md) · [Code](exercice-09/correction) |
+| 10 · Todo App | Jour 3 | [Énoncé](exercice-10/README.md) | [Correction](exercice-10/CORRECTION.md) · [Code](exercice-10/correction) |
+| 11 · Page Comments avec un custom hook | Jour 3 | [Énoncé](exercice-11/README.md) | [Correction](exercice-11/CORRECTION.md) · [Code](exercice-11/correction) |
+| 12 · Error Boundary avec react-error-boundary | Jour 3 | [Énoncé](exercice-12/README.md) | [Correction](exercice-12/CORRECTION.md) · [Code](exercice-12/correction) |
 
 ## Démos pas à pas
 
@@ -30,6 +34,13 @@ Les démos du cours, étape par étape (code du formateur) :
 | [Voitures](demos/voitures) | Jour 2 | Le projet Voitures complet (props, map, événements) |
 | [Panier e-commerce](demos/panier-e-commerce) | Jour 2 | Rendu conditionnel (`if / else`, `? :`, `&&`) |
 | [Formulaire](demos/formulaire) | Jour 2 | 3 étapes : useState → Zod seul → React Hook Form + Zod |
+| [Tailwind CSS](demos/tailwind) | Jour 2 | Classes utilitaires, `@theme`, `@apply` |
+| [Chakra UI](demos/chakra-ui) | Jour 2 | 3 étapes : composants → props → thème (tokens) |
+| [Custom hooks](demos/custom-hooks) | Jour 3 | 4 étapes : toggle → useToggle → useNetworkStatus → page Users |
+| [Cycle de vie](demos/cycle-de-vie) | Jour 3 | 3 étapes : logs du cycle de vie → React.memo → useCallback / useMemo |
+| [Refs](demos/refs) | Jour 3 | 3 étapes : useRef → ref en prop (forwardRef) → useImperativeHandle |
+| [HOC](demos/hoc) | Jour 3 | Higher-Order Component `withAuth` |
+| [Error Boundary](demos/error-boundary) | Jour 3 | Error Boundary en class component |
 
 ## Lancer une correction
 

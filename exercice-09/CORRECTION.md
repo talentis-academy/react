@@ -1,0 +1,325 @@
+> **Exercice 9 · Correction**
+
+# De la maquette au composant React
+
+*La carte détail (l’exercice), à côté de la carte catalogue faite ensemble, en React + CSS.*
+
+| | |
+|---|---|
+| **Énoncé** | Exercice_09_Enonce.docx |
+| **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
+| **Source** | Code du formateur : Formation/Projets/CSS/Design System/cars-css, nettoyé : les styles inline répétés (titres des exemples, conteneur, largeur de la carte catalogue) sont passés en classes dans styles.css. Rendu identique. |
+
+## Le composant
+
+Les deux cartes de la maquette : la carte catalogue (faite ensemble pendant le module) et la carte détail (l’exercice).
+
+**`src/components/Home.tsx`**
+
+```
+import "./styles.css";
+
+export default function Home() {
+  return (
+    <main className="page">
+      <div className="container">
+        <header className="header">
+          <h1 className="header-title">CSS Design System</h1>
+          <h2 className="header-subtitle">Deux exemples de cartes</h2>
+        </header>
+
+        <div className="cards">
+          {/* CARTE CATALOGUE */}
+          <div>
+            <h3 className="section-title">Carte Catalogue</h3>
+            <div className="card catalogue">
+              <h3 className="car-name">Tesla Model S</h3>
+              <div className="color">
+                <span
+                  className="circle"
+                  style={{ backgroundColor: "#dc2626" }}
+                ></span>
+                <span>Rouge</span>
+              </div>
+              <span className="badge available">Available</span>
+              <p className="price">$79,990</p>
+              <button className="btn">View Details</button>
+            </div>
+          </div>
+
+          {/* CARTE DÉTAIL */}
+          <div>
+            <h3 className="section-title">Carte Détail</h3>
+            <div className="card detail">
+              <h1 className="title">Ford Mustang Mach-E</h1>
+              <div className="details">
+                <div className="row">
+                  <span>Brand</span>
+                  <span>Ford</span>
+                </div>
+                <div className="row">
+                  <span>Color</span>
+                  <div className="color">
+                    <span
+                      className="circle"
+                      style={{ backgroundColor: "#2563eb" }}
+                    ></span>
+                    <span>Bleu</span>
+                  </div>
+                </div>
+                <div className="row">
+                  <span>Year</span>
+                  <span>2023</span>
+                </div>
+                <div className="row">
+                  <span>Price</span>
+                  <span className="price">$42,895</span>
+                </div>
+                <div className="row">
+                  <span>Availability</span>
+                  <span className="badge available">Available</span>
+                </div>
+              </div>
+              <button className="btn">Back to list</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  );
+}
+```
+
+## Les styles
+
+**`src/components/styles.css`**
+
+```
+.page {
+  background-color: #111827; /* Couleur de fond gris très foncé */
+  color: #f9fafb; /* Couleur du texte blanc cassé */
+  min-height: 100vh; /* Hauteur minimale = 100% de la hauteur de l'écran */
+  display: flex; /* Active le mode flexbox */
+  align-items: center; /* Centre verticalement le contenu */
+  justify-content: center; /* Centre horizontalement le contenu */
+  padding: 32px 16px; /* Espace intérieur: 32px en haut/bas, 16px à gauche/droite */
+}
+
+.container {
+  max-width: 1280px; /* Largeur maximale du conteneur */
+  width: 100%; /* Prend 100% de la largeur disponible jusqu'au max-width */
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.header {
+  text-align: center; /* Centre le texte horizontalement */
+  margin-bottom: 48px; /* Espace en bas de 48px */
+  padding: 32px 0; /* Espace intérieur de 32px en haut et en bas */
+}
+
+.header-title {
+  font-size: 48px; /* Taille de texte de 48 pixels */
+  font-weight: 700; /* Épaisseur du texte: gras (700) */
+  color: #ffffff; /* Couleur du texte: blanc pur */
+  margin-bottom: 16px; /* Espace en bas de 16px */
+  line-height: 1.2; /* Hauteur de ligne: 1.2 fois la taille du texte */
+}
+
+.header-subtitle {
+  font-size: 24px; /* Taille de texte de 24 pixels */
+  font-weight: 600; /* Épaisseur du texte: semi-gras (600) */
+  color: #9ca3af; /* Couleur du texte: gris moyen */
+}
+
+.title {
+  font-size: 36px; /* Taille de texte de 36 pixels */
+  font-weight: 700; /* Épaisseur du texte: gras (700) */
+  color: #ffffff; /* Couleur du texte: blanc pur */
+  text-align: center; /* Centre le texte horizontalement */
+  margin-bottom: 48px; /* Espace en bas de 48px */
+}
+
+/* Les deux exemples de cartes, l'un sous l'autre */
+.cards {
+  display: flex; /* Active le mode flexbox */
+  flex-direction: column; /* Dispose les cartes verticalement */
+  gap: 64px; /* Espace de 64px entre les deux exemples */
+  max-width: 800px; /* Largeur maximale de 800px */
+  margin: 0 auto; /* Centre horizontalement */
+}
+
+/* Titre au-dessus de chaque exemple ("Carte Catalogue", "Carte Détail") */
+.section-title {
+  font-size: 24px; /* Taille de texte de 24 pixels */
+  font-weight: 600; /* Épaisseur du texte: semi-gras (600) */
+  color: #ffffff; /* Couleur du texte: blanc pur */
+  margin-bottom: 24px; /* Espace en bas de 24px */
+  text-align: center; /* Centre le texte horizontalement */
+}
+
+/* ========================================
+   CARTES GÉNÉRIQUES
+   ======================================== */
+
+.card {
+  background-color: #1f2937; /* Couleur de fond gris foncé */
+  border-radius: 12px; /* Coins arrondis de 12px */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre portée: décalage 4px vers le bas, flou de 6px */
+  padding: 24px; /* Espace intérieur de 24px sur tous les côtés */
+  display: flex; /* Active le mode flexbox */
+  flex-direction: column; /* Dispose les éléments verticalement (en colonne) */
+  gap: 16px; /* Espace de 16px entre chaque élément enfant */
+  transition: box-shadow 0.3s ease; /* Animation fluide de l'ombre sur 0.3 secondes */
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombre plus grande au survol de la souris */
+}
+
+/* ========================================
+   CARTE CATALOGUE (centrée)
+   ======================================== */
+
+.card.catalogue {
+  max-width: 400px; /* Largeur maximale de 400px pour la carte catalogue */
+  margin: 0 auto; /* Centre horizontalement la carte */
+}
+
+/* ========================================
+   CARTE DÉTAILS (centrée)
+   ======================================== */
+
+.card.detail {
+  max-width: 600px; /* Largeur maximale de 600px pour la carte détails */
+  margin: 0 auto; /* Centre horizontalement la carte (marges auto à gauche et droite) */
+}
+
+/* ========================================
+   ÉLÉMENTS DE CARTE CATALOGUE
+   ======================================== */
+
+.car-name {
+  font-size: 18px; /* Taille de texte de 18 pixels */
+  font-weight: 700; /* Épaisseur du texte: gras (700) */
+  color: #ffffff; /* Couleur du texte: blanc pur */
+}
+
+.color {
+  display: flex; /* Active le mode flexbox */
+  align-items: center; /* Aligne verticalement les éléments au centre */
+  gap: 8px; /* Espace de 8px entre le cercle et le texte */
+  font-size: 14px; /* Taille de texte de 14 pixels */
+  color: #9ca3af; /* Couleur du texte: gris moyen */
+}
+
+.circle {
+  width: 16px; /* Largeur du cercle: 16 pixels */
+  height: 16px; /* Hauteur du cercle: 16 pixels */
+  border-radius: 50%; /* Rend l'élément circulaire (50% = cercle parfait) */
+  border: 2px solid #6b7280; /* Bordure de 2px, couleur gris */
+  /* flex-shrink: 0; /* Empêche le cercle de rétrécir si l'espace est limité */
+}
+
+.badge {
+  display: inline-flex; /* Flexbox en ligne (prend seulement la largeur nécessaire) */
+  width: fit-content; /* Largeur ajustée au contenu */
+  align-self: flex-start; /* S'aligne au début du conteneur parent */
+  padding: 4px 12px; /* Espace intérieur: 4px en haut/bas, 12px à gauche/droite */
+  border-radius: 9999px; /* Coins très arrondis (forme de pilule) */
+  font-size: 12px; /* Taille de texte de 12 pixels */
+  font-weight: 500; /* Épaisseur du texte: moyennement gras (500) */
+}
+
+.badge.available {
+  background-color: #d1fae5; /* Couleur de fond vert clair pour "disponible" */
+  color: #065f46; /* Couleur du texte vert foncé */
+}
+
+.badge.unavailable {
+  background-color: #fee2e2; /* Couleur de fond rouge clair pour "indisponible" */
+  color: #991b1b; /* Couleur du texte rouge foncé */
+}
+
+.price {
+  font-size: 20px; /* Taille de texte de 20 pixels */
+  font-weight: 600; /* Épaisseur du texte: semi-gras (600) */
+  color: #ffffff; /* Couleur du texte: blanc pur */
+}
+
+/* ========================================
+   BOUTONS
+   ======================================== */
+
+.btn {
+  width: 100%; /* Largeur du bouton: 100% du conteneur parent */
+  background-color: #3b82f6; /* Couleur de fond bleu */
+  color: #ffffff; /* Couleur du texte: blanc pur */
+  font-weight: 600; /* Épaisseur du texte: semi-gras (600) */
+  padding: 12px 16px; /* Espace intérieur: 12px en haut/bas, 16px à gauche/droite */
+  border-radius: 8px; /* Coins arrondis de 8px */
+  border: none; /* Supprime la bordure par défaut */
+  cursor: pointer; /* Change le curseur en main au survol */
+  font-size: 16px; /* Taille de texte de 16 pixels */
+  transition: background-color 0.2s ease; /* Animation fluide de la couleur de fond sur 0.2 secondes */
+}
+
+.btn:hover {
+  background-color: #2563eb; /* Couleur de fond bleu plus foncé au survol */
+}
+
+.btn:focus {
+  outline: none; /* Supprime le contour par défaut au focus */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* Ajoute une ombre bleue de 3px pour indiquer le focus */
+}
+
+/* ========================================
+   PAGE DÉTAILS
+   ======================================== */
+
+.details {
+  display: flex; /* Active le mode flexbox */
+  flex-direction: column; /* Dispose les éléments verticalement (en colonne) */
+  gap: 12px; /* Espace de 12px entre chaque ligne de détails */
+}
+
+.row {
+  display: flex; /* Active le mode flexbox */
+  justify-content: space-between; /* Espace maximum entre le label et la valeur */
+  align-items: center; /* Aligne verticalement les éléments au centre */
+  padding: 12px 0; /* Espace intérieur: 12px en haut/bas, 0 à gauche/droite */
+  border-bottom: 1px solid #374151; /* Bordure en bas de 1px, couleur gris foncé */
+}
+
+.row:last-child {
+  border-bottom: none; /* Supprime la bordure du dernier élément pour un meilleur rendu */
+}
+```
+
+## App
+
+**`src/App.jsx`**
+
+```jsx
+import "./App.css";
+import Home from "./components/Home";
+
+function App() {
+  return <Home />;
+}
+
+export default App;
+```
+
+## Points clés
+
+- Les styles sont dans un fichier `styles.css` et appliqués avec `className`
+- Chaque ligne de la carte détail est un `display: flex` avec `justify-content: space-between`
+- La pastille de couleur reçoit sa couleur en inline (`style={{ backgroundColor: ... }}`) : c’est une donnée, pas un style fixe
+- Les noms de voitures et les valeurs sont en dur ici ; on les rendra dynamiques plus tard (API, navigation)
+
+## Ressources utiles
+
+- MDN, Flexbox : <https://developer.mozilla.org/fr/docs/Learn_web_development/Core/CSS_layout/Flexbox>
