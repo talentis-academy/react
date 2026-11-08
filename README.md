@@ -17,6 +17,14 @@ Planning et supports : **[react.talentis.io](https://react.talentis.io)**
 | 7 · La maman et l’enfant | Jour 2 | [Énoncé](exercice-07/README.md) | [Correction](exercice-07/CORRECTION.md) · [Code](exercice-07/correction) |
 | 8 · Formulaire d’enregistrement | Jour 2 | [Énoncé](exercice-08/README.md) | [Correction](exercice-08/CORRECTION.md) · [Code](exercice-08/correction) |
 
+## Démos pas à pas
+
+Les démos du cours, étape par étape (code du formateur) :
+
+| Démo | Journée | Étapes |
+|---|---|---|
+| [Formulaire](demos/formulaire) | Jour 2 | 1 · useState → 2 · Zod seul → 3 · React Hook Form + Zod |
+
 ## Lancer une correction
 
 ```bash
