@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="todo-styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="todo-wrapper">
+            <header class="app-header">
+                <h1>Ma Liste de Tâches</h1>
+                <p class="subtitle">Organisez votre journée</p>
+            </header>
+
+            <div class="add-task-section">
+                <input type="text" class="task-input" placeholder="Ajouter une nouvelle tâche..." id="taskInput">
+                <button class="btn-add">Ajouter</button>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active">Toutes</button>
+                <button class="filter-btn">Actives</button>
+                <button class="filter-btn">Terminées</button>
+            </div>
+
+            <ul class="task-list">
+                <li class="task-item">
+                    <div class="task-content">
+                        <input type="checkbox" class="task-checkbox" id="task1">
+                        <label for="task1">Faire les courses</label>
+                    </div>
+                    <button class="btn-delete">×</button>
+                </li>
+                <li class="task-item completed">
+                    <div class="task-content">
+                        <input type="checkbox" class="task-checkbox" id="task2" checked>
+                        <label for="task2">Répondre aux emails</label>
+                    </div>
+                    <button class="btn-delete">×</button>
+                </li>
+                <li class="task-item">
+                    <div class="task-content">
+                        <input type="checkbox" class="task-checkbox" id="task3">
+                        <label for="task3">Préparer la réunion</label>
+                    </div>
+                    <button class="btn-delete">×</button>
+                </li>
+                <li class="task-item">
+                    <div class="task-content">
+                        <input type="checkbox" class="task-checkbox" id="task4">
+                        <label for="task4">Appeler le client</label>
+                    </div>
+                    <button class="btn-delete">×</button>
+                </li>
+                <li class="task-item completed">
+                    <div class="task-content">
+                        <input type="checkbox" class="task-checkbox" id="task5" checked>
+                        <label for="task5">Réviser le rapport</label>
+                    </div>
+                    <button class="btn-delete">×</button>
+                </li>
+            </ul>
+
+            <div class="task-stats">
+                <span class="stats-text">3 tâches restantes</span>
+                <button class="btn-clear">Effacer terminées</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -34,6 +34,7 @@ Les démos du cours, étape par étape (code du formateur) :
 | [Voitures](demos/voitures) | Jour 2 | Le projet Voitures complet (props, map, événements) |
 | [Panier e-commerce](demos/panier-e-commerce) | Jour 2 | Rendu conditionnel (`if / else`, `? :`, `&&`) |
 | [Formulaire](demos/formulaire) | Jour 2 | 3 étapes : useState → Zod seul → React Hook Form + Zod |
+| [Template](demos/template) | Jour 2 | Templating : templates HTML / CSS à découper en composants |
 | [Tailwind CSS](demos/tailwind) | Jour 2 | Classes utilitaires, `@theme`, `@apply` |
 | [Chakra UI](demos/chakra-ui) | Jour 2 | 3 étapes : composants → props → thème (tokens) |
 | [Custom hooks](demos/custom-hooks) | Jour 3 | 4 étapes : toggle → useToggle → useNetworkStatus → page Users |
