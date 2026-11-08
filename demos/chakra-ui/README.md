@@ -1,17 +1,12 @@
-# Démo · Chakra UI en 3 étapes
+# Démo · Chakra UI
 
-La même carte, stylée de 3 façons avec Chakra UI v3. Chaque dossier est un projet Vite complet (code du formateur) ; seule la ligne d’import de `src/App.jsx` change.
+Introduction à Chakra UI v3 (code du formateur) : une carte avec les composants Chakra, la personnalisation par les props, puis le thème (tokens) avec `createSystem`.
 
-| Étape | Dossier | Ce qui change | Fichier |
-|---|---|---|---|
-| 1 | `etape-1-card` | Une carte avec les composants Chakra (`Card`, `Badge`, `Button`) | `src/components/Card.tsx` |
-| 2 | `etape-2-props` | Personnaliser avec les props (`bg`, `color`, `p`, `mt`…) | `src/components/CardCustom.tsx` |
-| 3 | `etape-3-theme` | Centraliser le style dans le thème (tokens) avec `createSystem` | `src/components/CardToken.tsx, src/styles/theme.ts` |
+Fichiers à regarder : `src/components/Card.tsx` (composants), `src/components/CardCustom.tsx` (props), `src/components/CardToken.tsx` et `src/styles/theme.ts` (thème). Pour changer de carte, modifier l’import dans `src/App.jsx`.
 
-## Lancer une étape
+## Lancer la démo
 
 ```bash
-cd etape-1-card   # ou une autre étape
 npm install
 npm run dev
 ```
