@@ -9,7 +9,7 @@
 | **Moment** | Jour 2 · Module 04 · Rappels ES6 et tableaux |
 | **Durée** | 20 minutes |
 | **Niveau** | Débutant |
-| **Outils** | Un fichier HTML et la console du navigateur (fichier de départ : `exercice.html`) |
+| **Outils** | Un fichier HTML et la console du navigateur (un fichier `.html` à créer ; la correction est dans `correction.html`) |
 
 ## Objectifs de l’exercice
 

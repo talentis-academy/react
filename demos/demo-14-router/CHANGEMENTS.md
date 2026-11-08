@@ -1,6 +1,6 @@
-# Démo · React Router v7 : les changements entre les étapes
+# Démo 14 · React Router v7 : les changements entre les étapes
 
-Pour chaque étape, ce qui change par rapport à l’étape précédente. En vert : les lignes ajoutées. En rouge : les lignes retirées.
+Pour chaque étape, ce qui change par rapport à l’étape précédente. En vert : les lignes ajoutées. En rouge : les lignes retirées. « utilisé » : un fichier qui existait déjà mais qui est branché (importé) à partir de cette étape, montré en entier.
 
 ## Étape 1 → 2 : `etape-1-routes-simples` → `etape-2-not-found`
 
@@ -22,6 +22,26 @@ La route * : une page NotFound personnalisée, avec un Link vers l’accueil
  function App() {
 ```
 
+### `src/pages/NotFound.jsx` (utilisé, +14 −0)
+
+```diff
+@@ -1,0 +1,14 @@
++import { Link } from "react-router-dom";
++
++function NotFound() {
++  return (
++    <div>
++      <h1>{"Custom Not Found Page"}</h1>
++      <Link to={"/"}>
++        <h2>Go to home</h2>
++      </Link>
++    </div>
++  );
++}
++
++export default NotFound;
+```
+
 ## Étape 2 → 3 : `etape-2-not-found` → `etape-3-route-dynamique`
 
 La route dynamique /details/:id : useParams, useSearchParams (?tab=home), useNavigate depuis Home
@@ -40,6 +60,28 @@ La route dynamique /details/:id : useParams, useSearchParams (?tab=home), useNav
      path: "/favoris",
      element: <Favoris />,
    },
+```
+
+### `src/pages/Details.jsx` (utilisé, +16 −0)
+
+```diff
+@@ -1,0 +1,16 @@
++import { useEffect } from "react";
++import { useParams, useSearchParams } from "react-router-dom";
++
++function Details() {
++  const params = useParams();
++  const [searchParams, setSearchParams] = useSearchParams();
++  console.log(searchParams.get("tab"));
++  return (
++    <div>
++      <h1>Détails voiture</h1>
++      <p>ID: {params.id}</p>
++    </div>
++  );
++}
++
++export default Details;
 ```
 
 ## Étape 3 → 4 : `etape-3-route-dynamique` → `etape-4-routes-imbriquees`
@@ -86,6 +128,50 @@ Routes imbriquées : Layout (header, footer) + <Outlet />, index: true
  export default App;
 ```
 
+### `src/pages/Layout.jsx` (utilisé, +38 −0)
+
+```diff
+@@ -1,0 +1,38 @@
++import { NavLink, Outlet } from "react-router-dom";
++
++export default function Layout() {
++  return (
++    <div
++      style={{
++        minHeight: "80vh",
++        display: "flex",
++        flexDirection: "column",
++        padding: 16,
++        textAlign: "center",
++      }}
++    >
++      <header style={{ display: "flex", gap: 12, justifyContent: "center" }}>
++        <NavLink to="/">Home</NavLink>
++        <NavLink to="/favoris">Favoris</NavLink>
++        <NavLink
++          to="/favoris"
++          style={({ isActive }) => ({
++            color: isActive ? "red" : "black",
++            fontWeight: isActive ? "bold" : "normal",
++          })}
++        >
++          favoris
++        </NavLink>
++      </header>
++
++      {/* Zone qui prend tout l'espace */}
++      <main style={{ flex: 1, display: "grid", placeItems: "center" }}>
++        <Outlet />
++      </main>
++
++      <footer style={{ marginTop: 16 }}>
++        <p>© 2025 My Car App</p>
++      </footer>
++    </div>
++  );
++}
+```
+
 ## Étape 4 → 5 : `etape-4-routes-imbriquees` → `etape-5-error-element`
 
 errorElement: <ErrorPage /> : le bouton « Crash APP » de Home affiche la page d’erreur
@@ -101,6 +187,24 @@ errorElement: <ErrorPage /> : le bouton « Crash APP » de Home affiche la page 
      children: [
        { index: true, element: <Home /> }, // "/"
        { path: "details/:id", element: <Details /> }, // "/details/:id"
+```
+
+### `src/pages/ErrorPage.jsx` (utilisé, +12 −0)
+
+```diff
+@@ -1,0 +1,12 @@
++import { Link } from "react-router-dom";
++
++function ErrorPage() {
++  return (
++    <div style={{ padding: 16 }}>
++      <h2>Oups… une erreur est survenue</h2>
++      <p>Merci de réessayer.</p>
++      <Link to="/">Go back home</Link>
++    </div>
++  );
++}
++export default ErrorPage;
 ```
 
 ## Étape 5 → 6 : `etape-5-error-element` → `etape-6-lazy-loading`

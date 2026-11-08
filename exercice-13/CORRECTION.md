@@ -151,6 +151,8 @@ export default function App() {
 }
 ```
 
+Remarque : toute la correction est dans App.jsx. Les autres fichiers (pages CarDetails, Details, Exercice, Favoris, Auth/requireAuthLoader, et le code commenté en bas d’App.jsx) viennent du projet du cours : ils ne servent pas pour cet exercice.
+
 ## Points clés
 
 - `requireAuthLoader` s’exécute **avant** le rendu de Home : sans token, `throw redirect("/login")`

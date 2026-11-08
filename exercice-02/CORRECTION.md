@@ -42,6 +42,8 @@ function App() {
 export default App;
 ```
 
+C’est juste pour tester : dans le dossier correction, App.jsx est resté celui généré par Vite.
+
 À l’enregistrement, Vite met à jour uniquement le module modifié : le titre change dans le navigateur sans recharger la page.
 
 ## Étape 4 : Changer le port
@@ -79,7 +81,7 @@ Par défaut, si le port 3000 est pris, Vite essaie automatiquement 3001, 3002…
 
 ### Ouvrir le navigateur automatiquement
 
-L’option `open: true` ouvre le navigateur au lancement (doc : <https://vite.dev/config/server-options#server-open>).
+L’option `open: true` (pas activée dans le dossier correction) ouvre le navigateur au lancement (doc : <https://vite.dev/config/server-options#server-open>).
 
 **`vite.config.js (avec les bonus)`**
 

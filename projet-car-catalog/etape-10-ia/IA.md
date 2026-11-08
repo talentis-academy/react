@@ -14,7 +14,7 @@ Même code que l'étape 9. On ajoute seulement ce qu'il faut pour travailler ave
 
 ```bash
 npm install
-claude            # dans ce dossier : CLAUDE.md, .mcp.json et la skill sont chargés
+claude            # dans ce dossier : CLAUDE.md, .mcp.json et les skills sont chargés
 /mcp              # vérifier les serveurs MCP
 ```
 

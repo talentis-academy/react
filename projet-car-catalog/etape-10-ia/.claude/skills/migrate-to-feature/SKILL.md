@@ -18,7 +18,7 @@ Règle d'or : **même rendu, mêmes textes, même comportement**. On change l'or
 
 ## 2. Ranger la logique
 
-- Les appels HTTP vont dans `features/<feature>/api/` (avec `axiosQuery` de `@/lib`).
+- Les appels HTTP vont dans `features/<feature>/api/` (avec `import axiosQuery from "@/lib/axiosQuery"`).
 - Les `useQuery` / `useMutation` / Redux vont dans un hook de `features/<feature>/hooks/` (clés dans `queryKeys.js`). Réutiliser un hook existant s'il y en a un.
 
 ## 3. Créer l'écran `features/<feature>/screens/<X>Screen/`

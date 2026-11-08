@@ -1,6 +1,6 @@
-# Démo · Projet Car Catalog : les changements entre les étapes
+# Projet · Car Catalog : les changements entre les étapes
 
-Pour chaque étape, ce qui change par rapport à l’étape précédente. En vert : les lignes ajoutées. En rouge : les lignes retirées.
+Pour chaque étape, ce qui change par rapport à l’étape précédente. En vert : les lignes ajoutées. En rouge : les lignes retirées. « utilisé » : un fichier qui existait déjà mais qui est branché (importé) à partir de cette étape, montré en entier.
 
 ## Étape 1 → 2 : `etape-1-template` → `etape-2-api-liste`
 
@@ -818,6 +818,17 @@ errorElement : un écran d’erreur avec « Try again », et un bouton pour prov
 ## Étape 7 → 8 : `etape-7-error-boundary` → `etape-8-tests`
 
 Les tests : Vitest (le slice des favoris), Playwright (4 parcours e2e)
+
+### `.gitignore` (modifié, +2 −0)
+
+```diff
+@@ -3,3 +3,5 @@
+ .DS_Store
+ *.log
+ .env
++playwright-report
++test-results
+```
 
 ### `package.json` (modifié, +7 −2)
 
@@ -3828,7 +3839,7 @@ L’IA : CLAUDE.md, .mcp.json (Playwright, Chrome DevTools, Figma), notre skill 
 +
 +## 2. Ranger la logique
 +
-+- Les appels HTTP vont dans `features/<feature>/api/` (avec `axiosQuery` de `@/lib`).
++- Les appels HTTP vont dans `features/<feature>/api/` (avec `import axiosQuery from "@/lib/axiosQuery"`).
 +- Les `useQuery` / `useMutation` / Redux vont dans un hook de `features/<feature>/hooks/` (clés dans `queryKeys.js`). Réutiliser un hook existant s'il y en a un.
 +
 +## 3. Créer l'écran `features/<feature>/screens/<X>Screen/`
@@ -3860,7 +3871,7 @@ L’IA : CLAUDE.md, .mcp.json (Playwright, Chrome DevTools, Figma), notre skill 
 @@ -1,0 +1,20 @@
 +---
 +name: react-feature
-+description: Créer ou migrer un écran React dans une feature du projet Car Catalog (view, scene, adapter + test de l'adapter). À utiliser quand on demande un nouvel écran, une nouvelle page, ou de ranger une page existante dans l'architecture.
++description: Créer un NOUVEL écran React dans une feature du projet Car Catalog (view, scene, adapter + test de l'adapter). À utiliser quand on demande un nouvel écran ou une nouvelle page. Pour migrer une page existante, utiliser migrate-to-feature.
 +---
 +
 +# Créer un écran (View / Scene / Adapter)
@@ -3872,7 +3883,7 @@ L’IA : CLAUDE.md, .mcp.json (Playwright, Chrome DevTools, Figma), notre skill 
 +   - `<X>Screen.scene.jsx` : uniquement des props, assemble les composants de `@/components/...`. Pas de hook de données.
 +   - `<X>Screen.adapter.test.js` : tests Vitest de l'adapter (cas normal, valeurs manquantes, réponse vide ou mal formée).
 +   - `index.js` : `export { <X>ScreenView as <X>Screen } from "./<X>Screen.view";`
-+3. Les appels HTTP vont dans `features/<feature>/api/` (avec `axiosQuery` de `@/lib`), les hooks React Query dans `features/<feature>/hooks/` (clés dans `queryKeys.js`).
++3. Les appels HTTP vont dans `features/<feature>/api/` (avec `import axiosQuery from "@/lib/axiosQuery"`), les hooks React Query dans `features/<feature>/hooks/` (clés dans `queryKeys.js`).
 +4. Si un composant d'UI manque, le créer dans le bon niveau de `src/components/` (atom, molecule, organism) avec des props simples, et l'exporter dans son `index.js`.
 +5. Brancher l'écran dans `src/app/router.jsx` en important depuis `index.js` (ajouter un `loader` si la route est protégée : `requireAuth`).
 +6. Vérifier : `npm test` puis `npm run build`. Les deux doivent passer avant de rendre la main.
@@ -3970,7 +3981,7 @@ L’IA : CLAUDE.md, .mcp.json (Playwright, Chrome DevTools, Figma), notre skill 
 +
 +```bash
 +npm install
-+claude            # dans ce dossier : CLAUDE.md, .mcp.json et la skill sont chargés
++claude            # dans ce dossier : CLAUDE.md, .mcp.json et les skills sont chargés
 +/mcp              # vérifier les serveurs MCP
 +```
 +
@@ -4018,4 +4029,41 @@ L’IA : CLAUDE.md, .mcp.json (Playwright, Chrome DevTools, Figma), notre skill 
 +| Performance React | `react-best-practices` (Vercel) | `npx skills add vercel-labs/agent-skills` |
 +| Expérience utilisateur, accessibilité | `web-design-guidelines` (Vercel) | même commande |
 +| Créer une skill | `skill-creator` (Anthropic, officielle) | même plugin `example-skills` |
+```
+
+### `prompts/README.md` (ajouté, +31 −0)
+
+```diff
+@@ -1,0 +1,31 @@
++# Exemples de prompts (jour 5 · partie IA)
++
++Un bon prompt = le contexte + la tâche + les contraintes + le résultat attendu (comment vérifier).
++
++## 1. De Figma au code (MCP Figma, pixel perfect)
++
++> Avec le MCP Figma, récupère le frame sélectionné (la carte détail d'une voiture). Mets à jour l'écran CarDetailsScreen en suivant l'architecture du CLAUDE.md (view, scene, adapter), en réutilisant les atoms existants et les variables CSS. Je veux un rendu pixel perfect. Ajoute les tests de l'adapter, lance npm test et le build, et compare avec une capture du navigateur.
++
++## 2. Depuis un ticket Jira (MCP Atlassian)
++
++> Lis le ticket CAR-12 avec le MCP Atlassian. Implémente-le en respectant le CLAUDE.md. Liste les critères d'acceptation, et pour chacun dis-moi comment tu l'as vérifié.
++
++## 3. Migrer un écran avec la skill
++
++> /migrate-to-feature src/pages/FavoritesPage.jsx
++
++ou, sans la commande :
++
++> Migre la page des favoris vers features/favorites/screens/FavoritesScreen en suivant la skill migrate-to-feature. Même rendu, mêmes textes. Lance npm test et npm run build.
++
++## 4. Tests unitaires
++
++> Écris les tests Vitest de HomeScreen.adapter.js : cas normal, valeurs manquantes, limite à 6 voitures. Lance npm test.
++
++## 5. Test end-to-end avec le MCP Playwright
++
++> Lance npm run dev. Avec le MCP Playwright, ouvre l'application, connecte-toi (n'importe quel identifiant), ajoute deux voitures aux favoris, va sur /favorites et vérifie qu'il y en a deux. Fais une capture. Ensuite, écris ce parcours en test Playwright dans tests/e2e.
++
++## 6. Performance (MCP Chrome DevTools)
++
++> Avec le MCP Chrome DevTools, ouvre la page d'accueil, enregistre une trace de performance et lis la console. Dis-moi ce qui ralentit et propose des corrections, sans les appliquer.
 ```

@@ -118,7 +118,7 @@ Afficher la liste des voitures sur la page d’accueil.
 - Configurer Axios (`src/lib/axiosQuery.js`)
 - Configurer React Query (`src/lib/queryClient.js`)
 - Créer `src/api/config.js` et `src/api/actions.js` → `fetchCarsByYear()`
-- Configurer le proxy Vite (CORS) : `/api` → `https://myfakeapi.com`
+- Configurer le proxy Vite (CORS) : `/api/` → `https://myfakeapi.com`
 - Utiliser `useQuery` dans `HomePage.jsx`
 - Gérer les états : loading, error, success
 - Limiter l’affichage à 6 voitures
@@ -223,7 +223,7 @@ Réorganiser le code comme en entreprise. Même application (mêmes routes, mêm
 
 **Tâches**
 
-- Ranger le code par fonctionnalité métier dans `features/` (`cars`, `favorites`, `auth`, `errors`) : chaque feature a son API, ses hooks, ses écrans
+- Ranger le code par fonctionnalité métier dans `features/` (`cars`, `favorites`, `auth`, `errors`, `api-demo`) : chaque feature a son API, ses hooks, ses écrans
 - Mettre le démarrage dans `app/` (router, providers, store) et la technique dans `lib/` (axios, React Query)
 - Ranger l’UI partagée dans `components/` en atomic design : atoms, molecules, organisms, templates
 - Découper chaque écran en View (le conteneur), Adapter (une fonction pure) et Scene (l’affichage)

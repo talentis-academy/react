@@ -27,7 +27,7 @@ Pendant le module, on a reproduit ensemble la carte catalogue (Card Car) à part
 
 ## La maquette à reproduire
 
-![Carte détail : Ford F250](maquette-carte-detail.png)
+![Carte détail (maquette) : les données peuvent changer, c’est la mise en page qui compte](maquette-carte-detail.png)
 
 ## Avant de coder : analyser la maquette
 

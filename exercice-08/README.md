@@ -47,13 +47,12 @@ npm install react-hook-form zod @hookform/resolvers
 ### Soumission
 
 - Bloquer l’envoi si le formulaire est invalide
-- Si tout est valide : afficher « Enregistrement réussi ! »
-- Désactiver le bouton pendant la soumission
+- Si tout est valide : afficher « Enregistrement OK »
 
 ## Bonus (optionnel)
 
 - Bonus 1 : ajouter le champ `terms` (case à cocher obligatoire)
-- Bonus 2 : afficher « Envoi… » sur le bouton pendant la soumission
+- Bonus 2 : désactiver le bouton et afficher « Envoi… » pendant la soumission (`isSubmitting`)
 - Bonus 3 : réinitialiser le formulaire après une soumission réussie
 
 ## Conseils techniques
@@ -79,6 +78,6 @@ npm install react-hook-form zod @hookform/resolvers
 
 - [ ] Chaque champ invalide affiche son propre message
 - [ ] Le formulaire ne s’envoie pas tant qu’il est invalide
-- [ ] « Enregistrement réussi ! » s’affiche quand tout est valide
+- [ ] « Enregistrement OK » s’affiche quand tout est valide
 
 Bon courage !

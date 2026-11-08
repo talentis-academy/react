@@ -36,33 +36,35 @@ Le projet de fin de formation, découpé en 10 étapes comme des commits : chaqu
 
 ## Démos pas à pas
 
-Les démos du cours, étape par étape (code du formateur). Pour les démos en plusieurs étapes, le fichier `CHANGEMENTS.md` montre ce qui est ajouté et retiré d’une étape à l’autre, façon GitHub.
+Les démos du cours, numérotées dans l’ordre du cours (code du formateur). Pour les démos en plusieurs étapes, le fichier `CHANGEMENTS.md` montre ce qui est ajouté et retiré d’une étape à l’autre, façon GitHub, ainsi que les fichiers branchés pour la première fois (« utilisé »).
 
 | Démo | Journée | Contenu |
 |---|---|---|
-| [Babel](demos/babel) | Jour 1 | JSX et `React.createElement` (page HTML) |
-| [Counter](demos/counter) | Jour 1 | `useState`, re-render, handlers |
-| [Tableaux](demos/tableaux) | Jour 2 | Tableaux et tableaux d’objets (console) |
-| [Destructuring](demos/destructuring) | Jour 2 | Tableaux, rest, spread, objets + exercice bonus |
-| [Voitures](demos/voitures) | Jour 2 | Le projet Voitures complet (props, map, événements) |
-| [Panier e-commerce](demos/panier-e-commerce) | Jour 2 | Rendu conditionnel (`if / else`, `? :`, `&&`) |
-| [Formulaire](demos/formulaire) | Jour 2 | 3 étapes : useState → Zod seul → React Hook Form + Zod |
-| [Styles](demos/styles) | Jour 2 | Tailwind CSS, Chakra UI et les cartes Figma en CSS (3 projets) |
-| [Custom hooks](demos/custom-hooks) | Jour 3 | 4 étapes : toggle → useToggle → useNetworkStatus → page Users |
-| [Cycle de vie](demos/cycle-de-vie) | Jour 3 | 3 étapes : logs du cycle de vie → React.memo → useCallback / useMemo |
-| [Refs](demos/refs) | Jour 3 | 3 étapes : useRef → ref en prop (forwardRef) → useImperativeHandle |
-| [HOC](demos/hoc) | Jour 3 | Higher-Order Component `withAuth` |
-| [Error Boundary](demos/error-boundary) | Jour 3 | Error Boundary en class component |
-| [React Router](demos/router) | Jour 4 | 6 étapes : routes simples → 404 → route dynamique → routes imbriquées → errorElement → lazy loading |
-| [Redux](demos/redux) | Jour 4 | 7 étapes : createStore → combineReducers → Provider → payload → middleware → Redux Toolkit |
+| [01 · Counter](demos/demo-01-counter) | Jour 1 | `useState`, re-render, handlers |
+| [02 · Babel](demos/demo-02-babel) | Jour 1 | JSX et `React.createElement` (page HTML) |
+| [03 · Voitures](demos/demo-03-voitures) | Jour 2 | Le projet Voitures complet (props, map, événements) |
+| [04 · Tableaux](demos/demo-04-tableaux) | Jour 2 | Tableaux et tableaux d’objets (console) |
+| [05 · Destructuring](demos/demo-05-destructuring) | Jour 2 | Tableaux, rest, spread, objets + exercice bonus |
+| [06 · Panier e-commerce](demos/demo-06-panier-e-commerce) | Jour 2 | Rendu conditionnel (`if / else`, `? :`, `&&`) |
+| [07 · Formulaire](demos/demo-07-formulaire) | Jour 2 | 3 étapes : useState → Zod seul → React Hook Form + Zod |
+| [08 · Styles](demos/demo-08-styles) | Jour 2 | Tailwind CSS, Chakra UI et les cartes Figma en CSS (3 projets) |
+| [09 · Custom hooks](demos/demo-09-custom-hooks) | Jour 3 | 4 étapes : toggle → useToggle → useNetworkStatus → page Users |
+| [10 · Cycle de vie](demos/demo-10-cycle-de-vie) | Jour 3 | 3 étapes : logs du cycle de vie → React.memo → useCallback / useMemo |
+| [11 · Refs](demos/demo-11-refs) | Jour 3 | 3 étapes : useRef → ref en prop (forwardRef) → useImperativeHandle |
+| [12 · HOC](demos/demo-12-hoc) | Jour 3 | Higher-Order Component `withAuth` |
+| [13 · Error Boundary](demos/demo-13-error-boundary) | Jour 3 | Error Boundary en class component |
+| [14 · React Router](demos/demo-14-router) | Jour 4 | 6 étapes : routes simples → 404 → route dynamique → routes imbriquées → errorElement → lazy loading |
+| [15 · Redux](demos/demo-15-redux) | Jour 4 | 7 étapes : createStore → combineReducers → Provider → payload → middleware → template → Redux Toolkit |
 
 ## Lancer une correction
 
 ```bash
-cd exercice-0N/correction   # remplacer N par le numéro de l’exercice
+cd exercice-NN/correction   # numéro sur 2 chiffres : 02, 10, 15…
 npm install
 npm run dev
 ```
+
+Les exercices 14 et 15 ont aussi un dossier `template/` : c’est le point de départ, à lancer de la même façon (`cd exercice-14/template`).
 
 L’exercice 5 se fait dans le navigateur : ouvrir `exercice-05/correction/correction.html` et regarder la console.
 

@@ -1,6 +1,6 @@
-# Démo · Redux puis Redux Toolkit : les changements entre les étapes
+# Démo 15 · Redux puis Redux Toolkit : les changements entre les étapes
 
-Pour chaque étape, ce qui change par rapport à l’étape précédente. En vert : les lignes ajoutées. En rouge : les lignes retirées.
+Pour chaque étape, ce qui change par rapport à l’étape précédente. En vert : les lignes ajoutées. En rouge : les lignes retirées. « utilisé » : un fichier qui existait déjà mais qui est branché (importé) à partir de cette étape, montré en entier.
 
 ## Étape 1 → 2 : `etape-1-basic` → `etape-2-multi-reducers`
 
