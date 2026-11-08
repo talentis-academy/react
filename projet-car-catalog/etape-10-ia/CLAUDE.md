@@ -35,3 +35,8 @@ API : https://myfakeapi.com, appelée via le proxy Vite `/api/` (voir `vite.conf
 - Les favoris dans Redux restent les objets bruts de l'API.
 - JavaScript (pas de TypeScript), composants en fonctions, textes de l'UI en anglais.
 - Ne pas modifier `tests/e2e` sans le demander.
+
+## Skills du projet
+
+- `/migrate-to-feature <page>` : migrer une page existante vers View / Scene / Adapter (refacto).
+- `react-feature` : créer un nouvel écran dans l'architecture.

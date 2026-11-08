@@ -12,7 +12,11 @@ Un bon prompt = le contexte + la tâche + les contraintes + le résultat attendu
 
 ## 3. Migrer un écran avec la skill
 
-> Utilise la skill react-feature : migre la page des favoris de l'étape 8 vers features/favorites/screens/FavoritesScreen. Même rendu, mêmes textes. Lance npm test et npm run build.
+> /migrate-to-feature src/pages/FavoritesPage.jsx
+
+ou, sans la commande :
+
+> Migre la page des favoris vers features/favorites/screens/FavoritesScreen en suivant la skill migrate-to-feature. Même rendu, mêmes textes. Lance npm test et npm run build.
 
 ## 4. Tests unitaires
 

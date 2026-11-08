@@ -20,7 +20,7 @@ Le projet est découpé **comme des commits** : chaque dossier est un projet Vit
 | 7 | `etape-7-error-boundary` | `errorElement` : un écran d’erreur avec « Try again », et un bouton pour provoquer une erreur | `src/components/ErrorBoundary.jsx` |
 | 8 | `etape-8-tests` | Les tests : Vitest (le slice des favoris), Playwright (4 parcours e2e) | `src/store/favoritesSlice.test.js` |
 | 9 | `etape-9-architecture` | L’architecture feature-based : atomic design (`components/`), un écran = View / Scene / Adapter, hooks par feature, tests des adapters (voir `ARCHITECTURE.md`) | `src/features/cars/screens/HomeScreen/HomeScreen.view.jsx` |
-| 10 | `etape-10-ia` | L’IA : `CLAUDE.md`, `.mcp.json` (Playwright, Chrome DevTools, Figma), la skill `react-feature`, des exemples de prompts (voir `IA.md`) | `CLAUDE.md` |
+| 10 | `etape-10-ia` | L’IA : `CLAUDE.md`, `.mcp.json` (Playwright, Chrome DevTools, Figma), notre skill de refacto `migrate-to-feature` (+ `react-feature`), des exemples de prompts (voir `IA.md`) | `.claude/skills/migrate-to-feature/SKILL.md` |
 
 ## Les changements entre les étapes
 

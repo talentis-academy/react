@@ -229,7 +229,7 @@ Réorganiser le code comme en entreprise. Même application (mêmes routes, mêm
 - Découper chaque écran en View (le conteneur), Adapter (une fonction pure) et Scene (l’affichage)
 - Tester les adapters avec Vitest
 
-> **Remarque :** Le détail de l’organisation est dans `etape-9-architecture/ARCHITECTURE.md`.
+> **Remarque :** En séance : le formateur migre la Home en démo, puis chacun migre la page de détails (exercice 15). Le détail de l’organisation est dans `etape-9-architecture/ARCHITECTURE.md`.
 
 **Résultat attendu :** le même rendu, un code rangé par feature, et des adapters testés.
 
@@ -241,7 +241,8 @@ Préparer le projet pour travailler efficacement avec Claude Code.
 
 - Écrire un `CLAUDE.md` à la racine : la stack, les commandes, l’architecture et les règles
 - Brancher des MCP (Figma, Jira, Playwright…) avec `claude mcp add`
-- Créer la skill `react-feature` (`.claude/skills/react-feature/SKILL.md`) : créer un écran en respectant l’architecture, avec le test de l’adapter
+- Créer la skill de refacto `migrate-to-feature` (`.claude/skills/migrate-to-feature/SKILL.md`) : migrer une page vers View / Scene / Adapter, avec le test de l’adapter, puis l’utiliser sur les écrans restants
+- Installer et utiliser une skill officielle (par exemple `frontend-design`), et partager la nôtre avec l’équipe (commit de `.claude/skills/`)
 - Faire écrire les tests par l’IA : les tests de l’adapter, et un parcours e2e avec le MCP Playwright
 
 **Résultat attendu :** un projet que l’IA comprend et sait faire évoluer en suivant vos règles.
