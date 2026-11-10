@@ -111,9 +111,7 @@ export default function Home() {
   width: 100%; /* Prend 100% de la largeur disponible jusqu'au max-width */
 }
 
-/* ========================================
-   HEADER
-   ======================================== */
+/* Header */
 
 .header {
   text-align: center; /* Centre le texte horizontalement */
@@ -161,9 +159,7 @@ export default function Home() {
   text-align: center; /* Centre le texte horizontalement */
 }
 
-/* ========================================
-   CARTES GÉNÉRIQUES
-   ======================================== */
+/* Cartes génériques */
 
 .card {
   background-color: #1f2937; /* Couleur de fond gris foncé */
@@ -180,27 +176,21 @@ export default function Home() {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombre plus grande au survol de la souris */
 }
 
-/* ========================================
-   CARTE CATALOGUE (centrée)
-   ======================================== */
+/* CARTE CATALOGUE (centrée) */
 
 .card.catalogue {
   max-width: 400px; /* Largeur maximale de 400px pour la carte catalogue */
   margin: 0 auto; /* Centre horizontalement la carte */
 }
 
-/* ========================================
-   CARTE DÉTAILS (centrée)
-   ======================================== */
+/* CARTE DÉTAILS (centrée) */
 
 .card.detail {
   max-width: 600px; /* Largeur maximale de 600px pour la carte détails */
   margin: 0 auto; /* Centre horizontalement la carte (marges auto à gauche et droite) */
 }
 
-/* ========================================
-   ÉLÉMENTS DE CARTE CATALOGUE
-   ======================================== */
+/* Éléments de carte catalogue */
 
 .car-name {
   font-size: 18px; /* Taille de texte de 18 pixels */
@@ -250,9 +240,7 @@ export default function Home() {
   color: #ffffff; /* Couleur du texte: blanc pur */
 }
 
-/* ========================================
-   BOUTONS
-   ======================================== */
+/* Boutons */
 
 .btn {
   width: 100%; /* Largeur du bouton: 100% du conteneur parent */
@@ -276,9 +264,7 @@ export default function Home() {
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* Ajoute une ombre bleue de 3px pour indiquer le focus */
 }
 
-/* ========================================
-   PAGE DÉTAILS
-   ======================================== */
+/* Page détails */
 
 .details {
   display: flex; /* Active le mode flexbox */

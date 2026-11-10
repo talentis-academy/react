@@ -5,7 +5,7 @@ Une application React comme en entreprise : un catalogue de voitures depuis une 
 - API : https://myfakeapi.com (documentation Postman : https://documenter.getpostman.com/view/5596891/SW7eyRFV?version=latest#intro)
 - Endpoints : `/api/login`, `/api/cars/year/2012`, `/api/cars/1`
 
-L’énoncé complet : [ENONCE.md](ENONCE.md) (ou `Enonce_Projet_Car_Catalog.docx`).
+L’énoncé complet : [Enonce_Projet_Car_Catalog.md](Enonce_Projet_Car_Catalog.md) (ou `Enonce_Projet_Car_Catalog.docx`).
 
 Le projet est découpé **comme des commits** : chaque dossier est un projet Vite complet, qui se lance, et qui ajoute une seule fonctionnalité à l’étape précédente.
 
@@ -25,6 +25,8 @@ Le projet est découpé **comme des commits** : chaque dossier est un projet Vit
 ## Les changements entre les étapes
 
 Comme un historique de commits : ce qui est ajouté (en vert) et retiré (en rouge) d’une étape à l’autre, dans [CHANGEMENTS.md](CHANGEMENTS.md) (ou `CHANGEMENTS.pdf` à imprimer).
+
+> Attention : l’étape 9 (et la section « Étape 8 → 9 » des CHANGEMENTS) contient déjà `src/features/cars/screens/CarDetailsScreen/`, c’est-à-dire la correction de l’exercice 15. Ne pas la projeter avant l’exercice : montrer seulement `HomeScreen/` et `src/app/router.jsx`.
 
 ## Lancer une étape
 

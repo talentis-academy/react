@@ -1,8 +1,4 @@
-/* ===============================
-   RESET CSS
-   On enlève les styles par défaut
-   du navigateur
-   =============================== */
+/* Reset CSS : on enlève les styles par défaut du navigateur */
 * {
   box-sizing: border-box;
   /* inclut padding + border dans width/height */
@@ -12,9 +8,7 @@
   /* supprime les paddings par défaut */
 }
 
-/* ===============================
-   STYLE GLOBAL DE LA PAGE
-   =============================== */
+/* Style global de la page */
 body {
   font-family: Arial, sans-serif;
   /* police simple pour la formation */
@@ -24,10 +18,7 @@ body {
   /* couleur du texte */
 }
 
-/* ===============================
-   CONTAINER PRINCIPAL
-   Centre le contenu à l'écran
-   =============================== */
+/* Container principal : centre le contenu à l'écran */
 .container {
   /* min-height: 100vh; */
   /* prend toute la hauteur de l'écran */
@@ -43,9 +34,7 @@ body {
   /* espace autour (mobile friendly) */
 }
 
-/* ===============================
-   TITRES
-   =============================== */
+/* Titres */
 h1 {
   margin-bottom: 8px;
   /* espace sous le titre principal */
@@ -60,9 +49,7 @@ h2 {
   /* gris clair */
 }
 
-/* ===============================
-   FORMULAIRE
-   =============================== */
+/* Formulaire */
 form {
   width: 100%;
   /* prend toute la largeur sur mobile */
@@ -70,9 +57,7 @@ form {
   /* largeur max sur desktop */
 }
 
-/* ===============================
-   BOÎTE DU FORMULAIRE
-   =============================== */
+/* Boîte du formulaire */
 .form {
   background: white;
   /* carte blanche */
@@ -91,9 +76,7 @@ form {
   /* espace entre les éléments */
 }
 
-/* ===============================
-   GROUPE LABEL + INPUT
-   =============================== */
+/* Groupe label + input */
 .form-group {
   display: flex;
   /* Flexbox */
@@ -105,9 +88,7 @@ form {
   /* alignement à gauche */
 }
 
-/* ===============================
-   LABEL
-   =============================== */
+/* Label */
 label {
   font-size: 14px;
   /* taille du texte */
@@ -115,9 +96,7 @@ label {
   /* couleur du label */
 }
 
-/* ===============================
-   INPUT
-   =============================== */
+/* Input */
 input {
   height: 40px;
   /* hauteur du champ */
@@ -137,9 +116,7 @@ input:focus {
   /* bordure violette */
 }
 
-/* ===============================
-   CHECKBOX (Terms & Conditions)
-   =============================== */
+/* CHECKBOX (Terms & Conditions) */
 
 /* on aligne la checkbox + texte sur la même ligne */
 .checkbox {
@@ -172,9 +149,7 @@ input:focus {
   text-decoration: underline;
 }
 
-/* ===============================
-   MESSAGES ERREUR & SUCCÈS
-   =============================== */
+/* Messages erreur & succès */
 .error {
   color: #d93025;
   /* rouge */
@@ -195,9 +170,7 @@ input:focus {
   font-size: 14px;
 }
 
-/* ===============================
-   BOUTON
-   =============================== */
+/* Bouton */
 .btn {
   height: 42px;
   /* hauteur du bouton */

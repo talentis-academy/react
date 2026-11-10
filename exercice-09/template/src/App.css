@@ -1,6 +1,4 @@
-/* ========================================
-   POLICES ET RESET GLOBAL
-   ======================================== */
+/* Polices et reset global */
 
 /* Import de la police Google Fonts "Inter" avec différentes épaisseurs */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
@@ -12,9 +10,7 @@
   padding: 0; /* Supprime tous les paddings par défaut */
 }
 
-/* ========================================
-   STYLES GÉNÉRAUX DE LA PAGE
-   ======================================== */
+/* Styles généraux de la page */
 
 body {
   font-family: "Inter", sans-serif; /* Applique la police Inter à tout le texte */

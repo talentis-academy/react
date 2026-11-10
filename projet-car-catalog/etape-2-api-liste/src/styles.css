@@ -24,7 +24,7 @@ body {
   line-height: 1.6;
 }
 
-/* ===== Layout ===== */
+/* Layout */
 
 .app-layout {
   min-height: 100vh;
@@ -107,7 +107,7 @@ body {
   text-align: center;
 }
 
-/* ===== Composants communs ===== */
+/* Composants communs */
 
 .card {
   background-color: var(--bg-card);
@@ -204,7 +204,7 @@ body {
   }
 }
 
-/* ===== Carte voiture ===== */
+/* Carte voiture */
 
 .car-grid {
   display: grid;
@@ -298,7 +298,7 @@ body {
   font-size: 1.125rem;
 }
 
-/* ===== Page détail ===== */
+/* Page détail */
 
 .back-link {
   display: inline-flex;
@@ -348,7 +348,7 @@ body {
   font-weight: 600;
 }
 
-/* ===== Login ===== */
+/* Login */
 
 .login-container {
   min-height: 100vh;
@@ -404,7 +404,7 @@ body {
   outline-offset: 2px;
 }
 
-/* ===== Démo API et messages ===== */
+/* Démo API et messages */
 
 .api-demo-card {
   max-width: 600px;
@@ -443,7 +443,7 @@ body {
   --tone: var(--error);
 }
 
-/* ===== Erreur et 404 ===== */
+/* Erreur et 404 */
 
 .not-found-title {
   font-size: 6rem;
@@ -456,7 +456,7 @@ body {
   color: var(--text-secondary);
 }
 
-/* ===== Responsive ===== */
+/* Responsive */
 
 @media (max-width: 768px) {
   .header-content,

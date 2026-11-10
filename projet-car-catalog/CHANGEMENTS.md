@@ -2,6 +2,528 @@
 
 Pour chaque étape, ce qui change par rapport à l’étape précédente. En vert : les lignes ajoutées. En rouge : les lignes retirées. « utilisé » : un fichier qui existait déjà mais qui est branché (importé) à partir de cette étape, montré en entier.
 
+## Étape 1 · `etape-1-template` : point de départ
+
+Le template : layouts, Header, Footer, styles, routes, données en dur (au format de l’API)
+
+Le code de départ, en entier : les fichiers écrits pour la démo et utilisés (atteints par les imports depuis src/main.*) ; les fichiers du gabarit Vite non modifiés sont seulement listés. Ordre de lecture : main → App → composants et pages → le reste.
+
+*Styles fournis (copiés tels quels, pas tapés en live) : `src/styles.css` (471 lignes)*
+
+*Fichiers générés par Vite, non modifiés (non affichés) : `.gitignore`*
+
+*package.json (gabarit Vite) : dépendances ajoutées : `react-router-dom ^7.11.0`*
+
+*Images utilisées (non affichées) : `public/icon.svg`*
+
+### `src/main.jsx` (10 lignes)
+
+```jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import "./styles.css";
+
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+```
+
+### `src/App.jsx` (27 lignes)
+
+```jsx
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import FavoritesPage from "./pages/FavoritesPage";
+import CarDetailPage from "./pages/CarDetailPage";
+import ApiDemoPage from "./pages/ApiDemoPage";
+import NotFoundPage from "./pages/NotFoundPage";
+
+const router = createBrowserRouter([
+  { path: "/login", element: <LoginPage /> },
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: "favorites", element: <FavoritesPage /> },
+      { path: "car/:id", element: <CarDetailPage /> },
+      { path: "api-demo", element: <ApiDemoPage /> },
+      { path: "*", element: <NotFoundPage /> },
+    ],
+  },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
+}
+```
+
+### `src/layouts/MainLayout.jsx` (15 lignes)
+
+```jsx
+import { Outlet } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+export default function MainLayout() {
+  return (
+    <div className="app-layout">
+      <Header />
+      <main className="main-content">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+}
+```
+
+### `src/pages/HomePage.jsx` (15 lignes)
+
+```jsx
+import cars from "../data/cars";
+import CarCard from "../components/CarCard";
+
+export default function HomePage() {
+  return (
+    <div className="container">
+      <h1 className="page-title">Car Catalog</h1>
+      <div className="car-grid">
+        {cars.map((car) => (
+          <CarCard key={car.id} car={car} />
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### `src/pages/LoginPage.jsx` (36 lignes)
+
+```jsx
+import { useNavigate } from "react-router-dom";
+
+export default function LoginPage() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate("/");
+  };
+
+  return (
+    <div className="login-container">
+      <div className="card login-card">
+        <h1 className="login-title">Welcome Back</h1>
+        <p className="subtitle">Sign in to your account</p>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="form-group">
+            <label htmlFor="userName" className="form-label">
+              Username
+            </label>
+            <input type="text" id="userName" name="userName" className="form-input" placeholder="Enter your username" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input type="password" id="password" name="password" className="form-input" placeholder="Enter your password" required />
+          </div>
+          <button type="submit" className="btn">
+            Sign In
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+```
+
+### `src/pages/FavoritesPage.jsx` (18 lignes)
+
+```jsx
+import cars from "../data/cars";
+import CarCard from "../components/CarCard";
+
+// Pour l'instant, des favoris en dur (à l'étape 4 : Redux Toolkit)
+const favorites = cars.filter((car) => [1, 3, 4].includes(car.id));
+
+export default function FavoritesPage() {
+  return (
+    <div className="container">
+      <h1 className="page-title">My Favorites</h1>
+      <div className="car-grid">
+        {favorites.map((car) => (
+          <CarCard key={car.id} car={car} isFavorite />
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### `src/pages/CarDetailPage.jsx` (73 lignes)
+
+```jsx
+import { useParams, Link } from "react-router-dom";
+import cars from "../data/cars";
+import { BackIcon, HeartIcon } from "../components/Icons";
+import { getColorHex } from "../utils/colorUtils";
+
+export default function CarDetailPage() {
+  const { id } = useParams();
+  const car = cars.find((c) => c.id === Number(id));
+
+  if (!car) {
+    return (
+      <div className="container">
+        <p>Car not found</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="container">
+      <Link to="/" className="back-link">
+        <BackIcon />
+        Back to Catalog
+      </Link>
+
+      <div className="card detail-card">
+        <div className="detail-header">
+          <h1 className="detail-title">
+            {car.car} {car.car_model}
+          </h1>
+          <button className="favorite-btn">
+            <HeartIcon />
+          </button>
+        </div>
+
+        <div className="detail-grid">
+          <div className="detail-item">
+            <span className="detail-label">Brand</span>
+            <span className="detail-value">{car.car}</span>
+          </div>
+          <div className="detail-item">
+            <span className="detail-label">Model</span>
+            <span className="detail-value">{car.car_model}</span>
+          </div>
+          <div className="detail-item">
+            <span className="detail-label">Color</span>
+            <div className="color-detail">
+              <div className="color-indicator" style={{ backgroundColor: getColorHex(car.car_color) }}></div>
+              <span className="detail-value">{car.car_color}</span>
+            </div>
+          </div>
+          <div className="detail-item">
+            <span className="detail-label">Year</span>
+            <span className="detail-value">{car.car_model_year}</span>
+          </div>
+          <div className="detail-item">
+            <span className="detail-label">VIN</span>
+            <span className="detail-value">{car.car_vin}</span>
+          </div>
+          <div className="detail-item">
+            <span className="detail-label">Price</span>
+            <span className="detail-value price">{car.price}</span>
+          </div>
+          <div className="detail-item">
+            <span className="detail-label">Availability</span>
+            <span className={`detail-value ${car.availability ? "status-available" : "status-unavailable"}`}>
+              {car.availability ? "Available" : "Unavailable"}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+### `src/pages/ApiDemoPage.jsx` (50 lignes)
+
+```jsx
+import { useState } from "react";
+import { AlertIcon, CheckIcon } from "../components/Icons";
+
+// Une page pour voir les 3 états d'un appel API : loading, succès, erreur
+export default function ApiDemoPage() {
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null); // { ok: true|false, message }
+
+  const simulate = (ok) => {
+    setResult(null);
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setResult(ok ? { ok, message: "Data loaded successfully!" } : { ok, message: "Failed to load data. Please try again." });
+    }, 2000);
+  };
+
+  return (
+    <div className="container">
+      <h1 className="page-title">API Demo</h1>
+
+      <div className="card api-demo-card">
+        <p className="subtitle">Test loading states and error messages</p>
+
+        <div className="button-group">
+          <button onClick={() => simulate(true)} disabled={loading} className="btn btn-success">
+            Simulate Success
+          </button>
+          <button onClick={() => simulate(false)} disabled={loading} className="btn btn-danger">
+            Simulate Error
+          </button>
+        </div>
+
+        {loading && (
+          <div className="message-box loading-box">
+            <div className="spinner"></div>
+            <span>Loading...</span>
+          </div>
+        )}
+
+        {result && (
+          <div className={`message-box ${result.ok ? "success-box" : "error-box"}`}>
+            {result.ok ? <CheckIcon /> : <AlertIcon />}
+            <span>{result.message}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+```
+
+### `src/pages/NotFoundPage.jsx` (13 lignes)
+
+```jsx
+import { Link } from "react-router-dom";
+
+export default function NotFoundPage() {
+  return (
+    <div className="center-page">
+      <h1 className="not-found-title">404</h1>
+      <p className="not-found-text">Page not found</p>
+      <Link to="/" className="btn">
+        Go Home
+      </Link>
+    </div>
+  );
+}
+```
+
+### `src/components/Header.jsx` (27 lignes)
+
+```jsx
+import { Link } from "react-router-dom";
+
+export default function Header() {
+  return (
+    <header className="header">
+      <div className="header-content">
+        <Link to="/" className="logo">
+          Car Catalog
+        </Link>
+        <nav className="nav">
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+          <Link to="/favorites" className="nav-link">
+            Favorites
+          </Link>
+          <Link to="/api-demo" className="nav-link">
+            API Demo
+          </Link>
+        </nav>
+        <div className="user-section">
+          <span className="username">Guest</span>
+        </div>
+      </div>
+    </header>
+  );
+}
+```
+
+### `src/components/Footer.jsx` (7 lignes)
+
+```jsx
+export default function Footer() {
+  return (
+    <footer className="footer">
+      <p>&copy; 2026 Car Catalog. All rights reserved.</p>
+    </footer>
+  );
+}
+```
+
+### `src/components/CarCard.jsx` (42 lignes)
+
+```jsx
+import { Link } from "react-router-dom";
+import { HeartIcon } from "./Icons";
+import { getColorHex } from "../utils/colorUtils";
+
+// La carte d'une voiture : utilisée par la page Home et la page Favoris
+export default function CarCard({ car, isFavorite = false, onToggleFavorite }) {
+  return (
+    <div className="card car-card">
+      <div className="card-header">
+        <h2 className="car-name">
+          {car.car} {car.car_model}
+        </h2>
+        <button className={`favorite-btn ${isFavorite ? "favorite-active" : ""}`} onClick={() => onToggleFavorite?.(car)}>
+          <HeartIcon filled={isFavorite} />
+        </button>
+      </div>
+      <div className="car-info">
+        <div className="info-row">
+          <span className="label">Color:</span>
+          <div className="color-indicator" style={{ backgroundColor: getColorHex(car.car_color) }}></div>
+        </div>
+        <div className="info-row">
+          <span className="label">Status:</span>
+          <span className={car.availability ? "status-available" : "status-unavailable"}>
+            {car.availability ? "Available" : "Unavailable"}
+          </span>
+        </div>
+        <div className="info-row">
+          <span className="label">Price:</span>
+          <span className="price">{car.price}</span>
+        </div>
+        <div className="info-row">
+          <span className="label">Year:</span>
+          <span>{car.car_model_year}</span>
+        </div>
+      </div>
+      <Link to={`/car/${car.id}`} className="btn">
+        View Details
+      </Link>
+    </div>
+  );
+}
+```
+
+### `src/components/Icons.jsx` (36 lignes)
+
+```jsx
+// Les icônes SVG, définies une seule fois et réutilisées partout
+
+export function HeartIcon({ filled = false }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+    </svg>
+  );
+}
+
+export function AlertIcon({ size = 24 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="12" y1="8" x2="12" y2="12" />
+      <line x1="12" y1="16" x2="12.01" y2="16" />
+    </svg>
+  );
+}
+
+export function CheckIcon() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+      <polyline points="22 4 12 14.01 9 11.01" />
+    </svg>
+  );
+}
+
+export function BackIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M19 12H5M12 19l-7-7 7-7" />
+    </svg>
+  );
+}
+```
+
+### `src/data/cars.js` (12 lignes)
+
+```js
+// Données en dur, au même format que l'API (myfakeapi.com) :
+// à l'étape 2, on les remplace par un appel API.
+const cars = [
+  { id: 1, car: "Tesla", car_model: "Model S", car_color: "Red", car_model_year: 2024, car_vin: "5YJSA1E26MF168934", price: "$79,990", availability: true },
+  { id: 2, car: "BMW", car_model: "i8", car_color: "Blue", car_model_year: 2023, car_vin: "WBY2Z2C54GV676451", price: "$147,500", availability: false },
+  { id: 3, car: "Audi", car_model: "e-tron", car_color: "Green", car_model_year: 2024, car_vin: "WA1LAAGE7MB012345", price: "$65,900", availability: true },
+  { id: 4, car: "Porsche", car_model: "Taycan", car_color: "Orange", car_model_year: 2023, car_vin: "WP0AB2Y14NSA12345", price: "$82,700", availability: true },
+  { id: 5, car: "Mercedes", car_model: "EQS", car_color: "Purple", car_model_year: 2024, car_vin: "W1KCG4EB5PA012345", price: "$102,310", availability: false },
+  { id: 6, car: "Lucid", car_model: "Air", car_color: "Turquoise", car_model_year: 2023, car_vin: "50EA1TEA7PA012345", price: "$77,400", availability: true },
+];
+
+export default cars;
+```
+
+### `src/utils/colorUtils.js` (23 lignes)
+
+```js
+// L'API donne un nom de couleur : on le transforme en code couleur pour la pastille.
+const colorMap = {
+  Red: "#e74c3c",
+  Blue: "#3498db",
+  Green: "#2ecc71",
+  Yellow: "#f1c40f",
+  Orange: "#f39c12",
+  Purple: "#9b59b6",
+  Pink: "#e91e63",
+  Violet: "#9b59b6",
+  Turquoise: "#1abc9c",
+  Crimson: "#dc143c",
+  Indigo: "#4b0082",
+  Mauv: "#e0b0ff",
+  Fuscia: "#ff00ff",
+  Khaki: "#f0e68c",
+  Maroon: "#800000",
+  Aquamarine: "#7fffd4",
+  Puce: "#cc8899",
+  Goldenrod: "#daa520",
+};
+
+export const getColorHex = (colorName) => colorMap[colorName] || "#95a5a6";
+```
+
+### `index.html` (13 lignes)
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Catalog</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
+### `vite.config.js` (6 lignes)
+
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+export default defineConfig({
+  plugins: [react()],
+});
+```
+
 ## Étape 1 → 2 : `etape-1-template` → `etape-2-api-liste`
 
 La liste vient de l’API : axios, React Query (useQuery), proxy Vite, états loading / error, 6 voitures

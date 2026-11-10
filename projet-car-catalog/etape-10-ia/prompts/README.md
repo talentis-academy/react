@@ -4,7 +4,7 @@ Un bon prompt = le contexte + la tâche + les contraintes + le résultat attendu
 
 ## 1. De Figma au code (MCP Figma, pixel perfect)
 
-> Avec le MCP Figma, récupère le frame sélectionné (la carte détail d'une voiture). Crée l'écran CarDetailsScreen en suivant l'architecture du CLAUDE.md (view, scene, adapter), en réutilisant les atoms existants et les variables CSS. Je veux un rendu pixel perfect. Ajoute les tests de l'adapter, lance npm test et le build, et compare avec une capture du navigateur.
+> Avec le MCP Figma, récupère le frame sélectionné (la carte détail d'une voiture). Mets à jour l'écran CarDetailsScreen en suivant l'architecture du CLAUDE.md (view, scene, adapter), en réutilisant les atoms existants et les variables CSS. Je veux un rendu pixel perfect. Ajoute les tests de l'adapter, lance npm test et le build, et compare avec une capture du navigateur.
 
 ## 2. Depuis un ticket Jira (MCP Atlassian)
 

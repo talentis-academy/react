@@ -13,9 +13,7 @@
   width: 100%; /* Prend 100% de la largeur disponible jusqu'au max-width */
 }
 
-/* ========================================
-   HEADER
-   ======================================== */
+/* Header */
 
 .header {
   text-align: center; /* Centre le texte horizontalement */
@@ -37,9 +35,7 @@
   color: #9ca3af; /* Couleur du texte: gris moyen */
 }
 
-/* ========================================
-   CARTES GÉNÉRIQUES
-   ======================================== */
+/* Cartes génériques */
 
 .card {
   background-color: #1f2937; /* Couleur de fond gris foncé */
@@ -56,9 +52,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombre plus grande au survol de la souris */
 }
 
-/* ========================================
-   ÉLÉMENTS DE CARTE CATALOGUE
-   ======================================== */
+/* Éléments de carte catalogue */
 
 .car-name {
   font-size: 18px; /* Taille de texte de 18 pixels */
@@ -108,9 +102,7 @@
   color: #ffffff; /* Couleur du texte: blanc pur */
 }
 
-/* ========================================
-   BOUTONS
-   ======================================== */
+/* Boutons */
 
 .btn {
   width: 100%; /* Largeur du bouton: 100% du conteneur parent */
