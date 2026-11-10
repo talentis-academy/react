@@ -1,8 +1,8 @@
-# Démo · Chakra UI
+# Démo 003-H · La Card Car avec Chakra UI
 
-Introduction à Chakra UI v3 (code du formateur) : une carte avec les composants Chakra, la personnalisation par les props, puis le thème (tokens) avec `createSystem`.
+La même Card Car, faite avec Chakra UI v3, de deux façons : 1) les props de style ; 2) les tokens du thème (`createSystem`). Projet prêt : on en fait le tour avec `GUIDE-chakra.pdf`.
 
-Fichiers à regarder : `src/components/Card.tsx` (composants), `src/components/CardCustom.tsx` (props), `src/components/CardToken.tsx` et `src/styles/theme.ts` (thème). Pour changer de carte, modifier l’import dans `src/App.jsx`.
+Fichiers à regarder : `src/styles/theme.js`, `src/App.jsx`, `src/components/CardProps.jsx`, `src/components/CardToken.jsx`.
 
 ## Lancer la démo
 
@@ -10,8 +10,3 @@ Fichiers à regarder : `src/components/Card.tsx` (composants), `src/components/C
 npm install
 npm run dev
 ```
-
-## Documentation
-
-- Installation : https://chakra-ui.com/docs/get-started/installation
-- Thème et tokens : https://chakra-ui.com/docs/theming/overview

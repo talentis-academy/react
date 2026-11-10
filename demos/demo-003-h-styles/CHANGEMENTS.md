@@ -6,7 +6,7 @@ La même Card Car (maquette Figma) en CSS (codée en live), avec Tailwind CSS (2
 
 ## `carte-css`
 
-Les deux cartes de la maquette Figma, en React + CSS (code du formateur) : la carte catalogue (Card Car, faite en live) et la carte détail (Card Details, exercice 9).
+La carte catalogue de la maquette Figma (Card Car), en React + CSS : on la code en live, maquette ouverte. La carte détail (Card Details), c’est l’exercice 9.
 
 *Fichiers générés par Vite, non modifiés (non affichés) : `index.html`, `vite.config.js`, `.gitignore`, `eslint.config.js`, `public/vite.svg`, `package.json`*
 
@@ -248,7 +248,7 @@ export default function Home() {
 
 ## `carte-tailwind`
 
-Introduction à Tailwind CSS v4 avec Vite : classes utilitaires (expliquées en commentaires), couleur personnalisée avec @theme et classe réutilisable avec @apply. Code du formateur.
+La même Card Car, faite avec Tailwind CSS v4, de deux façons : 1) les classes de base de Tailwind ; 2) nos couleurs de la maquette dans @theme + une classe @apply. Projet prêt : on en fait le tour avec GUIDE-tailwind.pdf.
 
 *Fichiers générés par Vite, non modifiés (non affichés) : `index.html`, `.gitignore`, `eslint.config.js`, `public/vite.svg`*
 
@@ -412,7 +412,7 @@ export default defineConfig({
 
 ## `carte-chakra`
 
-Introduction à Chakra UI v3 (code du formateur) : une carte avec les composants Chakra, la personnalisation par les props, puis le thème (tokens) avec createSystem.
+La même Card Car, faite avec Chakra UI v3, de deux façons : 1) les props de style ; 2) les tokens du thème (createSystem). Projet prêt : on en fait le tour avec GUIDE-chakra.pdf.
 
 *Fichiers générés par Vite, non modifiés (non affichés) : `index.html`, `vite.config.js`, `.gitignore`, `eslint.config.js`, `public/vite.svg`*
 

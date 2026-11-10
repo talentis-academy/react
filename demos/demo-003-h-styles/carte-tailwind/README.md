@@ -1,8 +1,8 @@
-# Démo · Tailwind CSS
+# Démo 003-H · La Card Car avec Tailwind CSS
 
-Introduction à Tailwind CSS v4 avec Vite : classes utilitaires (expliquées en commentaires), couleur personnalisée avec `@theme` et classe réutilisable avec `@apply`. Code du formateur.
+La même Card Car, faite avec Tailwind CSS v4, de deux façons : 1) les classes de base de Tailwind ; 2) nos couleurs de la maquette dans `@theme` + une classe `@apply`. Projet prêt : on en fait le tour avec `GUIDE-tailwind.pdf`.
 
-Fichiers à regarder : `vite.config.js`, `src/App.css`, `src/components/Home.tsx`
+Fichiers à regarder : `vite.config.js`, `src/App.css`, `src/components/CardUtilities.jsx`, `src/components/CardTheme.jsx`.
 
 ## Lancer la démo
 
@@ -10,8 +10,3 @@ Fichiers à regarder : `vite.config.js`, `src/App.css`, `src/components/Home.tsx
 npm install
 npm run dev
 ```
-
-## Documentation
-
-- Installation avec Vite : https://tailwindcss.com/docs/installation/using-vite
-- Documentation : https://tailwindcss.com/docs
