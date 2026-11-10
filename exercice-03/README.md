@@ -9,7 +9,7 @@
 | **Moment** | Jour 2 · Module 04 · Props, state et rendu dynamique |
 | **Durée** | 20 minutes |
 | **Niveau** | Débutant |
-| **Prérequis** | Projet Voitures (composants Home et CarCard) |
+| **Prérequis** | Projet Voitures de la démo, étape 3 (Home + CarCard avec les props brand et color) |
 
 ## Objectifs de l’exercice
 
@@ -19,7 +19,9 @@
 
 ## Contexte
 
-Dans le projet Voitures, `CarCard` affiche la marque et la couleur d’une voiture. Pour pouvoir réutiliser ces affichages ailleurs (liste, page détail…), on les sort dans deux composants dédiés.
+Dans le projet Voitures, `CarCard` affiche la marque et la couleur d’une voiture. Pour pouvoir réutiliser ces affichages ailleurs (page détail…), on les sort dans deux composants dédiés.
+
+On part du projet de la démo : `Home` affiche 3 `CarCard` écrites à la main, et leur passe `brand` et `color` en props. Pas de boucle et pas de tableau de données : on n’en a pas encore parlé.
 
 ## Structure à créer
 
@@ -32,20 +34,22 @@ src/
 │   ├── CarColor.jsx   # affiche la couleur
 │   └── CarCard.jsx    # utilise CarBrand et CarColor
 └── pages/
-    └── Home.jsx       # données + liste des voitures
+    └── Home.jsx       # 3 CarCard écrites à la main (ne change pas)
 ```
 
-## Étape 1 : Les données (dans Home.jsx)
+## Étape 1 : Le point de départ
+
+Ouvrir le dossier `template/` (ou votre projet Voitures). `Home` contient déjà :
 
 **`src/pages/Home.jsx`**
 
 ```jsx
-const cars = [
-  { id: 1, brand: "BMW", color: "Blue" },
-  { id: 2, brand: "Audi", color: "White" },
-  { id: 3, brand: "Toyota", color: "Red" },
-];
+<CarCard brand="BMW" color="blue" />
+<CarCard brand="Toyota" color="Unknown" />
+<CarCard brand="Mercedes" color="black" />
 ```
+
+On ne touche pas à `Home` : tout se passe dans `CarCard` et dans les deux nouveaux composants.
 
 ## Étape 2 : Le composant CarBrand
 
@@ -59,14 +63,13 @@ const cars = [
 
 ## Étape 4 : Utiliser les deux dans CarCard
 
-- `CarCard` reçoit `brand` et `color`
+- `CarCard` reçoit toujours `brand` et `color`
 - Il les transmet à `CarBrand` et `CarColor`
-- `Home` affiche une `CarCard` par voiture
+- `Home` ne change pas : ses 3 `CarCard` écrites à la main
 
 ## Bonus (optionnel)
 
-- Si la voiture n’a pas de couleur, `CarColor` affiche « Couleur : Néant »
-- Afficher la liste avec `cars.map()` et une `key` unique
+- Ajouter une 4e voiture dans `Home` et vérifier que `CarBrand` et `CarColor` s’affichent bien
 
 ## Conseils techniques
 
@@ -94,6 +97,6 @@ function CarBrand({ brand }) {
 
 - [ ] `CarBrand` et `CarColor` existent et sont réutilisables
 - [ ] `CarCard` les utilise
-- [ ] La page affiche toutes les voitures avec leur marque et leur couleur
+- [ ] La page affiche les 3 voitures avec leur marque et leur couleur, comme avant
 
 Bon courage !

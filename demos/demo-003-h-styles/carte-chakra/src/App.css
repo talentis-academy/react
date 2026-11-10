@@ -1,0 +1,6 @@
+/* Import de la police Google Fonts "Inter" avec différentes épaisseurs */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+body {
+  margin: 0; /* pas de marge autour de la page */
+}

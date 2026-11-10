@@ -7,6 +7,7 @@
 | | |
 |---|---|
 | **Énoncé** | Exercice_09_Enonce.docx |
+| **Template** | Dossier `template/` (la Card Car faite ensemble) |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
 | **Source** | Code du formateur : Formation/Projets/CSS/Design System/cars-css, nettoyé : les styles inline répétés (titres des exemples, conteneur, largeur de la carte catalogue) sont passés en classes dans styles.css. Rendu identique. |
 
@@ -14,9 +15,9 @@
 
 Les deux cartes de la maquette : la carte catalogue (faite ensemble pendant le module) et la carte détail (l’exercice).
 
-**`src/components/Home.tsx`**
+**`src/components/Home.jsx`**
 
-```
+```jsx
 import "./styles.css";
 
 export default function Home() {

@@ -15,7 +15,7 @@
 
 Comprendre le passage de props du parent vers l’enfant, et la remontée d’informations de l’enfant vers le parent grâce à une fonction passée en props (state lifting).
 
-> **Remarque :** L’interface n’est pas l’objectif principal : elle peut rester simple.
+> **Remarque :** L’interface est déjà prête dans le template (HTML et CSS) : vous codez seulement la logique, en suivant les TODO.
 
 ## Contexte
 
@@ -23,16 +23,17 @@ Une maman (composant parent) donne un ordre à son fils (composant enfant), par 
 
 ## Étapes
 
-1. Créer un nouveau projet React avec Vite
-2. Créer un composant `Parent` avec deux states : le message de l’ordre et le statut de l’ordre (accepté, refusé ou en attente)
-3. Ajouter dans `Parent` un bouton « Send Order » qui change le message (au départ « Hello from Parent », puis « Go to your room ! »)
-4. Créer un composant `Child` qui reçoit son prénom en props et l’affiche
+1. Ouvrir le template (`Exercice_07/template`), lancer `npm install` puis `npm run dev`
+2. Dans `Parent`, créer deux states : le message de l’ordre et le statut de l’ordre (accepté, refusé ou en attente)
+3. Le bouton « Send Order » change le message (au départ « Hello from Parent », puis « Go to your room ! »)
+4. `Child` reçoit son prénom en props et l’affiche
 5. Passer à `Child` une fonction du parent qui met à jour le statut
-6. Dans `Child`, ajouter deux boutons « Accepter » et « Deny » qui appellent cette fonction
+6. Dans `Child`, les boutons « Accepter » et « Deny » appellent cette fonction
 7. Afficher le statut dans `Parent` : « Order Status: Pending », « Accepted » ou « Denied »
 
 ## Bonus (optionnel)
 
+- Changer la couleur du statut : les classes `status--pending`, `status--accepted` et `status--denied` sont déjà dans `App.css`
 - Désactiver les boutons de l’enfant tant que la maman n’a pas envoyé d’ordre
 - Afficher le message de l’ordre dans l’enfant
 

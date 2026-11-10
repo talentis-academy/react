@@ -1,9 +1,10 @@
 import CarBrand from "./CarBrand";
 import CarColor from "./CarColor";
 import "./styles.css";
-function CarCard({ brand, color, onSelect }) {
+// Exercice 3 : CarCard transmet ses props aux deux petits composants réutilisables
+function CarCard({ brand, color }) {
   return (
-    <div className="car-item" onClick={() => onSelect(brand)}>
+    <div className="car-item">
       <CarBrand brand={brand} />
       <CarColor color={color} />
     </div>

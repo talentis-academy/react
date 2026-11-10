@@ -15,10 +15,15 @@
 
 Créer un formulaire d’enregistrement utilisateur avec une validation robuste, en utilisant React Hook Form et Zod.
 
-## Installation
+## Point de départ
+
+Le template : `Exercices/Exercice_08/template`. L’interface est déjà prête (HTML et CSS) : les champs Full name, Email, Experience, la case Conditions d’utilisation et le bouton Register. Vous codez seulement la validation, dans `src/components/Form.jsx`, en suivant les TODO.
 
 ```bash
+cd template
+npm install
 npm install react-hook-form zod @hookform/resolvers
+npm run dev
 ```
 
 ## Champs à implémenter
@@ -51,7 +56,7 @@ npm install react-hook-form zod @hookform/resolvers
 
 ## Bonus (optionnel)
 
-- Bonus 1 : ajouter le champ `terms` (case à cocher obligatoire)
+- Bonus 1 : valider la case `terms` (elle doit être cochée)
 - Bonus 2 : désactiver le bouton et afficher « Envoi… » pendant la soumission (`isSubmitting`)
 - Bonus 3 : réinitialiser le formulaire après une soumission réussie
 

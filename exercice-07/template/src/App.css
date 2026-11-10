@@ -1,0 +1,137 @@
+/* Exercice 7 · le CSS est déjà prêt : on ne touche qu'à la logique (states, props, fonctions) */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #f4f4f7;
+  color: #1c1c1c;
+  min-height: 100vh;
+  padding: 40px 16px;
+}
+
+/* Le titre de la page */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 32px;
+}
+
+.header p {
+  color: #757575;
+  margin-top: 8px;
+}
+
+/* La famille : la carte de la maman et la carte de l'enfant, côte à côte */
+.family {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 8px 32px #6d6d831a;
+  border-top: 6px solid #5057f4;
+}
+
+.card--child {
+  border-top-color: #fc8c00;
+}
+
+/* Les avatars (public/avatars) : illustrations « Avataaars » de Pablo Stanley, libres pour un usage personnel et commercial */
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.card h2 {
+  margin: 8px 0 16px;
+}
+
+/* La bulle de dialogue */
+.bubble {
+  background: #edeefe;
+  border-radius: 16px;
+  padding: 14px 16px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.card--child .bubble {
+  background: #fff3e0;
+}
+
+/* Les boutons */
+.actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.button {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 18px;
+  font: inherit;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.button--primary {
+  background: #5057f4;
+}
+
+.button--accept {
+  background: #50bf90;
+}
+
+.button--deny {
+  background: #f84a4a;
+}
+
+/* Le statut de l'ordre : une couleur par statut (pending, accepted, denied) */
+.status {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.status--pending {
+  background: #eaeaf0;
+  color: #757575;
+}
+
+.status--accepted {
+  background: #e3f6ee;
+  color: #2e7d5b;
+}
+
+.status--denied {
+  background: #fde8e8;
+  color: #c62828;
+}

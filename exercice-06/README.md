@@ -2,21 +2,21 @@
 
 # Force du mot de passe
 
-*Évaluer la force d’un mot de passe en temps réel avec onChange.*
+*Évaluer la force d’un mot de passe en temps réel avec onChange et des expressions régulières.*
 
 | | |
 |---|---|
 | **Moment** | Jour 2 · Module 04 · Événements et state |
 | **Durée** | 30 minutes |
-| **Niveau** | Débutant |
+| **Niveau** | Intermédiaire |
 | **Prérequis** | useState, onChange, affichage conditionnel |
 
 ## Objectifs de l’exercice
 
 - Utiliser l’événement `onChange` pour la saisie en temps réel
 - Stocker la valeur de l’input dans un state
-- Faire de l’affichage conditionnel avec plusieurs conditions
-- Bonus : utiliser une expression régulière
+- Tester le contenu d’un texte avec une expression régulière : `.test()` renvoie true ou false
+- Afficher un message et une couleur selon le résultat
 
 ## Contexte
 
@@ -36,26 +36,39 @@ Créer un composant qui évalue la force d’un mot de passe pendant que l’uti
 └────────────────────────────────────┘
 ```
 
-## Règles
+## Les 3 règles
 
-| Longueur | Message | Couleur suggérée |
+Le mot de passe doit contenir :
+
+| Règle | Expression régulière |
+|---|---|
+| Une majuscule | `/[A-Z]/` |
+| Un chiffre | `/[0-9]/` |
+| Un caractère spécial (ni lettre, ni chiffre) | `/[^A-Za-z0-9]/` |
+
+Exemple : `/[0-9]/.test("abc1")` renvoie `true`. Dans `[^...]`, le `^` veut dire « tout sauf ».
+
+## Le message à afficher
+
+| Cas | Message | Couleur suggérée |
 |---|---|---|
-| 0 caractère | Saisissez un mot de passe | Gris |
-| 1 à 5 caractères | Faible | Rouge |
-| 6 à 9 caractères | Moyen | Orange |
-| 10 caractères ou plus | Fort | Vert |
+| Champ vide | Saisissez un mot de passe | Gris |
+| 0 ou 1 règle respectée | Faible | Rouge |
+| 2 règles respectées | Moyen | Orange |
+| Les 3 règles respectées | Fort | Vert |
+
+Exemples : `abc1` → Faible ; `Abc1` → Moyen ; `Abc1!` → Fort.
 
 ## Étapes
 
 1. Créer un composant `PasswordStrength` avec un state `password`
 2. Ajouter un `<input type="password">` relié au state avec `value` et `onChange`
-3. Calculer le message à partir de `password.length`
-4. Afficher le message avec la bonne couleur
+3. Compter les règles respectées dans une variable `score` (+1 par règle)
+4. Afficher le message avec la bonne couleur selon le `score`
 
 ## Bonus (optionnel)
 
-- Afficher « Contient un chiffre : OK » si le mot de passe contient un chiffre : `/\d/.test(password)`
-- Ajouter une barre de progression qui grandit avec la force
+- Ajouter une barre de progression qui grandit avec la force (vide, 1/3, 2/3, pleine)
 
 ## Ressources utiles
 
@@ -68,11 +81,13 @@ Créer un composant qui évalue la force d’un mot de passe pendant que l’uti
 
 - Oublier `value={password}` : l’input n’est plus contrôlé
 - Lire `e.value` au lieu de `e.target.value`
-- Mettre les conditions dans le désordre (tester `>= 10` après `>= 6`)
+- Utiliser `const` pour le score : il faut `let`, car on le modifie avec `score++`
+- Oublier le cas du champ vide (il doit être testé en premier)
 
 ## Résultat attendu
 
 - [ ] Le message change à chaque caractère tapé
 - [ ] Les 4 cas (vide, faible, moyen, fort) s’affichent avec la bonne couleur
+- [ ] `Abc1!` affiche « Fort » en vert
 
 Bon courage !

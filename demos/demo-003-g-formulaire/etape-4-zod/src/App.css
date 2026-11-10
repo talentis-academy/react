@@ -1,0 +1,222 @@
+/* ===============================
+   RESET CSS
+   On enlève les styles par défaut
+   du navigateur
+   =============================== */
+* {
+  box-sizing: border-box;
+  /* inclut padding + border dans width/height */
+  margin: 0;
+  /* supprime les marges par défaut */
+  padding: 0;
+  /* supprime les paddings par défaut */
+}
+
+/* ===============================
+   STYLE GLOBAL DE LA PAGE
+   =============================== */
+body {
+  font-family: Arial, sans-serif;
+  /* police simple pour la formation */
+  text-align: center;
+  /* centre les titres */
+  color: #222;
+  /* couleur du texte */
+}
+
+/* ===============================
+   CONTAINER PRINCIPAL
+   Centre le contenu à l'écran
+   =============================== */
+.container {
+  /* min-height: 100vh; */
+  /* prend toute la hauteur de l'écran */
+  display: flex;
+  /* active Flexbox */
+  flex-direction: column;
+  /* éléments en colonne */
+  justify-content: center;
+  /* centrage vertical */
+  align-items: center;
+  /* centrage horizontal */
+  padding: 24px;
+  /* espace autour (mobile friendly) */
+}
+
+/* ===============================
+   TITRES
+   =============================== */
+h1 {
+  margin-bottom: 8px;
+  /* espace sous le titre principal */
+}
+
+h2 {
+  margin-bottom: 20px;
+  /* espace sous le sous-titre */
+  font-weight: normal;
+  /* texte moins gras */
+  color: #666;
+  /* gris clair */
+}
+
+/* ===============================
+   FORMULAIRE
+   =============================== */
+form {
+  width: 100%;
+  /* prend toute la largeur sur mobile */
+  max-width: 420px;
+  /* largeur max sur desktop */
+}
+
+/* ===============================
+   BOÎTE DU FORMULAIRE
+   =============================== */
+.form {
+  background: white;
+  /* carte blanche */
+  border: 1px solid #ddd;
+  /* bordure grise */
+  border-radius: 12px;
+  /* coins arrondis */
+  padding: 18px;
+  /* espace interne */
+
+  display: flex;
+  /* Flexbox */
+  flex-direction: column;
+  /* éléments en colonne */
+  gap: 14px;
+  /* espace entre les éléments */
+}
+
+/* ===============================
+   GROUPE LABEL + INPUT
+   =============================== */
+.form-group {
+  display: flex;
+  /* Flexbox */
+  flex-direction: column;
+  /* label au-dessus de l'input */
+  gap: 6px;
+  /* espace entre label et input */
+  text-align: left;
+  /* alignement à gauche */
+}
+
+/* ===============================
+   LABEL
+   =============================== */
+label {
+  font-size: 14px;
+  /* taille du texte */
+  color: #333;
+  /* couleur du label */
+}
+
+/* ===============================
+   INPUT
+   =============================== */
+input {
+  height: 40px;
+  /* hauteur du champ */
+  padding: 0 12px;
+  /* espace intérieur */
+  border: 1px solid #ccc;
+  /* bordure grise */
+  border-radius: 10px;
+  /* coins arrondis */
+  outline: none;
+  /* enlève le contour bleu */
+}
+
+/* état quand on clique dans l'input */
+input:focus {
+  border-color: #6c63ff;
+  /* bordure violette */
+}
+
+/* ===============================
+   CHECKBOX (Terms & Conditions)
+   =============================== */
+
+/* on aligne la checkbox + texte sur la même ligne */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* la checkbox ne doit pas prendre le style des inputs text/password */
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  accent-color: #6c63ff;
+  /* couleur de la case cochée (navigateurs modernes) */
+}
+
+/* style du lien des conditions */
+.checkbox a {
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.checkbox a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   MESSAGES ERREUR & SUCCÈS
+   =============================== */
+.error {
+  color: #d93025;
+  /* rouge */
+  background: #fdecea;
+  /* fond rouge clair */
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.success {
+  color: #0f5132;
+  /* vert */
+  background: #d1e7dd;
+  /* fond vert clair */
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* ===============================
+   BOUTON
+   =============================== */
+.btn {
+  height: 42px;
+  /* hauteur du bouton */
+  border: none;
+  /* pas de bordure */
+  border-radius: 10px;
+  /* coins arrondis */
+  cursor: pointer;
+  /* curseur main */
+  background: #6c63ff;
+  /* couleur principale */
+  color: white;
+  /* texte blanc */
+  font-weight: bold;
+  /* texte en gras */
+}
+
+/* effet au survol */
+.btn:hover {
+  opacity: 0.9;
+  /* léger effet visuel */
+}

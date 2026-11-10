@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* Approche 2 : les couleurs de la maquette Figma, rangées dans le thème Tailwind.
+   --color-card donne les classes bg-card, text-card, border-card… */
+@theme {
+  --color-page: #111827; /* fond de la page */
+  --color-card: #1f2937; /* fond de la carte */
+  --color-muted: #9ca3af; /* texte gris */
+  --color-brand: #3b82f6; /* bouton */
+  --color-brand-dark: #2563eb; /* bouton au survol */
+  --color-success-bg: #d1fae5; /* badge Available : fond */
+  --color-success-fg: #065f46; /* badge Available : texte */
+}
+
+/* Une classe réutilisable faite avec @apply : on regroupe des classes Tailwind sous un seul nom */
+@layer components {
+  .btn-brand {
+    @apply w-full cursor-pointer rounded-lg bg-brand px-4 py-3 font-semibold text-white transition-colors hover:bg-brand-dark;
+  }
+}

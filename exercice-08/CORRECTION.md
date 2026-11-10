@@ -2,19 +2,21 @@
 
 # Formulaire d’enregistrement
 
-*Le formulaire React Hook Form + Zod, adapté aux champs de l’énoncé.*
+*Le template, avec la validation React Hook Form + Zod.*
 
 | | |
 |---|---|
 | **Énoncé** | Exercice_08_Enonce.docx |
+| **Template** | Dossier `template/` (l’interface est prête, sans la validation) |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
 | **Source** | Code du formateur : Formation/Exemples/Form/FormFinal.tsx (Code_003, « React hook form »), avec fullName à la place de password |
 
 ## Le formulaire
 
-**`src/components/FormFinal.tsx`**
+**`src/components/Form.jsx`**
 
-```
+```jsx
+// Exercice 8 · correction : le template + la validation avec React Hook Form et Zod
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -53,7 +55,7 @@ function Form() {
     mode: "onSubmit",
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data) => {
     console.log("Send to server:", data); // ici tu fais ton appel API
   };
 
@@ -71,7 +73,7 @@ function Form() {
               <label>Full name</label>
               <input type="text" {...register("fullName")} />
               {errors.fullName && (
-                <p className="error">{errors.fullName.message as string}</p>
+                <p className="error">{errors.fullName.message}</p>
               )}
             </div>
 
@@ -79,7 +81,7 @@ function Form() {
               <label>Email</label>
               <input type="text" {...register("email")} />
               {errors.email && (
-                <p className="error">{errors.email.message as string}</p>
+                <p className="error">{errors.email.message}</p>
               )}
             </div>
 
@@ -90,7 +92,7 @@ function Form() {
                 {...register("experience", { valueAsNumber: true })} // Ajouté valueAsNumber
               />
               {errors.experience && (
-                <p className="error">{errors.experience.message as string}</p>
+                <p className="error">{errors.experience.message}</p>
               )}
             </div>
 
@@ -106,7 +108,7 @@ function Form() {
                 </span>
               </label>
               {errors.terms && (
-                <p className="error">{errors.terms.message as string}</p>
+                <p className="error">{errors.terms.message}</p>
               )}
             </div>
 
@@ -127,21 +129,6 @@ function Form() {
 }
 
 export default Form;
-```
-
-## App
-
-**`src/App.jsx`**
-
-```jsx
-import "./App.css";
-import FormFinal from "./components/FormFinal";
-
-function App() {
-  return <FormFinal />;
-}
-
-export default App;
 ```
 
 ## Points clés

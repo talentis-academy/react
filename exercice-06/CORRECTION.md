@@ -19,15 +19,21 @@ import { useState } from "react";
 
 function getStrength(password) {
   if (password.length === 0) return { label: "Saisissez un mot de passe", color: "#757575", level: 0 };
-  if (password.length < 6) return { label: "Faible", color: "#F84A4A", level: 1 };
-  if (password.length < 10) return { label: "Moyen", color: "#FC8C00", level: 2 };
-  return { label: "Fort", color: "#50BF90", level: 3 };
+
+  // .test() renvoie true ou false
+  let score = 0;
+  if (/[A-Z]/.test(password)) score++; // une majuscule
+  if (/[0-9]/.test(password)) score++; // un chiffre
+  if (/[^A-Za-z0-9]/.test(password)) score++; // un caractère spécial (ni lettre, ni chiffre)
+
+  if (score === 3) return { label: "Fort", color: "#50BF90", level: 3 };
+  if (score === 2) return { label: "Moyen", color: "#FC8C00", level: 2 };
+  return { label: "Faible", color: "#F84A4A", level: 1 };
 }
 
 function PasswordStrength() {
   const [password, setPassword] = useState("");
   const strength = getStrength(password);
-  const hasDigit = /\d/.test(password);
 
   return (
     <div className="card">
@@ -43,16 +49,13 @@ function PasswordStrength() {
 
       <p style={{ color: strength.color, fontWeight: 600 }}>Force : {strength.label}</p>
 
-      {/* Bonus 2 : barre de progression */}
+      {/* Bonus : barre de progression */}
       <div className="bar">
         <div
           className="bar-fill"
           style={{ width: `${(strength.level / 3) * 100}%`, background: strength.color }}
         />
       </div>
-
-      {/* Bonus 1 : chiffre */}
-      {password && <p>Contient un chiffre : {hasDigit ? "OK" : "non"}</p>}
     </div>
   );
 }
@@ -64,8 +67,10 @@ export default PasswordStrength;
 
 - Input contrôlé : `value` vient du state, `onChange` le met à jour
 - La logique est sortie dans `getStrength` : le JSX reste lisible
-- Les conditions sont testées dans l’ordre : vide, < 6, < 10, sinon fort
-- `/\d/.test(password)` renvoie true si le texte contient un chiffre
+- Le champ vide est testé en premier
+- Chaque `.test()` renvoie true ou false : on ajoute 1 au `score` pour chaque règle respectée (`let`, car il change)
+- `score === 3` → Fort ; `score === 2` → Moyen ; sinon Faible
+- `level` sert au bonus : la largeur de la barre est `level / 3`
 
 ## Ressources utiles
 

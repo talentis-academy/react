@@ -23,7 +23,13 @@ Pendant le module, on a reproduit ensemble la carte catalogue (Card Car) à part
 
 ![Fait ensemble : la carte catalogue (Card Car)](carte-catalogue.png)
 
-À vous maintenant : la carte détail (Card Details), en réutilisant les mêmes styles (couleurs, pastille, badge, bouton).
+Ce projet est votre point de départ : `Exercices/Exercice_09/template` (la Card Car faite ensemble). À vous maintenant : ajouter la carte détail (Card Details) sur la même page, en réutilisant les mêmes styles (couleurs, pastille, badge, bouton).
+
+```bash
+cd template
+npm install
+npm run dev
+```
 
 ## La maquette à reproduire
 
@@ -40,18 +46,16 @@ Pendant le module, on a reproduit ensemble la carte catalogue (Card Car) à part
 
 ## Étapes
 
-1. Créer un nouveau projet React avec Vite
-2. Créer un composant `Home` et un fichier `styles.css` importé dans le composant
-3. Mettre en place la page : fond sombre, contenu centré
-4. Créer la carte : le titre (nom de la voiture) centré
-5. Ajouter les lignes **Brand**, **Color** (pastille ronde de la couleur + nom), **Year**, **Price** et **Availability**, chacune avec le libellé à gauche et la valeur à droite, séparées par une ligne
-6. Ajouter le badge **Available** (fond vert clair, coins arrondis)
-7. Ajouter le bouton **Back to list** sur toute la largeur de la carte
+1. Ouvrir le template : la page et la carte catalogue sont déjà là (`src/components/Home.jsx` et `styles.css`)
+2. Sous la carte catalogue, ajouter la carte détail dans `Home.jsx`, et ses styles dans `styles.css`
+3. Le titre (nom de la voiture) centré
+4. Ajouter les lignes **Brand**, **Color** (pastille ronde de la couleur + nom), **Year**, **Price** et **Availability**, chacune avec le libellé à gauche et la valeur à droite, séparées par une ligne
+5. Ajouter le badge **Available** (fond vert clair, coins arrondis)
+6. Ajouter le bouton **Back to list** sur toute la largeur de la carte
 
 ## Bonus (optionnel)
 
 - Ajouter une variante du badge **Not Available** (fond rouge clair, texte rouge foncé)
-- Afficher la carte catalogue et la carte détail l’une sous l’autre sur la même page
 
 ## Conseils
 
