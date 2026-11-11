@@ -74,13 +74,6 @@
   background-color: #2563eb; /* plus foncé au survol */
 }
 
-/* Les deux cartes côte à côte */
-.cards {
-  display: flex; /* en ligne : les cartes côte à côte */
-  align-items: flex-start; /* chaque carte garde sa hauteur (sinon flex les étire à la même hauteur) */
-  gap: 32px; /* l'espace entre les deux cartes */
-}
-
 /* La carte détail : plus large */
 .detail {
   width: 600px;

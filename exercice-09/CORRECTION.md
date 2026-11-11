@@ -2,70 +2,55 @@
 
 # De la maquette au composant React
 
-*La carte détail (l’exercice), à côté de la carte catalogue faite ensemble, en React + CSS.*
+*La carte détail (Card Details), en React + CSS, en réutilisant les styles de la Card Car.*
 
 | | |
 |---|---|
 | **Énoncé** | Exercice_09_Enonce.docx |
 | **Template** | Dossier `template/` (la Card Car faite ensemble) |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-| **Source** | Code du formateur : Formation/Projets/CSS/Design System/cars-css, nettoyé : les styles inline répétés (titres des exemples, conteneur, largeur de la carte catalogue) sont passés en classes dans styles.css. Rendu identique. |
+| **Source** | Code du formateur : Formation/Projets/CSS/Design System/cars-css (la carte détail), avec les valeurs de la maquette Figma. |
 
 ## Le composant
 
-Les deux cartes de la maquette : la carte catalogue (faite ensemble pendant le module) et la carte détail (l’exercice).
+La carte détail. Elle réutilise les classes de la Card Car faite ensemble (`.card`, `.color`, `.circle`, `.badge`, `.price`, `.btn`).
 
 **`src/components/Home.jsx`**
 
 ```jsx
 import "./styles.css";
 
-// Exercice 9 · correction : la Card Car (faite ensemble) et la carte détail (Card Details)
+// Exercice 9 · correction : la carte détail (Card Details), avec les styles de la Card Car (réutilisés)
 export default function Home() {
   return (
-    <div className="cards">
-      {/* La Card Car */}
-      <div className="card">
-        <h3 className="car-name">Tesla Model S</h3>
-        <div className="color">
-          <span className="circle" style={{ backgroundColor: "#dc2626" }}></span>
-          <span>Rouge</span>
+    <div className="card detail">
+      <h1 className="title">Ford Mustang Mach-E</h1>
+      <div className="details">
+        <div className="row">
+          <span>Brand</span>
+          <span>Ford</span>
         </div>
-        <span className="badge">Available</span>
-        <p className="price">$79,990</p>
-        <button className="btn">View Details</button>
-      </div>
-
-      {/* La carte détail */}
-      <div className="card detail">
-        <h1 className="title">Ford Mustang Mach-E</h1>
-        <div className="details">
-          <div className="row">
-            <span>Brand</span>
-            <span>Ford</span>
-          </div>
-          <div className="row">
-            <span>Color</span>
-            <div className="color">
-              <span className="circle" style={{ backgroundColor: "#2563eb" }}></span>
-              <span>Bleu</span>
-            </div>
-          </div>
-          <div className="row">
-            <span>Year</span>
-            <span>2023</span>
-          </div>
-          <div className="row">
-            <span>Price</span>
-            <span className="price">$42,895</span>
-          </div>
-          <div className="row">
-            <span>Availability</span>
-            <span className="badge">Available</span>
+        <div className="row">
+          <span>Color</span>
+          <div className="color">
+            <span className="circle" style={{ backgroundColor: "#2563eb" }}></span>
+            <span>Bleu</span>
           </div>
         </div>
-        <button className="btn">Back to list</button>
+        <div className="row">
+          <span>Year</span>
+          <span>2023</span>
+        </div>
+        <div className="row">
+          <span>Price</span>
+          <span className="price">$42,895</span>
+        </div>
+        <div className="row">
+          <span>Availability</span>
+          <span className="badge">Available</span>
+        </div>
       </div>
+      <button className="btn">Back to list</button>
     </div>
   );
 }
@@ -152,13 +137,6 @@ export default function Home() {
   background-color: #2563eb; /* plus foncé au survol */
 }
 
-/* Les deux cartes côte à côte */
-.cards {
-  display: flex; /* en ligne : les cartes côte à côte */
-  align-items: flex-start; /* chaque carte garde sa hauteur (sinon flex les étire à la même hauteur) */
-  gap: 32px; /* l'espace entre les deux cartes */
-}
-
 /* La carte détail : plus large */
 .detail {
   width: 600px;
@@ -195,25 +173,34 @@ export default function Home() {
 }
 ```
 
-## App
+## La page (App.css)
 
-**`src/App.jsx`**
+**`src/App.css`**
 
-```jsx
-import "./App.css";
-import Home from "./components/Home";
+```
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"); /* la police de la maquette */
 
-function App() {
-  return <Home />;
+* {
+  box-sizing: border-box; /* le padding est compris dans la largeur */
+  margin: 0; /* on enlève les marges du navigateur */
 }
 
-export default App;
+/* La page : fond sombre, et la carte au centre */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #111827;
+  color: #f9fafb;
+  min-height: 100vh; /* toute la hauteur de l'écran */
+  display: flex; /* flexbox : on range ce qu'il y a dans le body */
+  align-items: center; /* centre en hauteur (axe vertical) */
+  justify-content: center; /* centre en largeur (axe horizontal) */
+}
 ```
 
 ## Points clés
 
 - Les styles sont dans un fichier `styles.css` et appliqués avec `className`
-- Chaque ligne de la carte détail est un `display: flex` avec `justify-content: space-between`
+- Chaque ligne est un `display: flex` avec `justify-content: space-between` : le libellé à gauche, la valeur à droite
 - La pastille de couleur reçoit sa couleur en inline (`style={{ backgroundColor: ... }}`) : c’est une donnée, pas un style fixe
 - Les noms de voitures et les valeurs sont en dur ici ; on les rendra dynamiques plus tard (API, navigation)
 
