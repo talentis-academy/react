@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"); /* la police */
+
+* {
+  box-sizing: border-box; /* padding et bordure compris dans la largeur */
+  margin: 0;
+}
+
+/* La page : fond clair */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f4f4f7;
+  color: #1f2937;
+  padding: 32px 16px;
+}
+
+/* Le conteneur : centré, avec une largeur maximum */
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex; /* flexbox : on range les cartes */
+  flex-direction: column; /* l'une sous l'autre */
+  gap: 24px; /* l'espace entre les cartes */
+}
+
+/* Une carte = une page (Users, Comments) */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06); /* une ombre légère */
+}
+
+.title {
+  font-size: 22px;
+  color: #5057f4; /* la couleur de la formation */
+  margin-bottom: 16px;
+}
+
+.loading {
+  color: #6b7280;
+}
+
+.error {
+  color: #dc2626;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse; /* une seule ligne entre les cellules */
+}
+
+.table th {
+  text-align: left;
+  color: #6b7280;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive : quand on rétrécit la fenêtre du navigateur, le texte du tableau est plus petit */
+@media (max-width: 600px) {
+  .table {
+    font-size: 14px;
+  }
+}

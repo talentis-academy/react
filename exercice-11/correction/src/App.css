@@ -1,104 +1,74 @@
-/* VERSION RESPONSIVE - S'adapte à tous les écrans (mobile, tablette, desktop) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"); /* la police */
 
-/* Importation de la police Google Fonts Inter avec plusieurs graisses */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-
-/* Sélecteur universel qui cible tous les éléments HTML */
 * {
-  /* Force tous les éléments à inclure padding et border dans leur largeur/hauteur totale */
-  box-sizing: border-box;
-  /* Supprime les marges par défaut du navigateur pour avoir un contrôle total */
+  box-sizing: border-box; /* padding et bordure compris dans la largeur */
   margin: 0;
-  /* Supprime les espacements internes par défaut du navigateur */
-  padding: 0;
 }
 
-/* Style global du corps de la page */
+/* La page : fond clair */
 body {
-  /* Applique la police Inter importée, avec sans-serif comme police de secours */
   font-family: "Inter", sans-serif;
-  /* Améliore le rendu des polices sur les navigateurs WebKit (Safari, Chrome) */
-  -webkit-font-smoothing: antialiased;
-  /* Améliore le rendu des polices sur Firefox pour Mac */
-  -moz-osx-font-smoothing: grayscale;
-
-  text-align: center;
-
-  padding: 20px;
-
-  place-items: center;
+  background-color: #f4f4f7;
+  color: #1f2937;
+  padding: 32px 16px;
 }
 
-.container {
-  margin-top: px;
+/* Le conteneur : centré, avec une largeur maximum */
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex; /* flexbox : on range les cartes */
+  flex-direction: column; /* l'une sous l'autre */
+  gap: 24px; /* l'espace entre les cartes */
 }
 
-h1 {
-  padding: 20px;
+/* Une carte = une page (Users, Comments) */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06); /* une ombre légère */
 }
 
-.button {
-  margin: 24px;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.button--on {
-  background-color: #4caf50;
-}
-
-.button--off {
-  background-color: #e03e3e;
-}
-
-.switch {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 20px;
-}
-
-.switch input {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
-.switch input:checked {
-  accent-color: #4caf50;
+.title {
+  font-size: 22px;
+  color: #5057f4; /* la couleur de la formation */
+  margin-bottom: 16px;
 }
 
 .loading {
-  margin: 20px;
-  color: grey;
-  font-size: 20px;
+  color: #6b7280;
 }
 
 .error {
-  margin: 20px;
-  color: red;
-  font-size: 20px;
+  color: #dc2626;
 }
 
 .table {
-  border-collapse: collapse; /* colle les bordures */
-  border: 2px solid beige;
-  margin: 20px;
+  width: 100%;
+  border-collapse: collapse; /* une seule ligne entre les cellules */
 }
 
-.header {
+.table th {
   text-align: left;
-  padding: 12px;
+  color: #6b7280;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
 }
-.item {
-  text-align: left;
-  padding: 12px;
-  background-color: beige;
-  border-color: beige;
+
+.table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive : quand on rétrécit la fenêtre du navigateur, le texte du tableau est plus petit */
+@media (max-width: 600px) {
+  .table {
+    font-size: 14px;
+  }
 }

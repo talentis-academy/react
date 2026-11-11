@@ -1,0 +1,100 @@
+/* VERSION RESPONSIVE - S'adapte à tous les écrans (mobile, tablette, desktop) */
+
+/* Importation de la police Google Fonts Inter avec plusieurs graisses */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* Sélecteur universel qui cible tous les éléments HTML */
+* {
+  /* Force tous les éléments à inclure padding et border dans leur largeur/hauteur totale */
+  box-sizing: border-box;
+  /* Supprime les marges par défaut du navigateur pour avoir un contrôle total */
+  margin: 0;
+  /* Supprime les espacements internes par défaut du navigateur */
+  padding: 0;
+}
+
+/* Style global du corps de la page */
+body {
+  /* Applique la police Inter importée, avec sans-serif comme police de secours */
+  font-family: "Inter", sans-serif;
+  /* Améliore le rendu des polices sur les navigateurs WebKit (Safari, Chrome) */
+  -webkit-font-smoothing: antialiased;
+  /* Améliore le rendu des polices sur Firefox pour Mac */
+  -moz-osx-font-smoothing: grayscale;
+
+  text-align: center;
+
+  padding: 20px;
+
+  place-items: center;
+}
+
+h1 {
+  padding: 20px;
+}
+
+.button {
+  margin: 24px;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.button--on {
+  background-color: #4caf50;
+}
+
+.button--off {
+  background-color: #e03e3e;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.switch input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.switch input:checked {
+  accent-color: #4caf50;
+}
+
+.loading {
+  margin: 20px;
+  color: grey;
+  font-size: 20px;
+}
+
+.error {
+  margin: 20px;
+  color: red;
+  font-size: 20px;
+}
+
+.table {
+  border-collapse: collapse; /* colle les bordures */
+  border: 2px solid #edeefe;
+  margin: 20px;
+}
+
+.header {
+  text-align: left;
+  padding: 12px;
+}
+.item {
+  text-align: left;
+  padding: 12px;
+  background-color: #edeefe;
+  border-color: #edeefe;
+}

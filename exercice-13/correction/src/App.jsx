@@ -1,4 +1,3 @@
-import React from "react";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -132,42 +131,3 @@ const router = createBrowserRouter([
 export default function App() {
   return <RouterProvider router={router} />;
 }
-
-/*
-
-import { json } from "react-router-dom";
-
-export async function carDetailsLoader({ params }) {
-  const id = params.id;
-
-  const response = await fetch(`https://myfakeapi.com/api/cars/${id}`);
-
-  if (!response.ok) {
-    throw new Response("Car not found", { status: 404 });
-    // ou: throw json({ message: "Car not found" }, { status: 404 });
-  }
-
-  return response.json();
-}
-  */
-
-// loader: carDetailsLoader,
-
-/*import { useLoaderData, useNavigation } from "react-router-dom";
-
-export default function CarDetails() {
-  const car = useLoaderData();
-  const navigation = useNavigation();
-
-  // Quand tu vas vers /car/:id (ou change d'id), le loader tourne => loading
-  if (navigation.state === "loading") {
-    return <p>Chargement de la voiture...</p>;
-  }
-
-  return (
-    <div>
-      <h1>{car.Car}</h1>
-      <p>Price: {car.Price}</p>
-    </div>
-  );
-}*/

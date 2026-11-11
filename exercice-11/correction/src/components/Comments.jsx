@@ -1,56 +1,40 @@
-import { useEffect, useState } from "react";
+import useFetchApi from "../hooks/useFetchApi";
 
 function Comments() {
-  const [comments, setComments] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  const getData = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/comments?postId=1"
-      );
-      const json = await response.json();
-      setComments(json);
-    } catch (error) {
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
+  // Toute la logique de fetch est dans le custom hook useFetchApi : la page ne garde que l'affichage
+  const {
+    data: comments,
+    isLoading,
+    isError,
+  } = useFetchApi("https://jsonplaceholder.typicode.com/comments?postId=1");
 
   return (
-    <div>
-      <h2 className="container">Welcome to comments page</h2>
+    <section className="card">
+      <h2 className="title">Comments</h2>
+      {isError && <p className="error">Erreur de chargement</p>}
       {isLoading ? (
-        <div className="loading">Loading ...</div>
+        <p className="loading">Loading ...</p>
       ) : (
         <table className="table">
           <thead>
             <tr>
-              <th className="header">Id</th>
-              <th className="header">Comment</th>
-              <th className="header">Email</th>
+              <th>Id</th>
+              <th>Comment</th>
+              <th>Email</th>
             </tr>
           </thead>
           <tbody>
-            {comments.map((comment) => {
-              return (
-                <tr key={comment.id}>
-                  <td className="item">{comment.id}</td>
-                  <td className="item">{comment.name}</td>
-                  <td className="item">{comment.email}</td>
-                </tr>
-              );
-            })}
+            {comments.map((comment) => (
+              <tr key={comment.id}>
+                <td>{comment.id}</td>
+                <td>{comment.name}</td>
+                <td>{comment.email}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       )}
-    </div>
+    </section>
   );
 }
 

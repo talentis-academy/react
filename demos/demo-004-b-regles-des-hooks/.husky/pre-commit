@@ -1,0 +1,2 @@
+# Husky : avant chaque git commit, on lance ESLint. S'il y a une erreur, le commit est bloqué.
+npm run lint

@@ -13,7 +13,6 @@ export default function Layout() {
     >
       <header style={{ display: "flex", gap: 12, justifyContent: "center" }}>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="/favoris">Favoris</NavLink>
         <NavLink
           to="/favoris"
           style={({ isActive }) => ({
@@ -21,7 +20,7 @@ export default function Layout() {
             fontWeight: isActive ? "bold" : "normal",
           })}
         >
-          favoris
+          Favoris
         </NavLink>
       </header>
 

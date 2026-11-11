@@ -8,15 +8,16 @@
 |---|---|
 | **Énoncé** | Exercice_11_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-| **Source** | Code du formateur : Formation/hooks/custom-hooks (Code_004). CommentsWithHook.jsx = sa page Comments branchée sur son hook useFetchApi |
+| **Source** | Code du formateur : Formation/hooks/custom-hooks (Code_004). |
 
 ## Le custom hook
 
-**`src/hooks/useFetchApi.ts`**
+**`src/hooks/useFetchApi.js`**
 
-```
+```jsx
 import { useEffect, useState } from "react";
 
+// Custom hook useFetchApi : la logique de fetch (data, loading, error), réutilisable : seule l'URL change
 function useFetchApi(url) {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -49,12 +50,13 @@ export default useFetchApi;
 
 ## La page Comments avec le hook
 
-**`src/components/CommentsWithHook.jsx`**
+**`src/components/Comments.jsx`**
 
 ```jsx
 import useFetchApi from "../hooks/useFetchApi";
 
-function CommentsWithHook() {
+function Comments() {
+  // Toute la logique de fetch est dans le custom hook useFetchApi : la page ne garde que l'affichage
   const {
     data: comments,
     isLoading,
@@ -62,99 +64,32 @@ function CommentsWithHook() {
   } = useFetchApi("https://jsonplaceholder.typicode.com/comments?postId=1");
 
   return (
-    <div>
-      <h2 className="container">Welcome to comments page</h2>
+    <section className="card">
+      <h2 className="title">Comments</h2>
+      {isError && <p className="error">Erreur de chargement</p>}
       {isLoading ? (
-        <div className="loading">Loading ...</div>
+        <p className="loading">Loading ...</p>
       ) : (
         <table className="table">
           <thead>
             <tr>
-              <th className="header">Id</th>
-              <th className="header">Comment</th>
-              <th className="header">Email</th>
+              <th>Id</th>
+              <th>Comment</th>
+              <th>Email</th>
             </tr>
           </thead>
           <tbody>
-            {comments.map((comment) => {
-              return (
-                <tr key={comment.id}>
-                  <td className="item">{comment.id}</td>
-                  <td className="item">{comment.name}</td>
-                  <td className="item">{comment.email}</td>
-                </tr>
-              );
-            })}
+            {comments.map((comment) => (
+              <tr key={comment.id}>
+                <td>{comment.id}</td>
+                <td>{comment.name}</td>
+                <td>{comment.email}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       )}
-    </div>
-  );
-}
-
-export default CommentsWithHook;
-```
-
-## Avant : la page Comments sans hook
-
-Pour comparer : toute la logique de fetch (3 states, `getData`, `useEffect`) était dans le composant.
-
-**`src/components/Comments.jsx`**
-
-```jsx
-import { useEffect, useState } from "react";
-
-function Comments() {
-  const [comments, setComments] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  const getData = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/comments?postId=1"
-      );
-      const json = await response.json();
-      setComments(json);
-    } catch (error) {
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-  useEffect(() => {
-    getData();
-  }, []);
-
-  return (
-    <div>
-      <h2 className="container">Welcome to comments page</h2>
-      {isLoading ? (
-        <div className="loading">Loading ...</div>
-      ) : (
-        <table className="table">
-          <thead>
-            <tr>
-              <th className="header">Id</th>
-              <th className="header">Comment</th>
-              <th className="header">Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {comments.map((comment) => {
-              return (
-                <tr key={comment.id}>
-                  <td className="item">{comment.id}</td>
-                  <td className="item">{comment.name}</td>
-                  <td className="item">{comment.email}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      )}
-    </div>
+    </section>
   );
 }
 
@@ -167,17 +102,14 @@ export default Comments;
 
 ```jsx
 import "./App.css";
-import ToggleBtn from "./components/ToggleBtn";
-import ToggleCheckbox from "./components/ToggleCheckbox";
-import Layout from "./components/Layout";
-import Users from "./components/Users";
 import Comments from "./components/Comments";
-import CommentsWithHook from "./components/CommentsWithHook";
-
-import BadExample from "./components/BadExample";
 
 function App() {
-  return <CommentsWithHook />;
+  return (
+    <main className="page">
+      <Comments />
+    </main>
+  );
 }
 
 export default App;

@@ -354,15 +354,14 @@ Un reducer par produit, combinés avec combineReducers
 
 Dossier store/ (actions, reducers, store), <Provider>, useSelector, useDispatch
 
-### `src/App.jsx` (modifié, +9 −2)
+### `src/App.jsx` (modifié, +8 −1)
 
 ```diff
 @@ -1,8 +1,15 @@
  import "./App.css";
--import Home from "./pages/Home.jsx";
-+import Home from "./pages/Home.tsx";
+ import Home from "./pages/Home.jsx";
 +import { Provider } from "react-redux";
-+import { store } from "./store/store.ts";
++import { store } from "./store/store.js";
  
  function App() {
 -  return <Home />;
@@ -377,150 +376,61 @@ Dossier store/ (actions, reducers, store), <Provider>, useSelector, useDispatch
  export default App;
 ```
 
-### `src/pages/Home.jsx` (supprimé, +0 −61)
+### `src/pages/Home.jsx` (modifié, +13 −7)
 
 ```diff
-@@ -1,61 +1,0 @@
--import phoneImg from "../assets/phone.png";
--import tvImg from "../assets/tv.png";
--import cameraImg from "../assets/camera.png";
+@@ -1,11 +1,17 @@
+ import phoneImg from "../assets/phone.png";
+ import tvImg from "../assets/tv.png";
+ import cameraImg from "../assets/camera.png";
 -import { buyPhone, buyTV, buyCamera, store } from "../store/index.js";
--function Home() {
--  // getState lit le state une fois : l'écran ne se met pas à jour tout seul (d'où le subscribe)
--  const state = store.getState();
--  const { phone, tv, camera } = state;
--
--  return (
--    <div>
--      <h2>{"Welcome to our Application"}</h2>
--      <div className="container">
--        <div className="item">
--          <img src={phoneImg} alt="" width={100} height={100} />
--          <div className="availability" id="phones">
--            {phone.total} available
--          </div>
--          <button
--            className="button"
--            onClick={() => {
--              store.dispatch(buyPhone());
--            }}
--          >
--            Buy
--          </button>
--        </div>
--        <div className="item">
--          <img src={tvImg} alt="" width={100} height={100} />
--          <div className="availability" id="tvs">
--            {tv.total} available
--          </div>
--          <button
--            className="button"
--            onClick={() => {
--              store.dispatch(buyTV());
--            }}
--          >
--            Buy
--          </button>
--        </div>
--        <div className="item">
--          <img src={cameraImg} alt="" width={100} height={100} />
--          <div className="availability" id="cameras">
--            {camera.total} available
--          </div>
--          <button
--            className="button"
--            onClick={() => {
--              store.dispatch(buyCamera());
--            }}
--          >
--            Buy
--          </button>
--        </div>
--      </div>
--    </div>
--  );
--}
--
--export default Home;
-```
-
-### `src/pages/Home.tsx` (ajouté, +70 −0)
-
-```diff
-@@ -1,0 +1,70 @@
-+// @ts-ignore
-+import phoneImg from "../assets/phone.png";
-+// @ts-ignore
-+import tvImg from "../assets/tv.png";
-+// @ts-ignore
-+import cameraImg from "../assets/camera.png";
 +
 +import { store } from "../store/store";
 +import { buyPhone, buyTV, buyCamera } from "../store/actions";
 +import { useSelector, useDispatch } from "react-redux";
 +
-+function Home() {
+ function Home() {
+-  // getState lit le state une fois : l'écran ne se met pas à jour tout seul (d'où le subscribe)
+-  const state = store.getState();
+-  const { phone, tv, camera } = state;
 +  // useDispatch envoie les actions ; useSelector lit le state (re-render quand il change)
 +  const dispatch = useDispatch();
-+  const phone = useSelector((state: any) => state.phone);
-+  const camera = useSelector((state: any) => state.camera);
-+  const tv = useSelector((state: any) => state.tv);
-+
-+  return (
-+    <div>
-+      <h2>{"Welcome to our Application"}</h2>
-+      <div className="container">
-+        <div className="item">
-+          <img src={phoneImg} alt="" width={100} height={100} />
-+          <div className="availability" id="phones">
-+            {phone.total} available
-+          </div>
-+          <button
-+            className="button"
-+            onClick={() => {
++  const phone = useSelector((state) => state.phone);
++  const camera = useSelector((state) => state.camera);
++  const tv = useSelector((state) => state.tv);
+ 
+   return (
+     <div>
+@@ -19,7 +25,7 @@
+           <button
+             className="button"
+             onClick={() => {
+-              store.dispatch(buyPhone());
 +              dispatch(buyPhone());
-+            }}
-+          >
-+            Buy
-+          </button>
-+        </div>
-+        <div className="item">
-+          <img src={tvImg} alt="" width={100} height={100} />
-+          <div className="availability" id="tvs">
-+            {tv.total} available
-+          </div>
-+          <button
-+            className="button"
-+            onClick={() => {
+             }}
+           >
+             Buy
+@@ -33,7 +39,7 @@
+           <button
+             className="button"
+             onClick={() => {
+-              store.dispatch(buyTV());
 +              dispatch(buyTV());
-+            }}
-+          >
-+            Buy
-+          </button>
-+        </div>
-+        <div className="item">
-+          <img src={cameraImg} alt="" width={100} height={100} />
-+          <div className="availability" id="cameras">
-+            {camera.total} available
-+          </div>
-+          <button
-+            className="button"
-+            onClick={() => {
+             }}
+           >
+             Buy
+@@ -47,7 +53,7 @@
+           <button
+             className="button"
+             onClick={() => {
+-              store.dispatch(buyCamera());
 +              dispatch(buyCamera());
-+            }}
-+          >
-+            Buy
-+          </button>
-+        </div>
-+      </div>
-+    </div>
-+  );
-+}
-+
-+export default Home;
+             }}
+           >
+             Buy
 ```
 
-### `src/store/actions.ts` (ajouté, +25 −0)
+### `src/store/actions.js` (ajouté, +25 −0)
 
 ```diff
 @@ -1,0 +1,25 @@
@@ -658,7 +568,7 @@ Dossier store/ (actions, reducers, store), <Provider>, useSelector, useDispatch
 -export { store, buyPhone, buyTV, buyCamera, phoneReducer };
 ```
 
-### `src/store/reducers.ts` (ajouté, +57 −0)
+### `src/store/reducers.js` (ajouté, +57 −0)
 
 ```diff
 @@ -1,0 +1,57 @@
@@ -721,7 +631,7 @@ Dossier store/ (actions, reducers, store), <Provider>, useSelector, useDispatch
 +export { phoneReducer, tvsReducer, camerasReducer };
 ```
 
-### `src/store/store.ts` (ajouté, +21 −0)
+### `src/store/store.js` (ajouté, +21 −0)
 
 ```diff
 @@ -1,0 +1,21 @@
@@ -774,11 +684,11 @@ Action avec payload : choisir la quantité de téléphones
 +}
 ```
 
-### `src/pages/Home.tsx` (modifié, +39 −2)
+### `src/pages/Home.jsx` (modifié, +39 −2)
 
 ```diff
-@@ -5,16 +5,23 @@
- // @ts-ignore
+@@ -2,16 +2,23 @@
+ import tvImg from "../assets/tv.png";
  import cameraImg from "../assets/camera.png";
  
 -import { store } from "../store/store";
@@ -791,18 +701,18 @@ Action avec payload : choisir la quantité de téléphones
 +
    // useDispatch envoie les actions ; useSelector lit le state (re-render quand il change)
    const dispatch = useDispatch();
-   const phone = useSelector((state: any) => state.phone);
-   const camera = useSelector((state: any) => state.camera);
-   const tv = useSelector((state: any) => state.tv);
+   const phone = useSelector((state) => state.phone);
+   const camera = useSelector((state) => state.camera);
+   const tv = useSelector((state) => state.tv);
 +
 +  const handleChange = (e) => {
 +    const value = e.target.value;
-+    setQuantity(value);
++    setQuantity(Number(value)); // un input donne toujours du texte : on le met en nombre
 +  };
  
    return (
      <div>
-@@ -25,10 +32,20 @@
+@@ -22,10 +29,20 @@
            <div className="availability" id="phones">
              {phone.total} available
            </div>
@@ -824,7 +734,7 @@ Action avec payload : choisir la quantité de téléphones
              }}
            >
              Buy
-@@ -38,6 +55,16 @@
+@@ -35,6 +52,16 @@
            <img src={tvImg} alt="" width={100} height={100} />
            <div className="availability" id="tvs">
              {tv.total} available
@@ -834,14 +744,14 @@ Action avec payload : choisir la quantité de téléphones
 +              className="input"
 +              type="number"
 +              min="1"
-+              max={phone.total}
++              max={tv.total}
 +              defaultValue={1}
 +              disabled
 +            />
            </div>
            <button
              className="button"
-@@ -52,6 +79,16 @@
+@@ -49,6 +76,16 @@
            <img src={cameraImg} alt="" width={100} height={100} />
            <div className="availability" id="cameras">
              {camera.total} available
@@ -851,7 +761,7 @@ Action avec payload : choisir la quantité de téléphones
 +              className="input"
 +              type="number"
 +              min="1"
-+              max={phone.total}
++              max={camera.total}
 +              defaultValue={1}
 +              disabled
 +            />
@@ -860,7 +770,7 @@ Action avec payload : choisir la quantité de téléphones
              className="button"
 ```
 
-### `src/store/actions.ts` (modifié, +3 −1)
+### `src/store/actions.js` (modifié, +3 −1)
 
 ```diff
 @@ -4,9 +4,11 @@
@@ -878,7 +788,7 @@ Action avec payload : choisir la quantité de téléphones
  
 ```
 
-### `src/store/reducers.ts` (modifié, +1 −1)
+### `src/store/reducers.js` (modifié, +1 −1)
 
 ```diff
 @@ -21,7 +21,7 @@
@@ -892,7 +802,7 @@ Action avec payload : choisir la quantité de téléphones
        return state;
 ```
 
-### `src/store/store.ts` (modifié, +6 −9)
+### `src/store/store.js` (modifié, +6 −9)
 
 ```diff
 @@ -1,4 +1,4 @@
@@ -990,10 +900,10 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
 +}
 ```
 
-### `src/pages/Home.tsx` (modifié, +103 −70)
+### `src/pages/Home.jsx` (modifié, +103 −70)
 
 ```diff
-@@ -7,7 +7,8 @@
+@@ -4,7 +4,8 @@
  
  import { buyPhone, buyTV, buyCamera } from "../store/actions";
  import { useSelector, useDispatch } from "react-redux";
@@ -1003,15 +913,15 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
  
  function Home() {
    const [quantity, setQuantity] = useState(1);
-@@ -17,87 +18,119 @@
-   const phone = useSelector((state: any) => state.phone);
-   const camera = useSelector((state: any) => state.camera);
-   const tv = useSelector((state: any) => state.tv);
-+  const comments = useSelector((state: any) => state.comments);
+@@ -14,87 +15,119 @@
+   const phone = useSelector((state) => state.phone);
+   const camera = useSelector((state) => state.camera);
+   const tv = useSelector((state) => state.tv);
++  const comments = useSelector((state) => state.comments);
  
    const handleChange = (e) => {
      const value = e.target.value;
-     setQuantity(value);
+     setQuantity(Number(value)); // un input donne toujours du texte : on le met en nombre
    };
  
 +  useEffect(() => {
@@ -1072,7 +982,7 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
 +                className="input"
 +                type="number"
 +                min="1"
-+                max={phone.total}
++                max={tv.total}
 +                defaultValue={1}
 +                disabled
 +              />
@@ -1104,7 +1014,7 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
 +                className="input"
 +                type="number"
 +                min="1"
-+                max={phone.total}
++                max={camera.total}
 +                defaultValue={1}
 +                disabled
 +              />
@@ -1129,7 +1039,7 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
 -              className="input"
 -              type="number"
 -              min="1"
--              max={phone.total}
+-              max={tv.total}
 -              defaultValue={1}
 -              disabled
 -            />
@@ -1153,7 +1063,7 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
 -              className="input"
 -              type="number"
 -              min="1"
--              max={phone.total}
+-              max={camera.total}
 -              defaultValue={1}
 -              disabled
 -            />
@@ -1176,7 +1086,7 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
 +              {comments.comments.length > 0 ? (
 +                comments.comments
 +                  .slice(0, 10)
-+                  .map((comment: any, index: number) => (
++                  .map((comment, index) => (
 +                    <div key={comment.id || index} className="comment">
 +                      <div className="comment-name">
 +                        {comment.name || comment.email}
@@ -1194,7 +1104,7 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
      </div>
 ```
 
-### `src/store/comments/actions.ts` (ajouté, +41 −0)
+### `src/store/comments/actions.js` (ajouté, +41 −0)
 
 ```diff
 @@ -1,0 +1,41 @@
@@ -1241,7 +1151,7 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
 +};
 ```
 
-### `src/store/comments/reducers.ts` (ajouté, +40 −0)
+### `src/store/comments/reducers.js` (ajouté, +40 −0)
 
 ```diff
 @@ -1,0 +1,40 @@
@@ -1287,7 +1197,7 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
 +export default commentReducer;
 ```
 
-### `src/store/store.ts` (modifié, +16 −2)
+### `src/store/store.js` (modifié, +16 −2)
 
 ```diff
 @@ -1,14 +1,28 @@
@@ -1323,14 +1233,14 @@ Middleware : redux-thunk + axios pour charger les commentaires (loading / succes
  store.subscribe(() => {
 ```
 
-## Étape 5 → 6 : `etape-5-middleware` → `etape-6-template`
+## Étape 5 → 6 : `etape-5-middleware` → `etape-6-premier-slice`
 
 Redux Toolkit : configureStore, un premier createSlice (phone)
 
-### `package.json` (modifié, +3 −3)
+### `package.json` (modifié, +2 −4)
 
 ```diff
-@@ -10,12 +10,12 @@
+@@ -10,12 +10,10 @@
      "preview": "vite preview"
    },
    "dependencies": {
@@ -1338,11 +1248,10 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 +    "@reduxjs/toolkit": "^2.11.2",
      "react": "^19.2.0",
      "react-dom": "^19.2.0",
-     "react-redux": "^9.2.0",
+-    "react-redux": "^9.2.0",
 -    "redux": "^5.0.1",
 -    "redux-thunk": "^3.1.0"
-+    "react-router-dom": "^7.11.0",
-+    "redux": "^5.0.1"
++    "react-redux": "^9.2.0"
    },
    "devDependencies": {
      "@eslint/js": "^9.39.1",
@@ -1396,28 +1305,29 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 
 ```diff
 @@ -2,7 +2,6 @@
- import Home from "./pages/Home.tsx";
+ import Home from "./pages/Home.jsx";
  import { Provider } from "react-redux";
- import { store } from "./store/store.ts";
+ import { store } from "./store/store.js";
 -
  function App() {
    // Provider donne le store à tous les composants (useSelector, useDispatch)
    return (
 ```
 
-### `src/pages/Home.tsx` (modifié, +24 −116)
+### `src/pages/Home.jsx` (modifié, +25 −116)
 
 ```diff
-@@ -5,132 +5,40 @@
- // @ts-ignore
+@@ -2,132 +2,41 @@
+ import tvImg from "../assets/tv.png";
  import cameraImg from "../assets/camera.png";
  
 -import { buyPhone, buyTV, buyCamera } from "../store/actions";
 -import { useSelector, useDispatch } from "react-redux";
 -import { useEffect, useState } from "react";
 -import { apiCall } from "../store/comments/actions";
-+// Attention : encore les anciennes actions de actions.ts, pas celles du slice (corrigé à l'étape 7)
-+import { buyPhone, buyTv, buyCamera } from "../store/actions";
++// buyPhone vient du slice ; buyTv et buyCamera encore des anciennes actions
++import { buyPhone } from "../store/phoneSlice";
++import { buyTv, buyCamera } from "../store/actions";
 +import { useDispatch, useSelector } from "react-redux";
  
  function Home() {
@@ -1425,15 +1335,15 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 -
    // useDispatch envoie les actions ; useSelector lit le state (re-render quand il change)
    const dispatch = useDispatch();
-   const phone = useSelector((state: any) => state.phone);
-+  const tv = useSelector((state: any) => state.tv);
-   const camera = useSelector((state: any) => state.camera);
--  const tv = useSelector((state: any) => state.tv);
--  const comments = useSelector((state: any) => state.comments);
+   const phone = useSelector((state) => state.phone);
++  const tv = useSelector((state) => state.tv);
+   const camera = useSelector((state) => state.camera);
+-  const tv = useSelector((state) => state.tv);
+-  const comments = useSelector((state) => state.comments);
 -
 -  const handleChange = (e) => {
 -    const value = e.target.value;
--    setQuantity(value);
+-    setQuantity(Number(value)); // un input donne toujours du texte : on le met en nombre
 -  };
 -
 -  useEffect(() => {
@@ -1480,7 +1390,7 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 -                className="input"
 -                type="number"
 -                min="1"
--                max={phone.total}
+-                max={tv.total}
 -                defaultValue={1}
 -                disabled
 -              />
@@ -1504,7 +1414,7 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 -                className="input"
 -                type="number"
 -                min="1"
--                max={phone.total}
+-                max={camera.total}
 -                defaultValue={1}
 -                disabled
 -              />
@@ -1536,7 +1446,7 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 -              {comments.comments.length > 0 ? (
 -                comments.comments
 -                  .slice(0, 10)
--                  .map((comment: any, index: number) => (
+-                  .map((comment, index) => (
 -                    <div key={comment.id || index} className="comment">
 -                      <div className="comment-name">
 -                        {comment.name || comment.email}
@@ -1567,25 +1477,26 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
      </div>
 ```
 
-### `src/store/actions.ts` (modifié, +6 −6)
+### `src/store/actions.js` (modifié, +5 −15)
 
 ```diff
-@@ -1,8 +1,4 @@
+@@ -1,22 +1,12 @@
 -// Action Types
--
- const BUY_PHONE = "BUY_PHONE";
++const BUY_TV = "BUY_TV";
+ 
+-const BUY_PHONE = "BUY_PHONE";
 -const BUY_TV = "BUY_TV";
 -const BUY_CAMERA = "BUY_CAMERA";
- 
- const buyPhone = (quantity) => {
-   return {
-@@ -12,11 +8,15 @@
-   };
- };
- 
+-
+-const buyPhone = (quantity) => {
+-  return {
+-    type: BUY_PHONE,
+-    // payload : la donnée envoyée avec l'action (ici la quantité choisie)
+-    payload: quantity,
+-  };
+-};
+-
 -const buyTV = () => {
-+const BUY_TV = "BUY_TV";
-+
 +const buyTv = () => {
    return {
      type: BUY_TV,
@@ -1596,15 +1507,15 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
  
  const buyCamera = () => {
    return {
-@@ -24,4 +24,4 @@
+@@ -24,4 +14,4 @@
    };
  };
  
 -export { BUY_PHONE, BUY_TV, BUY_CAMERA, buyPhone, buyTV, buyCamera };
-+export { BUY_PHONE, buyPhone, BUY_TV, buyTv, BUY_CAMERA, buyCamera };
++export { BUY_TV, buyTv, BUY_CAMERA, buyCamera };
 ```
 
-### `src/store/comments/actions.ts` (supprimé, +0 −41)
+### `src/store/comments/actions.js` (supprimé, +0 −41)
 
 ```diff
 @@ -1,41 +1,0 @@
@@ -1651,7 +1562,7 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 -};
 ```
 
-### `src/store/comments/reducers.ts` (supprimé, +0 −40)
+### `src/store/comments/reducers.js` (supprimé, +0 −40)
 
 ```diff
 @@ -1,40 +1,0 @@
@@ -1697,7 +1608,7 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 -export default commentReducer;
 ```
 
-### `src/store/phoneSlice.ts` (ajouté, +17 −0)
+### `src/store/phoneSlice.js` (ajouté, +17 −0)
 
 ```diff
 @@ -1,0 +1,17 @@
@@ -1706,7 +1617,7 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 +const phoneSlice = createSlice({
 +  name: "phone",
 +  initialState: {
-+    total: 10,
++    total: 5,
 +  },
 +  // Chaque reducer devient une action (phoneSlice.actions) ; Immer permet de « modifier » state directement
 +  reducers: {
@@ -1720,76 +1631,75 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 +export const phoneReducer = phoneSlice.reducer;
 ```
 
-### `src/store/reducers.ts` (modifié, +14 −21)
+### `src/store/reducers.js` (modifié, +10 −31)
 
 ```diff
-@@ -1,22 +1,10 @@
+@@ -1,35 +1,11 @@
 -// reducer
-+import { BUY_PHONE, BUY_TV, BUY_CAMERA } from "./actions";
++// phone est passé dans phoneSlice : il reste tv et camera (passés en slice à l'étape 7)
++import { BUY_TV, BUY_CAMERA } from "./actions";
  
 -import { BUY_CAMERA, BUY_PHONE, BUY_TV } from "./actions";
 -
 -// initial state
 -const initialStatePhone = {
 -  total: 5,
-+const phoneInitialState = {
-+  total: 10,
- };
- 
--const initialStateTV = {
--  total: 3,
 -};
 -
+-const initialStateTV = {
++const tvInitialState = {
+   total: 3,
+ };
+ 
 -const initialStateCamera = {
 -  total: 8,
 -};
 -
 -// (previousState, action) => newState
 -const phoneReducer = (state = initialStatePhone, action) => {
-+const phoneReducer = (state = phoneInitialState, action) => {
-   switch (action.type) {
-     case BUY_PHONE:
-       return {
-@@ -27,9 +15,11 @@
-       return state;
-   }
- };
-+const tvInitialState = {
-+  total: 8,
-+};
- 
+-  switch (action.type) {
+-    case BUY_PHONE:
+-      return {
+-        ...state,
+-        total: state.total - action.payload,
+-      };
+-    default:
+-      return state;
+-  }
+-};
+-
 -// (previousState, action) => newState
 -const tvsReducer = (state = initialStateTV, action) => {
 +const tvReducer = (state = tvInitialState, action) => {
    switch (action.type) {
      case BUY_TV:
        return {
-@@ -41,8 +31,11 @@
+@@ -41,8 +17,11 @@
    }
  };
  
 -// (previousState, action) => newState
 -const camerasReducer = (state = initialStateCamera, action) => {
 +const cameraInitialState = {
-+  total: 5,
++  total: 8,
 +};
 +
 +const cameraReducer = (state = cameraInitialState, action) => {
    switch (action.type) {
      case BUY_CAMERA:
        return {
-@@ -54,4 +47,4 @@
+@@ -54,4 +33,4 @@
    }
  };
  
 -export { phoneReducer, tvsReducer, camerasReducer };
-+export { phoneReducer, tvReducer, cameraReducer };
++export { tvReducer, cameraReducer };
 ```
 
-### `src/store/store.ts` (modifié, +8 −30)
+### `src/store/store.js` (modifié, +11 −30)
 
 ```diff
-@@ -1,32 +1,10 @@
+@@ -1,32 +1,13 @@
 -import { applyMiddleware, combineReducers, createStore, compose } from "redux";
 -import { camerasReducer, phoneReducer, tvsReducer } from "./reducers";
 -import commentReducer from "./comments/reducers";
@@ -1797,6 +1707,7 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 -import { thunk } from "redux-thunk";
 +import { configureStore } from "@reduxjs/toolkit";
 +import { phoneReducer } from "./phoneSlice";
++import { tvReducer, cameraReducer } from "./reducers";
  
 -// combineReducers : chaque reducer gère sa part du state (state.phone, state.tv, state.camera)
 -const rootReducer = combineReducers({
@@ -1804,10 +1715,12 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 -  tv: tvsReducer,
 -  camera: camerasReducer,
 -  comments: commentReducer,
-+// Attention : seul phone est déclaré ; Home lit aussi state.tv et state.camera (ajoutés à l'étape 7)
++// configureStore remplace createStore + combineReducers : on peut mélanger un slice et les anciens reducers
 +export const store = configureStore({
 +  reducer: {
 +    phone: phoneReducer,
++    tv: tvReducer,
++    camera: cameraReducer,
 +  },
 +  devTools: true,
  });
@@ -1832,22 +1745,9 @@ Redux Toolkit : configureStore, un premier createSlice (phone)
 -export { store };
 ```
 
-## Étape 6 → 7 : `etape-6-template` → `etape-7-redux-toolkit`
+## Étape 6 → 7 : `etape-6-premier-slice` → `etape-7-redux-toolkit`
 
 Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi)
-
-### `package.json` (modifié, +0 −1)
-
-```diff
-@@ -14,7 +14,6 @@
-     "react": "^19.2.0",
-     "react-dom": "^19.2.0",
-     "react-redux": "^9.2.0",
--    "react-router-dom": "^7.11.0",
-     "redux": "^5.0.1"
-   },
-   "devDependencies": {
-```
 
 ### `src/App.css` (modifié, +0 −13)
 
@@ -1875,16 +1775,16 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
 
 ```diff
 @@ -2,6 +2,7 @@
- import Home from "./pages/Home.tsx";
+ import Home from "./pages/Home.jsx";
  import { Provider } from "react-redux";
- import { store } from "./store/store.ts";
+ import { store } from "./store/store.js";
 +
  function App() {
    // Provider donne le store à tous les composants (useSelector, useDispatch)
    return (
 ```
 
-### `src/apis/index.ts` (ajouté, +70 −0)
+### `src/apis/index.js` (ajouté, +70 −0)
 
 ```diff
 @@ -1,0 +1,70 @@
@@ -1960,17 +1860,17 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
 +export const { useGetCommentsQuery } = commentsApi;
 ```
 
-### `src/pages/Home.tsx` (modifié, +39 −11)
+### `src/pages/Home.jsx` (modifié, +38 −11)
 
 ```diff
-@@ -5,38 +5,66 @@
- // @ts-ignore
+@@ -2,39 +2,66 @@
+ import tvImg from "../assets/tv.png";
  import cameraImg from "../assets/camera.png";
  
--// Attention : encore les anciennes actions de actions.ts, pas celles du slice (corrigé à l'étape 7)
--import { buyPhone, buyTv, buyCamera } from "../store/actions";
+-// buyPhone vient du slice ; buyTv et buyCamera encore des anciennes actions
+ import { buyPhone } from "../store/phoneSlice";
+-import { buyTv, buyCamera } from "../store/actions";
 -import { useDispatch, useSelector } from "react-redux";
-+import { buyPhone } from "../store/phoneSlice";
 +import { buyTv } from "../store/tvSlice";
 +import { buyCamera } from "../store/cameraSlice";
 +
@@ -1980,10 +1880,10 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
  function Home() {
    // useDispatch envoie les actions ; useSelector lit le state (re-render quand il change)
    const dispatch = useDispatch();
-   const phone = useSelector((state: any) => state.phone);
-+  const camera = useSelector((state: any) => state.camera);
-   const tv = useSelector((state: any) => state.tv);
--  const camera = useSelector((state: any) => state.camera);
+   const phone = useSelector((state) => state.phone);
++  const camera = useSelector((state) => state.camera);
+   const tv = useSelector((state) => state.tv);
+-  const camera = useSelector((state) => state.camera);
 +  // Hook généré par RTK Query : il fait la requête et donne data / isLoading / error
 +  const { data, isLoading, error } = useGetCommentsQuery(1);
 +  console.log({ data, isLoading, error });
@@ -2043,20 +1943,10 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
          </div>
 ```
 
-### `src/store/actions.ts` (supprimé, +0 −27)
+### `src/store/actions.js` (supprimé, +0 −17)
 
 ```diff
-@@ -1,27 +1,0 @@
--const BUY_PHONE = "BUY_PHONE";
--
--const buyPhone = (quantity) => {
--  return {
--    type: BUY_PHONE,
--    // payload : la donnée envoyée avec l'action (ici la quantité choisie)
--    payload: quantity,
--  };
--};
--
+@@ -1,17 +1,0 @@
 -const BUY_TV = "BUY_TV";
 -
 -const buyTv = () => {
@@ -2073,10 +1963,10 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
 -  };
 -};
 -
--export { BUY_PHONE, buyPhone, BUY_TV, buyTv, BUY_CAMERA, buyCamera };
+-export { BUY_TV, buyTv, BUY_CAMERA, buyCamera };
 ```
 
-### `src/store/cameraSlice.ts` (ajouté, +17 −0)
+### `src/store/cameraSlice.js` (ajouté, +17 −0)
 
 ```diff
 @@ -1,0 +1,17 @@
@@ -2099,13 +1989,12 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
 +export default cameraSlice.reducer;
 ```
 
-### `src/store/phoneSlice.ts` (modifié, +24 −7)
+### `src/store/phoneSlice.js` (modifié, +23 −6)
 
 ```diff
 @@ -1,17 +1,34 @@
--import { createSlice } from "@reduxjs/toolkit";
 +// features/stock/phoneSlice.ts
-+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+ import { createSlice } from "@reduxjs/toolkit";
 +// import { buyTv, buyTvPromotion } from "./tvSlice";
 +
 +const initialState = { total: 5 };
@@ -2113,7 +2002,7 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
  const phoneSlice = createSlice({
    name: "phone",
 -  initialState: {
--    total: 10,
+-    total: 5,
 -  },
 +  initialState,
    // Chaque reducer devient une action (phoneSlice.actions) ; Immer permet de « modifier » state directement
@@ -2133,7 +2022,7 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
 +  },*/
 +  /*
 +    extraReducers: (builder) => {
-+    builder.addCase(buyTvPromotion, (state, action: PayloadAction<string>) => {
++    builder.addCase(buyTvPromotion, (state, action) => {
 +      if (action.payload === "2025XMAS") {
 +        state.total -= 1;
 +      }
@@ -2146,29 +2035,15 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
 +export default phoneSlice.reducer;
 ```
 
-### `src/store/reducers.ts` (supprimé, +0 −50)
+### `src/store/reducers.js` (supprimé, +0 −36)
 
 ```diff
-@@ -1,50 +1,0 @@
--import { BUY_PHONE, BUY_TV, BUY_CAMERA } from "./actions";
+@@ -1,36 +1,0 @@
+-// phone est passé dans phoneSlice : il reste tv et camera (passés en slice à l'étape 7)
+-import { BUY_TV, BUY_CAMERA } from "./actions";
 -
--const phoneInitialState = {
--  total: 10,
--};
--
--const phoneReducer = (state = phoneInitialState, action) => {
--  switch (action.type) {
--    case BUY_PHONE:
--      return {
--        ...state,
--        total: state.total - action.payload,
--      };
--    default:
--      return state;
--  }
--};
 -const tvInitialState = {
--  total: 8,
+-  total: 3,
 -};
 -
 -const tvReducer = (state = tvInitialState, action) => {
@@ -2184,7 +2059,7 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
 -};
 -
 -const cameraInitialState = {
--  total: 5,
+-  total: 8,
 -};
 -
 -const cameraReducer = (state = cameraInitialState, action) => {
@@ -2199,27 +2074,28 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
 -  }
 -};
 -
--export { phoneReducer, tvReducer, cameraReducer };
+-export { tvReducer, cameraReducer };
 ```
 
-### `src/store/store.ts` (modifié, +12 −3)
+### `src/store/store.js` (modifié, +10 −4)
 
 ```diff
-@@ -1,10 +1,19 @@
+@@ -1,13 +1,19 @@
 +// store.ts
  import { configureStore } from "@reduxjs/toolkit";
 -import { phoneReducer } from "./phoneSlice";
+-import { tvReducer, cameraReducer } from "./reducers";
 +import phoneReducer from "./phoneSlice";
 +import tvReducer from "./tvSlice";
 +import cameraReducer from "./cameraSlice";
 +import { commentsApi } from "../apis";
  
--// Attention : seul phone est déclaré ; Home lit aussi state.tv et state.camera (ajoutés à l'étape 7)
+-// configureStore remplace createStore + combineReducers : on peut mélanger un slice et les anciens reducers
  export const store = configureStore({
    reducer: {
      phone: phoneReducer,
-+    tv: tvReducer,
-+    camera: cameraReducer,
+     tv: tvReducer,
+     camera: cameraReducer,
 +    commentsApi: commentsApi.reducer,
    },
 -  devTools: true,
@@ -2230,12 +2106,12 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
  });
 ```
 
-### `src/store/tvSlice.ts` (ajouté, +20 −0)
+### `src/store/tvSlice.js` (ajouté, +20 −0)
 
 ```diff
 @@ -1,0 +1,20 @@
 +// features/stock/tvSlice.ts
-+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
++import { createSlice } from "@reduxjs/toolkit";
 +
 +const initialState = { total: 3 };
 +
@@ -2246,7 +2122,7 @@ Les 3 slices (phone, tv, camera), extraReducers (promo TV), RTK Query (createApi
 +    buyTv(state) {
 +      state.total -= 1;
 +    },
-+    /*buyTvPromotion(state, action: PayloadAction<string>) {
++    /*buyTvPromotion(state, action) {
 +      state.total -= 1;
 +    }/*, */
 +  },

@@ -6,7 +6,7 @@ Pour chaque étape, ce qui change par rapport à l’étape précédente. En ver
 
 Le code de départ, en entier : les fichiers écrits pour la démo et utilisés (atteints par les imports depuis src/main.*) ; les fichiers du gabarit Vite non modifiés sont seulement listés. Ordre de lecture : main → App → composants et pages → le reste.
 
-*Styles fournis (copiés tels quels, pas tapés en live) : `src/styles.css` (257 lignes)*
+*Styles fournis (copiés tels quels, pas tapés en live) : `src/styles.css` (247 lignes)*
 
 *Fichiers générés par Vite, non modifiés (non affichés) : `vite.config.js`, `.gitignore`, `eslint.config.js`, `public/vite.svg`*
 

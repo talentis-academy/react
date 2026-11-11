@@ -14,8 +14,6 @@ Le code de départ, en entier : les fichiers écrits pour la démo et utilisés 
 
 *package.json (gabarit Vite) : dépendances ajoutées : `react-router-dom ^7.11.0`*
 
-*Présents mais pas encore branchés (non affichés) : `src/Auth/requireAuthLoader.ts`, `src/pages/CarDetails.jsx`, `src/pages/Details.jsx`, `src/pages/ErrorPage.jsx`, `src/pages/Exercice.jsx`, `src/pages/Layout.jsx`, `src/pages/Login.jsx`, `src/pages/NotFound.jsx`*
-
 ### `src/main.jsx` (6 lignes)
 
 ```jsx
@@ -27,17 +25,12 @@ createRoot(document.getElementById("root")).render(
 );
 ```
 
-### `src/App.jsx` (29 lignes)
+### `src/App.jsx` (24 lignes)
 
 ```jsx
 import "./App.css";
-import Layout from "./pages/Layout";
 import Home from "./pages/Home";
-import Details from "./pages/Details";
 import Favoris from "./pages/Favoris";
-import NotFound from "./pages/NotFound";
-import ErrorPage from "./pages/ErrorPage";
-import CarDetails from "./pages/CarDetails";
 
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
@@ -61,23 +54,12 @@ function App() {
 export default App;
 ```
 
-### `src/pages/Home.jsx` (39 lignes)
+### `src/pages/Home.jsx` (17 lignes)
 
 ```jsx
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Car from "../components/Car";
 
 function Home() {
-  // useNavigate : changer de page depuis le code (clic sur la Mercedes → /details/3)
-  const navigate = useNavigate();
-  const [crash, setCrash] = useState(false);
-
-  if (crash) {
-    // Erreur pendant le render : attrapée par l'errorElement de la route (étape 5)
-    throw new Error("Crash APP");
-  }
-
   return (
     <div>
       <h1>{"Welcome to the Home Page"}</h1>
@@ -85,19 +67,8 @@ function Home() {
       <div className="container">
         <Car make="BMW" color="blue" />
         <Car make="Toyota" color="red" />
-        <Car
-          make="Mercedes"
-          color="black"
-          onClick={() => navigate("/details/3")}
-        />
+        <Car make="Mercedes" color="black" />
       </div>
-      <button
-        onClick={() => {
-          setCrash(true);
-        }}
-      >
-        Crash APP
-      </button>
     </div>
   );
 }
@@ -141,10 +112,18 @@ export default Car;
 
 La route * : une page NotFound personnalisée, avec un Link vers l’accueil
 
-### `src/App.jsx` (modifié, +5 −0)
+### `src/App.jsx` (modifié, +6 −0)
 
 ```diff
-@@ -20,6 +20,11 @@
+@@ -1,6 +1,7 @@
+ import "./App.css";
+ import Home from "./pages/Home";
+ import Favoris from "./pages/Favoris";
++import NotFound from "./pages/NotFound";
+ 
+ import { createBrowserRouter } from "react-router-dom";
+ import { RouterProvider } from "react-router-dom";
+@@ -15,6 +16,11 @@
      path: "/favoris",
      element: <Favoris />,
    },
@@ -158,7 +137,7 @@ La route * : une page NotFound personnalisée, avec un Link vers l’accueil
  function App() {
 ```
 
-### `src/pages/NotFound.jsx` (utilisé, +14 −0)
+### `src/pages/NotFound.jsx` (ajouté, +14 −0)
 
 ```diff
 @@ -1,0 +1,14 @@
@@ -182,24 +161,31 @@ La route * : une page NotFound personnalisée, avec un Link vers l’accueil
 
 La route dynamique /details/:id : useParams, useSearchParams (?tab=home), useNavigate depuis Home
 
-### `src/App.jsx` (modifié, +5 −0)
+### `src/App.jsx` (modifié, +6 −0)
 
 ```diff
-@@ -17,6 +17,11 @@
-     element: <Home />,
-   },
+@@ -1,5 +1,6 @@
+ import "./App.css";
+ import Home from "./pages/Home";
++import Details from "./pages/Details";
+ import Favoris from "./pages/Favoris";
+ import NotFound from "./pages/NotFound";
+ 
+@@ -11,6 +12,11 @@
    {
+     path: "/",
+     element: <Home />,
++  },
++  {
 +    // :id est un paramètre : Details le lit avec useParams()
 +    path: "/details/:id",
 +    element: <Details />,
-+  },
-+  {
-     path: "/favoris",
-     element: <Favoris />,
    },
+   {
+     path: "/favoris",
 ```
 
-### `src/pages/Details.jsx` (utilisé, +17 −0)
+### `src/pages/Details.jsx` (ajouté, +17 −0)
 
 ```diff
 @@ -1,0 +1,17 @@
@@ -222,14 +208,49 @@ La route dynamique /details/:id : useParams, useSearchParams (?tab=home), useNav
 +export default Details;
 ```
 
+### `src/pages/Home.jsx` (modifié, +9 −1)
+
+```diff
+@@ -1,6 +1,10 @@
++import { useNavigate } from "react-router-dom";
+ import Car from "../components/Car";
+ 
+ function Home() {
++  // useNavigate : changer de page depuis le code (clic sur la Mercedes → /details/3)
++  const navigate = useNavigate();
++
+   return (
+     <div>
+       <h1>{"Welcome to the Home Page"}</h1>
+@@ -8,7 +12,11 @@
+       <div className="container">
+         <Car make="BMW" color="blue" />
+         <Car make="Toyota" color="red" />
+-        <Car make="Mercedes" color="black" />
++        <Car
++          make="Mercedes"
++          color="black"
++          onClick={() => navigate("/details/3")}
++        />
+       </div>
+     </div>
+   );
+```
+
 ## Étape 3 → 4 : `etape-3-route-dynamique` → `etape-4-routes-imbriquees`
 
 Routes imbriquées : Layout (header, footer) + <Outlet />, index: true
 
-### `src/App.jsx` (modifié, +9 −12)
+### `src/App.jsx` (modifié, +10 −12)
 
 ```diff
-@@ -11,19 +11,16 @@
+@@ -1,4 +1,5 @@
+ import "./App.css";
++import Layout from "./pages/Layout";
+ import Home from "./pages/Home";
+ import Details from "./pages/Details";
+ import Favoris from "./pages/Favoris";
+@@ -8,19 +9,16 @@
  import { RouterProvider } from "react-router-dom";
  
  // createBrowserRouter : la liste des routes (une URL → un composant)
@@ -257,7 +278,7 @@ Routes imbriquées : Layout (header, footer) + <Outlet />, index: true
    },
    {
      // "*" : toutes les URL inconnues tombent sur NotFound
-@@ -33,7 +30,7 @@
+@@ -30,7 +28,7 @@
  ]);
  
  function App() {
@@ -268,10 +289,10 @@ Routes imbriquées : Layout (header, footer) + <Outlet />, index: true
  export default App;
 ```
 
-### `src/pages/Layout.jsx` (utilisé, +39 −0)
+### `src/pages/Layout.jsx` (ajouté, +38 −0)
 
 ```diff
-@@ -1,0 +1,39 @@
+@@ -1,0 +1,38 @@
 +import { NavLink, Outlet } from "react-router-dom";
 +
 +export default function Layout() {
@@ -287,7 +308,6 @@ Routes imbriquées : Layout (header, footer) + <Outlet />, index: true
 +    >
 +      <header style={{ display: "flex", gap: 12, justifyContent: "center" }}>
 +        <NavLink to="/">Home</NavLink>
-+        <NavLink to="/favoris">Favoris</NavLink>
 +        <NavLink
 +          to="/favoris"
 +          style={({ isActive }) => ({
@@ -295,7 +315,7 @@ Routes imbriquées : Layout (header, footer) + <Outlet />, index: true
 +            fontWeight: isActive ? "bold" : "normal",
 +          })}
 +        >
-+          favoris
++          Favoris
 +        </NavLink>
 +      </header>
 +
@@ -317,10 +337,18 @@ Routes imbriquées : Layout (header, footer) + <Outlet />, index: true
 
 errorElement: <ErrorPage /> : le bouton « Crash APP » de Home affiche la page d’erreur
 
-### `src/App.jsx` (modifié, +2 −0)
+### `src/App.jsx` (modifié, +3 −0)
 
 ```diff
-@@ -16,6 +16,8 @@
+@@ -4,6 +4,7 @@
+ import Details from "./pages/Details";
+ import Favoris from "./pages/Favoris";
+ import NotFound from "./pages/NotFound";
++import ErrorPage from "./pages/ErrorPage";
+ 
+ import { createBrowserRouter } from "react-router-dom";
+ import { RouterProvider } from "react-router-dom";
+@@ -14,6 +15,8 @@
      path: "/",
      // Layout affiche header et footer ; la page enfant s'affiche dans son <Outlet />
      element: <Layout />, // parent
@@ -331,7 +359,7 @@ errorElement: <ErrorPage /> : le bouton « Crash APP » de Home affiche la page 
        { path: "details/:id", element: <Details /> }, // "/details/:id"
 ```
 
-### `src/pages/ErrorPage.jsx` (utilisé, +12 −0)
+### `src/pages/ErrorPage.jsx` (ajouté, +12 −0)
 
 ```diff
 @@ -1,0 +1,12 @@
@@ -349,6 +377,42 @@ errorElement: <ErrorPage /> : le bouton « Crash APP » de Home affiche la page 
 +export default ErrorPage;
 ```
 
+### `src/pages/Home.jsx` (modifié, +14 −0)
+
+```diff
+@@ -1,9 +1,16 @@
++import { useState } from "react";
+ import { useNavigate } from "react-router-dom";
+ import Car from "../components/Car";
+ 
+ function Home() {
+   // useNavigate : changer de page depuis le code (clic sur la Mercedes → /details/3)
+   const navigate = useNavigate();
++  const [crash, setCrash] = useState(false);
++
++  if (crash) {
++    // Erreur pendant le render : attrapée par l'errorElement de la route (étape 5)
++    throw new Error("Crash APP");
++  }
+ 
+   return (
+     <div>
+@@ -18,6 +25,13 @@
+           onClick={() => navigate("/details/3")}
+         />
+       </div>
++      <button
++        onClick={() => {
++          setCrash(true);
++        }}
++      >
++        Crash APP
++      </button>
+     </div>
+   );
+ }
+```
+
 ## Étape 5 → 6 : `etape-5-error-element` → `etape-6-lazy-loading`
 
 Favoris en lazy : après npm run build, un fichier Favoris-xxxx.js séparé dans dist/assets
@@ -363,8 +427,8 @@ Favoris en lazy : après npm run build, un fichier Favoris-xxxx.js séparé dans
 -import Favoris from "./pages/Favoris";
  import NotFound from "./pages/NotFound";
  import ErrorPage from "./pages/ErrorPage";
- import CarDetails from "./pages/CarDetails";
-@@ -21,7 +20,14 @@
+ 
+@@ -20,7 +19,14 @@
      children: [
        { index: true, element: <Home /> }, // "/"
        { path: "details/:id", element: <Details /> }, // "/details/:id"

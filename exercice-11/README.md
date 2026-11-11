@@ -2,7 +2,7 @@
 
 # Page Comments avec un custom hook
 
-*Factoriser le fetch avec un custom hook : useFetchApi.*
+*Créer le custom hook useFetchApi et l’utiliser dans la page Comments.*
 
 | | |
 |---|---|
@@ -13,21 +13,20 @@
 
 ## Objectif pédagogique
 
-Comprendre l’intérêt des custom hooks, éviter la duplication de code, et appliquer une logique de fetch réutilisable, propre et maintenable.
+Comprendre l’intérêt des custom hooks : réutiliser la même logique de fetch, propre et maintenable, sans copier-coller.
 
-> **Remarque :** UI non obligatoire : l’accent est mis sur la logique et l’architecture, pas sur le design.
+> **Remarque :** Le style est déjà prêt dans le template (App.css) : on se concentre sur le hook.
 
 ## Contexte
 
-Dans le projet fait ensemble, le composant `Users` récupère ses données avec la logique de fetch : `isLoading`, `isError` et les données. On va réutiliser cette même logique pour créer une nouvelle page `Comments`, sans copier-coller.
+Le dossier `template/` contient une page `Comments` qui affiche de fausses données. Comme pour la page Users vue ensemble, on va charger les vrais commentaires depuis l’API, mais avec un custom hook : `useFetchApi(url)`.
 
 ## Étapes
 
-1. Créer un custom hook `useFetchApi(url)` dans `src/hooks/useFetchApi` qui centralise la logique de fetch : gestion de `isLoading`, gestion de `isError`, récupération des données (`data`)
-2. Le hook appelle l’API dans un `useEffect` et retourne `{ data, isLoading, isError }`
-3. Créer une page `Comments` qui utilise ce hook pour consommer l’API des commentaires
-4. Afficher **Loading ...** pendant le chargement, puis les commentaires (id, name, email)
-5. Bonus : utiliser le même hook dans `Users`
+1. Créer le custom hook `useFetchApi(url)` dans `src/hooks/useFetchApi.js` : il fait le fetch dans un `useEffect` et gère `isLoading`, `isError` et les données (`data`)
+2. Le hook retourne `{ data, isLoading, isError }`
+3. Dans `src/components/Comments.jsx`, remplacer les fausses données par l’appel au hook, avec l’API des commentaires
+4. Afficher **Loading ...** pendant le chargement et un message si erreur (les classes CSS sont prêtes : `loading`, `error`)
 
 **`API`**
 
@@ -58,7 +57,7 @@ https://jsonplaceholder.typicode.com/comments?postId=1
 ## Résultat attendu
 
 - [ ] Le hook `useFetchApi` existe dans `src/hooks/`
-- [ ] La page Comments n’a plus de `useState` ni de `useEffect` pour le fetch
-- [ ] Loading ... puis la liste des commentaires s’affichent
+- [ ] La page Comments n’a pas de `useState` ni de `useEffect` pour le fetch
+- [ ] Loading ... puis les vrais commentaires s’affichent
 
 Bon courage !

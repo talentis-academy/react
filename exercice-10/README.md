@@ -19,7 +19,7 @@ Manipuler `useState`, `useEffect`, `map()`, l’affichage conditionnel et la mis
 
 ## Point de départ
 
-On part de la Todo App faite ensemble : elle charge 10 todos depuis l’API, sans loading et sans filtre.
+On part de la Todo App faite ensemble (le dossier `template/`) : elle charge 10 todos depuis l’API, sans loading et sans filtre.
 
 **`API`**
 
