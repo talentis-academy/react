@@ -15,7 +15,7 @@ La même **Card Car** de la maquette Figma (Tesla Model S, Rouge, Available, $79
 - [`GUIDE-tailwind.md`](GUIDE-tailwind.md) (ou `GUIDE-tailwind.pdf`) : installer, le principe, personnaliser (`@theme`, `@apply`).
 - [`GUIDE-chakra.md`](GUIDE-chakra.md) (ou `GUIDE-chakra.pdf`) : installer, le Provider, les props de style, les tokens.
 
-Tout le code : [`CHANGEMENTS.md`](CHANGEMENTS.md) (ou `CHANGEMENTS.pdf`).
+Le code de la Card Car (codée en live) : [`CHANGEMENTS.md`](CHANGEMENTS.md) (ou `CHANGEMENTS.pdf`). Tailwind et Chakra : les deux guides.
 
 ## Lancer un projet
 
