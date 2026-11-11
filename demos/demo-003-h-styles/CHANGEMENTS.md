@@ -34,34 +34,35 @@ function App() {
 export default App;
 ```
 
-### `carte-css/src/App.css` (22 lignes)
+### `carte-css/src/App.css` (23 lignes)
 
 ```css
-/* ========================================
-   POLICES ET RESET GLOBAL
-   ======================================== */
-
-/* Import de la police Google Fonts "Inter" avec différentes épaisseurs */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
-/* Reset global pour tous les éléments */
 * {
-  box-sizing: border-box; /* Inclut padding et border dans la largeur/hauteur totale */
-  margin: 0; /* Supprime toutes les marges par défaut */
-  padding: 0; /* Supprime tous les paddings par défaut */
+  box-sizing: border-box;
+  margin: 0;
 }
 
-/* ========================================
-   STYLES GÉNÉRAUX DE LA PAGE
-   ======================================== */
-
 body {
-  font-family: "Inter", sans-serif; /* Applique la police Inter à tout le texte */
-  -webkit-font-smoothing: antialiased; /* Rend le texte plus lisse sur les écrans */
+  font-family: "Inter", sans-serif;
+  background-color: #111827; /* fond sombre */
+  color: #f9fafb;
+}
+
+/* La page : les cartes au centre */
+#root {
+  min-height: 100vh;
+  padding: 32px;
+  display: flex;
+  flex-wrap: wrap; /* les cartes passent à la ligne si l'écran est trop petit */
+  align-items: center;
+  justify-content: center;
+  gap: 32px; /* l'espace entre les cartes */
 }
 ```
 
-### `carte-css/src/components/Home.jsx` (40 lignes)
+### `carte-css/src/components/Home.jsx` (18 lignes)
 
 ```jsx
 import "./styles.css";
@@ -69,180 +70,90 @@ import "./styles.css";
 // La Card Car de la maquette Figma, en CSS (on la code en live, maquette ouverte)
 export default function Home() {
   return (
-    <main className="page">
-      <div className="container">
-        <header className="header">
-          <h1 className="header-title">CSS Design System</h1>
-          <h2 className="header-subtitle">La carte catalogue</h2>
-        </header>
-
-        {/* style={{ }} : du style en ligne, c'est un objet JS (propriétés en camelCase : fontSize) */}
-        <h3
-          style={{
-            fontSize: "24px",
-            fontWeight: "600",
-            color: "#ffffff",
-            marginBottom: "24px",
-            textAlign: "center",
-          }}
-        >
-          Carte Catalogue
-        </h3>
-
-        {/* className : les classes du fichier styles.css */}
-        <div className="card" style={{ maxWidth: "400px", margin: "0 auto" }}>
-          <h3 className="car-name">Tesla Model S</h3>
-          <div className="color">
-            <span className="circle" style={{ backgroundColor: "#dc2626" }}></span>
-            <span>Rouge</span>
-          </div>
-          <span className="badge available">Available</span>
-          <p className="price">$79,990</p>
-          <button className="btn">View Details</button>
-        </div>
+    <div className="card">
+      <h3 className="car-name">Tesla Model S</h3>
+      <div className="color">
+        {/* style={{ }} : du style en ligne (un objet JS) ; ici la couleur de la voiture */}
+        <span className="circle" style={{ backgroundColor: "#dc2626" }}></span>
+        <span>Rouge</span>
       </div>
-    </main>
+      <span className="badge">Available</span>
+      <p className="price">$79,990</p>
+      <button className="btn">View Details</button>
+    </div>
   );
 }
 ```
 
-### `carte-css/src/components/styles.css` (135 lignes)
+### `carte-css/src/components/styles.css` (67 lignes)
 
 ```css
-.page {
-  background-color: #111827; /* Couleur de fond gris très foncé */
-  color: #f9fafb; /* Couleur du texte blanc cassé */
-  min-height: 100vh; /* Hauteur minimale = 100% de la hauteur de l'écran */
-  display: flex; /* Active le mode flexbox */
-  align-items: center; /* Centre verticalement le contenu */
-  justify-content: center; /* Centre horizontalement le contenu */
-  padding: 32px 16px; /* Espace intérieur: 32px en haut/bas, 16px à gauche/droite */
-}
-
-.container {
-  max-width: 1280px; /* Largeur maximale du conteneur */
-  width: 100%; /* Prend 100% de la largeur disponible jusqu'au max-width */
-}
-
-/* ========================================
-   HEADER
-   ======================================== */
-
-.header {
-  text-align: center; /* Centre le texte horizontalement */
-  margin-bottom: 48px; /* Espace en bas de 48px */
-  padding: 32px 0; /* Espace intérieur de 32px en haut et en bas */
-}
-
-.header-title {
-  font-size: 48px; /* Taille de texte de 48 pixels */
-  font-weight: 700; /* Épaisseur du texte: gras (700) */
-  color: #ffffff; /* Couleur du texte: blanc pur */
-  margin-bottom: 16px; /* Espace en bas de 16px */
-  line-height: 1.2; /* Hauteur de ligne: 1.2 fois la taille du texte */
-}
-
-.header-subtitle {
-  font-size: 24px; /* Taille de texte de 24 pixels */
-  font-weight: 600; /* Épaisseur du texte: semi-gras (600) */
-  color: #9ca3af; /* Couleur du texte: gris moyen */
-}
-
-/* ========================================
-   CARTES GÉNÉRIQUES
-   ======================================== */
-
+/* La carte */
 .card {
-  background-color: #1f2937; /* Couleur de fond gris foncé */
-  border-radius: 12px; /* Coins arrondis de 12px */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre portée: décalage 4px vers le bas, flou de 6px */
-  padding: 24px; /* Espace intérieur de 24px sur tous les côtés */
-  display: flex; /* Active le mode flexbox */
-  flex-direction: column; /* Dispose les éléments verticalement (en colonne) */
-  gap: 16px; /* Espace de 16px entre chaque élément enfant */
-  transition: box-shadow 0.3s ease; /* Animation fluide de l'ombre sur 0.3 secondes */
+  width: 360px;
+  background-color: #1f2937;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.card:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Ombre plus grande au survol de la souris */
-}
-
-/* ========================================
-   ÉLÉMENTS DE CARTE CATALOGUE
-   ======================================== */
-
+/* Le nom de la voiture */
 .car-name {
-  font-size: 18px; /* Taille de texte de 18 pixels */
-  font-weight: 700; /* Épaisseur du texte: gras (700) */
-  color: #ffffff; /* Couleur du texte: blanc pur */
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
 }
 
+/* La couleur : la pastille + le texte */
 .color {
-  display: flex; /* Active le mode flexbox */
-  align-items: center; /* Aligne verticalement les éléments au centre */
-  gap: 8px; /* Espace de 8px entre le cercle et le texte */
-  font-size: 14px; /* Taille de texte de 14 pixels */
-  color: #9ca3af; /* Couleur du texte: gris moyen */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #9ca3af;
 }
 
 .circle {
-  width: 16px; /* Largeur du cercle: 16 pixels */
-  height: 16px; /* Hauteur du cercle: 16 pixels */
-  border-radius: 50%; /* Rend l'élément circulaire (50% = cercle parfait) */
-  border: 2px solid #6b7280; /* Bordure de 2px, couleur gris */
-  /* flex-shrink: 0; /* Empêche le cercle de rétrécir si l'espace est limité */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%; /* un cercle */
+  border: 2px solid #6b7280;
 }
 
+/* Le badge Available */
 .badge {
-  display: inline-flex; /* Flexbox en ligne (prend seulement la largeur nécessaire) */
-  width: fit-content; /* Largeur ajustée au contenu */
-  align-self: flex-start; /* S'aligne au début du conteneur parent */
-  padding: 4px 12px; /* Espace intérieur: 4px en haut/bas, 12px à gauche/droite */
-  border-radius: 9999px; /* Coins très arrondis (forme de pilule) */
-  font-size: 12px; /* Taille de texte de 12 pixels */
-  font-weight: 500; /* Épaisseur du texte: moyennement gras (500) */
+  align-self: flex-start; /* le badge garde sa largeur */
+  padding: 4px 12px;
+  border-radius: 9999px; /* forme de pilule */
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #d1fae5;
+  color: #065f46;
 }
 
-.badge.available {
-  background-color: #d1fae5; /* Couleur de fond vert clair pour "disponible" */
-  color: #065f46; /* Couleur du texte vert foncé */
-}
-
-.badge.unavailable {
-  background-color: #fee2e2; /* Couleur de fond rouge clair pour "indisponible" */
-  color: #991b1b; /* Couleur du texte rouge foncé */
-}
-
+/* Le prix */
 .price {
-  font-size: 20px; /* Taille de texte de 20 pixels */
-  font-weight: 600; /* Épaisseur du texte: semi-gras (600) */
-  color: #ffffff; /* Couleur du texte: blanc pur */
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
 }
 
-/* ========================================
-   BOUTONS
-   ======================================== */
-
+/* Le bouton */
 .btn {
-  width: 100%; /* Largeur du bouton: 100% du conteneur parent */
-  background-color: #3b82f6; /* Couleur de fond bleu */
-  color: #ffffff; /* Couleur du texte: blanc pur */
-  font-weight: 600; /* Épaisseur du texte: semi-gras (600) */
-  padding: 12px 16px; /* Espace intérieur: 12px en haut/bas, 16px à gauche/droite */
-  border-radius: 8px; /* Coins arrondis de 8px */
-  border: none; /* Supprime la bordure par défaut */
-  cursor: pointer; /* Change le curseur en main au survol */
-  font-size: 16px; /* Taille de texte de 16 pixels */
-  transition: background-color 0.2s ease; /* Animation fluide de la couleur de fond sur 0.2 secondes */
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .btn:hover {
-  background-color: #2563eb; /* Couleur de fond bleu plus foncé au survol */
-}
-
-.btn:focus {
-  outline: none; /* Supprime le contour par défaut au focus */
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* Ajoute une ombre bleue de 3px pour indiquer le focus */
+  background-color: #2563eb; /* plus foncé au survol */
 }
 ```
 
@@ -301,30 +212,19 @@ export default App;
 }
 ```
 
-### `carte-tailwind/src/components/Home.jsx` (23 lignes)
+### `carte-tailwind/src/components/Home.jsx` (12 lignes)
 
 ```jsx
 import CardUtilities from "./CardUtilities";
 import CardTheme from "./CardTheme";
 
-// La Card Car de la maquette Figma, faite avec Tailwind CSS, de deux façons
+// La Card Car de la maquette Figma avec Tailwind CSS : à gauche les classes de base, à droite nos couleurs (@theme)
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-12 bg-page p-8">
-      <h1 className="text-4xl font-bold text-white">Tailwind CSS</h1>
-
-      <div className="flex flex-wrap justify-center gap-12">
-        <div className="flex flex-col items-center gap-4">
-          <h2 className="text-lg font-semibold text-gray-400">1 · Les classes de Tailwind</h2>
-          <CardUtilities />
-        </div>
-
-        <div className="flex flex-col items-center gap-4">
-          <h2 className="text-lg font-semibold text-gray-400">2 · Nos couleurs (@theme) + @apply</h2>
-          <CardTheme />
-        </div>
-      </div>
-    </main>
+    <div className="flex min-h-screen flex-wrap items-center justify-center gap-8 bg-page">
+      <CardUtilities />
+      <CardTheme />
+    </div>
   );
 }
 ```
@@ -427,35 +327,24 @@ import App from "./App.jsx";
 createRoot(document.getElementById("root")).render(<App />);
 ```
 
-### `carte-chakra/src/App.jsx` (31 lignes)
+### `carte-chakra/src/App.jsx` (20 lignes)
 
 ```jsx
 import "./App.css";
-import { ChakraProvider, Flex, Heading, VStack } from "@chakra-ui/react";
+import { ChakraProvider, Flex } from "@chakra-ui/react";
 import system from "./styles/theme";
 import CardProps from "./components/CardProps";
 import CardToken from "./components/CardToken";
 
-// La Card Car de la maquette Figma, faite avec Chakra UI, de deux façons
+// La Card Car de la maquette Figma avec Chakra UI : à gauche les props de style, à droite les tokens du thème
 function App() {
   // ChakraProvider : donne le thème (system) à tous les composants Chakra
   return (
     <ChakraProvider value={system}>
-      <VStack bg="primary.600" minH="100vh" w="100%" p="8" gap="12" justify="center">
-        <Heading size="3xl" color="text.100">
-          Chakra UI
-        </Heading>
-        <Flex wrap="wrap" gap="12" justify="center" align="flex-start">
-          <VStack gap="4">
-            <Heading size="md" color="text.300">1 · Props de style</Heading>
-            <CardProps />
-          </VStack>
-          <VStack gap="4">
-            <Heading size="md" color="text.300">2 · Tokens du thème</Heading>
-            <CardToken />
-          </VStack>
-        </Flex>
-      </VStack>
+      <Flex minH="100vh" bg="primary.600" align="center" justify="center" wrap="wrap" gap="8">
+        <CardProps />
+        <CardToken />
+      </Flex>
     </ChakraProvider>
   );
 }

@@ -46,8 +46,8 @@ npm run dev
 
 ## Étapes
 
-1. Ouvrir le template : la page et la carte catalogue sont déjà là (`src/components/Home.jsx` et `styles.css`)
-2. Sous la carte catalogue, ajouter la carte détail dans `Home.jsx`, et ses styles dans `styles.css`
+1. Ouvrir le template : la carte catalogue est déjà là, centrée dans la page (`src/components/Home.jsx` et `styles.css`)
+2. À côté de la carte catalogue, ajouter la carte détail dans `Home.jsx` (dans un fragment `<>…</>`), et ses styles dans `styles.css`
 3. Le titre (nom de la voiture) centré
 4. Ajouter les lignes **Brand**, **Color** (pastille ronde de la couleur + nom), **Year**, **Price** et **Availability**, chacune avec le libellé à gauche et la valeur à droite, séparées par une ligne
 5. Ajouter le badge **Available** (fond vert clair, coins arrondis)

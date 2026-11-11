@@ -99,7 +99,7 @@ npm install
 npm run dev
 ```
 
-La page montre les deux cartes côte à côte : « 1 · Props de style » et « 2 · Tokens du thème ».
+La page montre les deux cartes côte à côte : la carte avec les props de style à gauche, celle avec les tokens à droite.
 
 ## Documentation
 

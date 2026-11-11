@@ -89,7 +89,7 @@ npm install
 npm run dev
 ```
 
-La page montre les deux cartes côte à côte : « 1 · Les classes de Tailwind » et « 2 · Nos couleurs (@theme) + @apply ».
+La page montre les deux cartes côte à côte : la carte des classes de base à gauche, celle avec nos couleurs à droite.
 
 ## Documentation
 
