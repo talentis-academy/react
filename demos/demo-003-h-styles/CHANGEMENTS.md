@@ -34,7 +34,7 @@ function App() {
 export default App;
 ```
 
-### `carte-css/src/App.css` (17 lignes)
+### `carte-css/src/App.css` (22 lignes)
 
 ```css
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"); /* la police de la maquette */
@@ -51,8 +51,13 @@ body {
   color: #f9fafb;
   min-height: 100vh; /* toute la hauteur de l'écran */
   display: flex; /* flexbox : on range ce qu'il y a dans le body */
-  align-items: center; /* centre en hauteur (axe vertical) */
-  justify-content: center; /* centre en largeur (axe horizontal) */
+  flex-direction: column; /* en colonne : l'axe principal devient vertical */
+  justify-content: center; /* donc justify-content centre en hauteur */
+}
+
+/* Responsive : un peu d'espace autour de la carte quand la fenêtre est petite */
+body {
+  padding: 16px;
 }
 ```
 
@@ -79,12 +84,13 @@ export default function Home() {
 }
 ```
 
-### `carte-css/src/components/styles.css` (75 lignes)
+### `carte-css/src/components/styles.css` (82 lignes)
 
 ```css
 /* La carte */
 .card {
   width: 360px;
+  margin: 0 auto; /* centrée en largeur */
   background-color: #1f2937;
   border-radius: 12px; /* coins arrondis */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* l'ombre */
@@ -156,5 +162,11 @@ export default function Home() {
 
 .btn:hover {
   background-color: #2563eb; /* plus foncé au survol */
+}
+
+/* Responsive : quand on rétrécit la fenêtre du navigateur, la carte rétrécit aussi (sans dépasser sa taille normale) */
+.card {
+  width: 100%;
+  max-width: 360px;
 }
 ```

@@ -12,6 +12,11 @@ body {
   color: #f9fafb;
   min-height: 100vh; /* toute la hauteur de l'écran */
   display: flex; /* flexbox : on range ce qu'il y a dans le body */
-  align-items: center; /* centre en hauteur (axe vertical) */
-  justify-content: center; /* centre en largeur (axe horizontal) */
+  flex-direction: column; /* en colonne : l'axe principal devient vertical */
+  justify-content: center; /* donc justify-content centre en hauteur */
+}
+
+/* Responsive : un peu d'espace autour de la carte quand la fenêtre est petite */
+body {
+  padding: 16px;
 }
