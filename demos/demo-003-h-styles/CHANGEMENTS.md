@@ -34,31 +34,23 @@ function App() {
 export default App;
 ```
 
-### `carte-css/src/App.css` (23 lignes)
+### `carte-css/src/App.css` (15 lignes)
 
 ```css
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-
 * {
-  box-sizing: border-box;
-  margin: 0;
+  box-sizing: border-box; /* le padding est compris dans la largeur */
+  margin: 0; /* on enlève les marges du navigateur */
 }
 
+/* La page : fond sombre, et la carte au centre */
 body {
   font-family: "Inter", sans-serif;
-  background-color: #111827; /* fond sombre */
+  background-color: #111827;
   color: #f9fafb;
-}
-
-/* La page : les cartes au centre */
-#root {
-  min-height: 100vh;
-  padding: 32px;
-  display: flex;
-  flex-wrap: wrap; /* les cartes passent à la ligne si l'écran est trop petit */
-  align-items: center;
-  justify-content: center;
-  gap: 32px; /* l'espace entre les cartes */
+  min-height: 100vh; /* toute la hauteur de l'écran */
+  display: flex; /* flexbox : on range ce qu'il y a dans le body */
+  align-items: center; /* centre en hauteur (axe vertical) */
+  justify-content: center; /* centre en largeur (axe horizontal) */
 }
 ```
 
@@ -85,75 +77,64 @@ export default function Home() {
 }
 ```
 
-### `carte-css/src/components/styles.css` (67 lignes)
+### `carte-css/src/components/styles.css` (56 lignes)
 
 ```css
 /* La carte */
 .card {
   width: 360px;
   background-color: #1f2937;
-  border-radius: 12px;
+  border-radius: 12px; /* coins arrondis */
   padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: flex; /* flexbox : on range les éléments de la carte */
+  flex-direction: column; /* en colonne : les uns sous les autres (par défaut : en ligne) */
+  gap: 16px; /* l'espace entre chaque élément */
 }
 
 /* Le nom de la voiture */
 .car-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
+  font-size: 20px;
 }
 
-/* La couleur : la pastille + le texte */
+/* La couleur : la pastille + le texte, sur la même ligne */
 .color {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  display: flex; /* en ligne (le sens par défaut de flexbox) */
+  align-items: center; /* la pastille et le texte alignés au milieu */
+  gap: 8px; /* l'espace entre la pastille et le texte */
   color: #9ca3af;
 }
 
+/* La pastille ronde */
 .circle {
   width: 16px;
   height: 16px;
   border-radius: 50%; /* un cercle */
-  border: 2px solid #6b7280;
 }
 
 /* Le badge Available */
 .badge {
-  align-self: flex-start; /* le badge garde sa largeur */
+  align-self: flex-start; /* dans la colonne de la carte, il reste à gauche et garde sa largeur (sinon il s'étire) */
   padding: 4px 12px;
   border-radius: 9999px; /* forme de pilule */
-  font-size: 12px;
-  font-weight: 500;
   background-color: #d1fae5;
   color: #065f46;
+  font-size: 12px;
 }
 
 /* Le prix */
 .price {
   font-size: 20px;
-  font-weight: 600;
-  color: #ffffff;
 }
 
 /* Le bouton */
 .btn {
-  background-color: #3b82f6;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 12px 16px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #2563eb; /* plus foncé au survol */
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer; /* la main au survol */
 }
 ```
 

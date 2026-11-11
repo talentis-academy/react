@@ -2,89 +2,81 @@
 .card {
   width: 360px;
   background-color: #1f2937;
-  border-radius: 12px;
+  border-radius: 12px; /* coins arrondis */
   padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: flex; /* flexbox : on range les éléments de la carte */
+  flex-direction: column; /* en colonne : les uns sous les autres (par défaut : en ligne) */
+  gap: 16px; /* l'espace entre chaque élément */
 }
 
 /* Le nom de la voiture */
 .car-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
+  font-size: 20px;
 }
 
-/* La couleur : la pastille + le texte */
+/* La couleur : la pastille + le texte, sur la même ligne */
 .color {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
+  display: flex; /* en ligne (le sens par défaut de flexbox) */
+  align-items: center; /* la pastille et le texte alignés au milieu */
+  gap: 8px; /* l'espace entre la pastille et le texte */
   color: #9ca3af;
 }
 
+/* La pastille ronde */
 .circle {
   width: 16px;
   height: 16px;
   border-radius: 50%; /* un cercle */
-  border: 2px solid #6b7280;
 }
 
 /* Le badge Available */
 .badge {
-  align-self: flex-start; /* le badge garde sa largeur */
+  align-self: flex-start; /* dans la colonne de la carte, il reste à gauche et garde sa largeur (sinon il s'étire) */
   padding: 4px 12px;
   border-radius: 9999px; /* forme de pilule */
-  font-size: 12px;
-  font-weight: 500;
   background-color: #d1fae5;
   color: #065f46;
+  font-size: 12px;
 }
 
 /* Le prix */
 .price {
   font-size: 20px;
-  font-weight: 600;
-  color: #ffffff;
 }
 
 /* Le bouton */
 .btn {
-  background-color: #3b82f6;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 12px 16px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
-  cursor: pointer;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer; /* la main au survol */
 }
 
-.btn:hover {
-  background-color: #2563eb; /* plus foncé au survol */
+/* Les deux cartes côte à côte */
+.cards {
+  display: flex; /* en ligne : les cartes côte à côte */
+  align-items: flex-start; /* chaque carte garde sa hauteur (sinon flex les étire à la même hauteur) */
+  gap: 32px; /* l'espace entre les deux cartes */
 }
 
-/* La carte détail (exercice 9) : plus large */
+/* La carte détail : plus large */
 .detail {
   width: 480px;
 }
 
 /* Le nom de la voiture, centré */
 .title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #ffffff;
   text-align: center;
 }
 
 /* Une ligne : le libellé à gauche, la valeur à droite */
 .row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex; /* en ligne : le libellé et la valeur */
+  justify-content: space-between; /* le premier à gauche, le dernier à droite, l'espace au milieu */
   padding: 12px 0;
-  border-bottom: 1px solid #374151;
+  border-bottom: 1px solid #374151; /* le trait sous la ligne */
   color: #9ca3af;
 }

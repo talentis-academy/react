@@ -3,7 +3,7 @@ import "./styles.css";
 // Exercice 9 · correction : la Card Car (faite ensemble) et la carte détail (Card Details)
 export default function Home() {
   return (
-    <>
+    <div className="cards">
       {/* La Card Car */}
       <div className="card">
         <h3 className="car-name">Tesla Model S</h3>
@@ -44,6 +44,6 @@ export default function Home() {
         </div>
         <button className="btn">Back to list</button>
       </div>
-    </>
+    </div>
   );
 }
