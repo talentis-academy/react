@@ -23,7 +23,7 @@ CarCard découpé en CarBrand et CarColor, sans boucle ni JSON : Home ne change 
 +import CarBrand from "./CarBrand";
 +import CarColor from "./CarColor";
  import "./styles.css";
--// Démo 003-A · étape 2 : CarCard reçoit la marque et la couleur en props (destructuring)
+-// Démo 003-A · étape 4 : CarCard reçoit la marque et la couleur en props (destructuring)
 +// Exercice 3 : CarCard transmet ses props aux deux petits composants réutilisables
  function CarCard({ brand, color }) {
    return (

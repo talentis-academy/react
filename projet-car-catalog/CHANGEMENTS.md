@@ -1317,7 +1317,7 @@ errorElement : un écran d’erreur avec « Try again », et un bouton pour prov
 ```diff
 @@ -445,6 +445,19 @@
  
- /* ===== Erreur et 404 ===== */
+ /* Erreur et 404 */
  
 +.error-content svg {
 +  color: var(--error);

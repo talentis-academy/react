@@ -68,9 +68,7 @@ export default defineConfig({
 On arrête le serveur (`Ctrl + C`) et on relance :
 
 ```bash
-npm run dev
-
-#  ➜  Local:   http://localhost:3000/
+npm run dev #  ➜  Local:   http://localhost:3000/
 ```
 
 ## Bonus
@@ -89,8 +87,8 @@ L’option `open: true` (pas activée dans le dossier correction) ouvre le navig
 export default defineConfig({
   server: {
     port: 3000,
-    strictPort: true,
-    open: true,
+    strictPort: true, // si le port 3000 est déjà pris : erreur, au lieu de passer à 3001
+    open: true, // ouvre le navigateur tout seul au lancement (npm run dev)
   },
   plugins: [react()],
 });

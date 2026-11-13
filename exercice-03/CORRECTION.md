@@ -8,7 +8,7 @@
 |---|---|
 | **Énoncé** | Exercice_03_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-| **Point de départ** | Dossier `template/` (= Demos/Demo_003_A_Voitures/etape-3-props) |
+| **Point de départ** | Dossier `template/` (= Demos/Demo_003_A_Voitures/etape-4-props) |
 
 ## CarBrand
 

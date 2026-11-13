@@ -5,7 +5,8 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   server: {
     port: 3000,
-    strictPort: true,
+    strictPort: true, // si le port 3000 est déjà pris : erreur, au lieu de passer à 3001
+    // open: true, // (bonus) ouvre le navigateur tout seul au lancement (npm run dev)
   },
   plugins: [react()],
 });

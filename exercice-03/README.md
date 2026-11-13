@@ -9,7 +9,7 @@
 | **Moment** | Jour 2 · Module 04 · Props, state et rendu dynamique |
 | **Durée** | 20 minutes |
 | **Niveau** | Débutant |
-| **Prérequis** | Projet Voitures de la démo, étape 3 (Home + CarCard avec les props brand et color) |
+| **Prérequis** | Projet Voitures de la démo, étape 4 (Home + CarCard avec les props brand et color) |
 
 ## Objectifs de l’exercice
 
