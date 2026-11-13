@@ -6,7 +6,7 @@ Pour chaque étape, ce qui change par rapport à l’étape précédente. En ver
 
 Le code de départ, en entier : les fichiers écrits pour la démo et utilisés (atteints par les imports depuis src/main.*) ; les fichiers du gabarit Vite non modifiés sont seulement listés. Ordre de lecture : main → App → composants et pages → le reste.
 
-*Styles fournis (copiés tels quels, pas tapés en live) : `src/components/styles.css` (82 lignes)*
+*Styles fournis (copiés tels quels, pas tapés en live) : `src/components/styles.css` (77 lignes)*
 
 *Fichiers générés par Vite, non modifiés (non affichés) : `index.html`, `vite.config.js`, `.gitignore`, `eslint.config.js`, `public/vite.svg`, `package.json`*
 
@@ -34,7 +34,7 @@ function App() {
 export default App;
 ```
 
-### `src/App.css` (22 lignes)
+### `src/App.css` (18 lignes)
 
 ```css
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"); /* la police de la maquette */
@@ -53,11 +53,7 @@ body {
   display: flex; /* flexbox : on range ce qu'il y a dans le body */
   flex-direction: column; /* en colonne : l'axe principal devient vertical */
   justify-content: center; /* donc justify-content centre en hauteur */
-}
-
-/* Responsive : un peu d'espace autour de la carte quand la fenêtre est petite */
-body {
-  padding: 16px;
+  padding: 16px; /* responsive : un peu d'espace autour de la carte quand la fenêtre est petite */
 }
 ```
 
@@ -152,16 +148,31 @@ La carte détail (Card Details) à la place de la Card Car, avec les styles de l
  }
 ```
 
-### `src/components/styles.css` (modifié, +38 −0)
+### `src/components/styles.css` (modifié, +35 −7)
 
 ```diff
-@@ -75,8 +75,46 @@
-   background-color: #2563eb; /* plus foncé au survol */
+@@ -15,13 +15,6 @@
+ 
+ .card:hover {
+   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* une ombre plus grande au survol */
+-}
+-
+-/* Le nom de la voiture */
+-.car-name {
+-  font-size: 18px;
+-  font-weight: 700;
+-  color: #ffffff;
  }
  
+ /* La couleur : la pastille + le texte, sur la même ligne */
+@@ -75,3 +68,38 @@
+ .btn:hover {
+   background-color: #2563eb; /* plus foncé au survol */
+ }
++
 +/* La carte détail : plus large */
 +.detail {
-+  width: 600px;
++  max-width: 600px;
 +}
 +
 +/* Le nom de la voiture, centré */
@@ -192,14 +203,5 @@ La carte détail (Card Details) à la place de la Card Car, avec les styles de l
 +/* Pas de trait sous la dernière ligne */
 +.row:last-child {
 +  border-bottom: none;
-+}
-+
- /* Responsive : quand on rétrécit la fenêtre du navigateur, la carte rétrécit aussi (sans dépasser sa taille normale) */
- .card {
-   width: 100%;
-   max-width: 360px;
- }
-+.detail {
-+  max-width: 600px;
 +}
 ```

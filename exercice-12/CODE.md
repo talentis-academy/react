@@ -51,7 +51,7 @@ function App() {
 export default App;
 ```
 
-### `correction/src/App.css` (39 lignes)
+### `correction/src/App.css` (33 lignes)
 
 ```css
 /* VERSION RESPONSIVE - S'adapte à tous les écrans (mobile, tablette, desktop) */
@@ -82,17 +82,11 @@ body {
 
   padding: 20px;
 }
-.container {
-  margin: 10px;
-}
 
 h1 {
   padding: 20px;
 }
 
-.page {
-  margin: 20px;
-}
 ```
 
 ### `correction/src/components/Home.jsx` (17 lignes)

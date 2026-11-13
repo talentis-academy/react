@@ -31,15 +31,3 @@ h1 {
   padding: 20px;
 }
 
-.container {
-  padding: 20px;
-  place-items: center;
-}
-
-.car-item {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
-  margin: 12px;
-  width: 300px;
-}

@@ -57,18 +57,6 @@ label {
   margin: 6px 0 0;
 }
 
-.success {
-  color: #2e7d5b;
-  font-weight: 600;
-}
-
-.card {
-  background: #fff;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 8px 32px #6d6d831a;
-}
-
 .team-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));

@@ -8,6 +8,7 @@
 |---|---|
 | **Énoncé** | Exercice_04_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
+| **Point de départ** | Dossier `template/` (le CSS est prêt, les TODO à coder) |
 | **Source** | Énoncé du formateur (Programme.docx, Exercice_04.docx) |
 
 ## Les données (Home)

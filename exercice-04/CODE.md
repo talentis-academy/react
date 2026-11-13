@@ -4,7 +4,7 @@ Tous les fichiers de la correction (dossier correction/), en entier, pour suivre
 
 ## `correction`
 
-*Styles fournis (copiés tels quels, pas tapés en live) : `src/index.css` (104 lignes)*
+*Styles fournis (copiés tels quels, pas tapés en live) : `src/index.css` (92 lignes)*
 
 *Fichiers générés par Vite, non modifiés (non affichés) : `src/main.jsx`, `index.html`, `vite.config.js`, `.gitignore`, `eslint.config.js`, `public/vite.svg`, `package.json`*
 

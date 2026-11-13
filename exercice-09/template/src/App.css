@@ -14,9 +14,5 @@ body {
   display: flex; /* flexbox : on range ce qu'il y a dans le body */
   flex-direction: column; /* en colonne : l'axe principal devient vertical */
   justify-content: center; /* donc justify-content centre en hauteur */
-}
-
-/* Responsive : un peu d'espace autour de la carte quand la fenêtre est petite */
-body {
-  padding: 16px;
+  padding: 16px; /* responsive : un peu d'espace autour de la carte quand la fenêtre est petite */
 }

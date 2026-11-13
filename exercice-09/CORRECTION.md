@@ -63,7 +63,8 @@ export default function Home() {
 ```
 /* La carte */
 .card {
-  width: 360px;
+  width: 100%; /* responsive : la carte rétrécit avec la fenêtre… */
+  max-width: 360px; /* …sans dépasser sa taille normale */
   margin: 0 auto; /* centrée en largeur */
   background-color: #1f2937;
   border-radius: 12px; /* coins arrondis */
@@ -77,13 +78,6 @@ export default function Home() {
 
 .card:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* une ombre plus grande au survol */
-}
-
-/* Le nom de la voiture */
-.car-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
 }
 
 /* La couleur : la pastille + le texte, sur la même ligne */
@@ -140,7 +134,7 @@ export default function Home() {
 
 /* La carte détail : plus large */
 .detail {
-  width: 600px;
+  max-width: 600px;
 }
 
 /* Le nom de la voiture, centré */
@@ -172,15 +166,6 @@ export default function Home() {
 .row:last-child {
   border-bottom: none;
 }
-
-/* Responsive : quand on rétrécit la fenêtre du navigateur, la carte rétrécit aussi (sans dépasser sa taille normale) */
-.card {
-  width: 100%;
-  max-width: 360px;
-}
-.detail {
-  max-width: 600px;
-}
 ```
 
 ## La page (App.css)
@@ -204,11 +189,7 @@ body {
   display: flex; /* flexbox : on range ce qu'il y a dans le body */
   flex-direction: column; /* en colonne : l'axe principal devient vertical */
   justify-content: center; /* donc justify-content centre en hauteur */
-}
-
-/* Responsive : un peu d'espace autour de la carte quand la fenêtre est petite */
-body {
-  padding: 16px;
+  padding: 16px; /* responsive : un peu d'espace autour de la carte quand la fenêtre est petite */
 }
 ```
 

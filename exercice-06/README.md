@@ -22,6 +22,16 @@
 
 Créer un composant qui évalue la force d’un mot de passe pendant que l’utilisateur tape. Le retour doit être immédiat et visuel.
 
+## Point de départ
+
+> **Remarque :** L’interface et le CSS sont déjà prêts dans le template (`Exercices/Exercice_06/template`, composant `src/PasswordStrength.jsx`) : vous codez seulement la logique, en suivant les TODO.
+
+```bash
+cd template
+npm install
+npm run dev
+```
+
 ## Interface attendue
 
 **`Maquette`**

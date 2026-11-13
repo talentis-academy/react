@@ -4,7 +4,7 @@ Tous les fichiers de la correction (dossier correction/), en entier, pour suivre
 
 ## `correction`
 
-*Styles fournis (copiés tels quels, pas tapés en live) : `src/components/styles.css` (120 lignes)*
+*Styles fournis (copiés tels quels, pas tapés en live) : `src/components/styles.css` (105 lignes)*
 
 *Fichiers générés par Vite, non modifiés (non affichés) : `index.html`, `vite.config.js`, `.gitignore`, `eslint.config.js`, `public/vite.svg`, `package.json`*
 
@@ -32,7 +32,7 @@ function App() {
 export default App;
 ```
 
-### `correction/src/App.css` (22 lignes)
+### `correction/src/App.css` (18 lignes)
 
 ```css
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"); /* la police de la maquette */
@@ -51,11 +51,7 @@ body {
   display: flex; /* flexbox : on range ce qu'il y a dans le body */
   flex-direction: column; /* en colonne : l'axe principal devient vertical */
   justify-content: center; /* donc justify-content centre en hauteur */
-}
-
-/* Responsive : un peu d'espace autour de la carte quand la fenêtre est petite */
-body {
-  padding: 16px;
+  padding: 16px; /* responsive : un peu d'espace autour de la carte quand la fenêtre est petite */
 }
 ```
 

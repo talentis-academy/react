@@ -2,7 +2,7 @@
 
 # Découper CarCard en composants
 
-*À partir du projet Voitures de la démo (étape 2) : sans boucle, sans JSON.*
+*À partir du projet Voitures de la démo (étape 4) : sans boucle, sans JSON.*
 
 | | |
 |---|---|

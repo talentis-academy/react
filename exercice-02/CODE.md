@@ -6,9 +6,45 @@ Tous les fichiers de la correction (dossier correction/), en entier, pour suivre
 
 Projet Vite + React qui tourne sur le port 3000.
 
-*Styles fournis (copiés tels quels, pas tapés en live) : `src/App.css` (45 lignes)*
-
 *Fichiers générés par Vite, non modifiés (non affichés) : `src/main.jsx`, `src/App.jsx`, `src/index.css`, `src/assets/react.svg`, `index.html`, `.gitignore`, `eslint.config.js`, `public/vite.svg`, `package.json`*
+
+### `correction/src/App.css` (33 lignes)
+
+```css
+/* VERSION RESPONSIVE - S'adapte à tous les écrans (mobile, tablette, desktop) */
+
+/* Importation de la police Google Fonts Inter avec plusieurs graisses */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* Sélecteur universel qui cible tous les éléments HTML */
+* {
+  /* Force tous les éléments à inclure padding et border dans leur largeur/hauteur totale */
+  box-sizing: border-box;
+  /* Supprime les marges par défaut du navigateur pour avoir un contrôle total */
+  margin: 0;
+  /* Supprime les espacements internes par défaut du navigateur */
+  padding: 0;
+}
+
+/* Style global du corps de la page */
+body {
+  /* Applique la police Inter importée, avec sans-serif comme police de secours */
+  font-family: "Inter", sans-serif;
+  /* Améliore le rendu des polices sur les navigateurs WebKit (Safari, Chrome) */
+  -webkit-font-smoothing: antialiased;
+  /* Améliore le rendu des polices sur Firefox pour Mac */
+  -moz-osx-font-smoothing: grayscale;
+
+  text-align: center;
+
+  padding: 20px;
+}
+
+h1 {
+  padding: 20px;
+}
+
+```
 
 ### `correction/vite.config.js` (12 lignes)
 

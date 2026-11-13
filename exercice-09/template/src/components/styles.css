@@ -1,6 +1,7 @@
 /* La carte */
 .card {
-  width: 360px;
+  width: 100%; /* responsive : la carte rétrécit avec la fenêtre… */
+  max-width: 360px; /* …sans dépasser sa taille normale */
   margin: 0 auto; /* centrée en largeur */
   background-color: #1f2937;
   border-radius: 12px; /* coins arrondis */
@@ -73,10 +74,4 @@
 
 .btn:hover {
   background-color: #2563eb; /* plus foncé au survol */
-}
-
-/* Responsive : quand on rétrécit la fenêtre du navigateur, la carte rétrécit aussi (sans dépasser sa taille normale) */
-.card {
-  width: 100%;
-  max-width: 360px;
 }

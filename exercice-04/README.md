@@ -24,7 +24,17 @@ Créer une application React affichant un annuaire d’équipe pour pratiquer :
 
 Votre entreprise a besoin d’un annuaire digital pour afficher les membres de l’équipe. Certains travaillent à distance, d’autres n’ont pas d’email professionnel. L’application doit gérer ces cas particuliers.
 
-## Structure à créer
+## Point de départ
+
+> **Remarque :** Le CSS est déjà prêt dans le template (`Exercices/Exercice_04/template`, fichier `src/index.css`) : vous codez seulement les composants, en suivant les TODO.
+
+```bash
+cd template
+npm install
+npm run dev
+```
+
+## Structure (déjà créée dans le template)
 
 **`Arborescence`**
 
