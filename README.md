@@ -34,34 +34,6 @@ Le projet de fin de formation, découpé en 10 étapes comme des commits : chaqu
 | 9 | Architecture feature-based : atomic design, un écran = View / Scene / Adapter, tests des adapters (exercice 15 : migrer la page de détails) |
 | 10 | L’IA : `CLAUDE.md`, MCP (Playwright, Chrome DevTools, Figma), notre skill de refacto `migrate-to-feature`, exemples de prompts |
 
-## Démos pas à pas
-
-Les démos du cours (code du formateur), nommées par journée : `demo-003-a` = formation 003 (Jour 2), démo A. Pour les démos en plusieurs étapes, le fichier `CHANGEMENTS.md` montre ce qui est ajouté et retiré d’une étape à l’autre, façon GitHub.
-
-| Démo | Journée | Contenu |
-|---|---|---|
-| [002-A · Counter](demos/demo-002-a-counter) | Jour 1 | `useState`, re-render, handlers |
-| [002-B · Babel](demos/demo-002-b-babel) | Jour 1 | JSX et `React.createElement` (page HTML) |
-| [003-A · Voitures](demos/demo-003-a-voitures) | Jour 2 | 5 étapes : Home → CarCard → props → children → la liste |
-| [003-B · Opérateurs logiques](demos/demo-003-b-operateurs-logiques) | Jour 2 | `!`, `!!`, `&&`, `? :`, `??` (fichiers JavaScript) |
-| [003-C · Liste](demos/demo-003-c-liste) | Jour 2 | 5 étapes : JSON sans map → `.map()` → prix et disponibilité → `car={car}` |
-| [003-D · Tableaux](demos/demo-003-d-tableaux) | Jour 2 | Tableaux et tableaux d’objets (fichiers JavaScript, étapes avec le résultat attendu) |
-| [003-E · Événements](demos/demo-003-e-evenements) | Jour 2 | 5 étapes : `onCopy` → `event.target` → state `isHover` → `className` → `onChange` |
-| [003-F · Destructuring](demos/demo-003-f-destructuring) | Jour 2 | Tableaux, rest, spread, objets (fichier JavaScript, 8 étapes) |
-| [003-G · Formulaire](demos/demo-003-g-formulaire) | Jour 2 | 5 étapes : template → useState → isConnected → Zod seul → React Hook Form + Zod |
-| [003-H · Styles](demos/demo-003-h-styles) | Jour 2 | La Card Car (Figma) en CSS, avec Tailwind CSS et avec Chakra UI, + 2 guides |
-| [004-A · Todo App](demos/demo-004-a-todo-app) | Jour 3 | La Todo App (fetch dans un useEffect) : le template de l’exercice 10 |
-| [004-B · Règles des hooks](demos/demo-004-b-regles-des-hooks) | Jour 3 | Les exemples interdits, ESLint et Husky |
-| [004-C · Toggle](demos/demo-004-c-toggle) | Jour 3 | 3 étapes : Toggle Btn → Toggle checkbox (le même code) → le custom hook useToggle |
-| [004-D · Network status](demos/demo-004-d-network-status) | Jour 3 | 2 étapes : les listeners dans le composant → le custom hook useNetworkStatus |
-| [004-E · Users API](demos/demo-004-e-users-api) | Jour 3 | 2 étapes : fetch dans Users → le custom hook useFetchApi |
-| [004-F · Cycle de vie](demos/demo-004-f-cycle-de-vie) | Jour 3 | 4 étapes : logs → React.memo → props recréées → useCallback / useMemo, + le React Compiler |
-| [004-G · Refs](demos/demo-004-g-refs) | Jour 3 | 2 étapes : useRef → useImperativeHandle, + forwardRef (legacy) |
-| [004-H · HOC](demos/demo-004-h-hoc) | Jour 3 | Higher-Order Component `withAuth` |
-| [004-I · Error Boundary](demos/demo-004-i-error-boundary) | Jour 3 | 3 étapes : la page → le crash → l’Error Boundary |
-| [005-A · React Router](demos/demo-005-a-router) | Jour 4 | 6 étapes : routes simples → 404 → route dynamique → routes imbriquées → errorElement → lazy loading |
-| [005-B · Redux](demos/demo-005-b-redux) | Jour 4 | 7 étapes : createStore → combineReducers → Provider → payload → middleware → premier slice → Redux Toolkit |
-
 ## Lancer une correction
 
 ```bash
