@@ -8,7 +8,6 @@
 |---|---|
 | **Énoncé** | Exercice_11_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-| **Source** | Code du formateur : Formation/hooks/custom-hooks (Code_004). |
 
 ## Le custom hook
 

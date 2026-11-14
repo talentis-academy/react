@@ -8,7 +8,6 @@
 |---|---|
 | **Énoncé** | Exercice_15_Enonce.docx |
 | **Code** | Dossier `correction/` (et `template/` pour le point de départ) |
-| **Source** | Projet Car Catalog de la formation : `Projet-Car-Catalog/etape-9-architecture` |
 
 ## L’adapter
 

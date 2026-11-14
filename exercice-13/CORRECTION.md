@@ -8,7 +8,6 @@
 |---|---|
 | **Énoncé** | Exercice_13_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-| **Source** | Code du formateur : Formation/Router/simple (src/App.jsx) |
 
 ## src/App.jsx
 

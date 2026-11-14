@@ -8,7 +8,6 @@
 |---|---|
 | **Énoncé** | Exercice_14_Enonce.docx |
 | **Code** | Dossier `correction/` (et `template/` pour le point de départ) |
-| **Source** | Exercice créé pour la formation (demande du formateur), sur la base de son projet Redux Toolkit et du style de la carte catalogue (cars-css) |
 
 ## Le slice du panier
 

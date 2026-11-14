@@ -9,7 +9,6 @@
 | **Énoncé** | Exercice_07_Enonce.docx |
 | **Template** | Dossier `template/` (l’interface est prête, sans la logique) |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-| **Source** | Projet du formateur : Formation/Projets/parent-todo |
 
 ## Parent
 

@@ -9,7 +9,6 @@
 | **Énoncé** | Exercice_09_Enonce.docx |
 | **Template** | Dossier `template/` (la Card Car faite ensemble) |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-| **Source** | Code du formateur : Formation/Projets/CSS/Design System/cars-css (la carte détail), avec les valeurs de la maquette Figma. |
 
 ## Le composant
 

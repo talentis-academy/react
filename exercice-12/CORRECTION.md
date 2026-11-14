@@ -8,7 +8,6 @@
 |---|---|
 | **Énoncé** | Exercice_12_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-| **Source** | Projet du formateur : Formation/Projets/errors (Home, ErrorBoundary en class, styles). Ajouts validés par le formateur : App.jsx avec react-error-boundary, ErrorFallback.jsx, EventError.jsx |
 
 ## App
 

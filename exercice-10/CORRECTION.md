@@ -8,7 +8,6 @@
 |---|---|
 | **Énoncé** | Exercice_10_Enonce.docx |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-| **Source** | Code du formateur : Formation/hooks/toto-app (Code_004, « Todo App ») |
 
 ## Le composant Todo
 

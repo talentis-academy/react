@@ -9,7 +9,6 @@
 | **Énoncé** | Exercice_08_Enonce.docx |
 | **Template** | Dossier `template/` (l’interface est prête, sans la validation) |
 | **Code** | Dossier `correction/` (projet Vite prêt à lancer) |
-| **Source** | Code du formateur : Formation/Exemples/Form/FormFinal.tsx (Code_003, « React hook form »), avec fullName à la place de password |
 
 ## Le formulaire
 
