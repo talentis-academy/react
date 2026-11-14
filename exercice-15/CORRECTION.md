@@ -237,4 +237,3 @@ L’ancienne page `src/pages/CarDetailPage.jsx` est supprimée.
 - L’adapter isole le format de l’API : si un nom de champ change, seul l’adapter bouge, et son test le signale
 - La Scene ne reçoit que des props : elle réutilise `DetailItem`, `FavoriteButton`, `ColorDot`, `Price`, `StatusBadge`
 - Le rendu ne change pas : les tests e2e restent verts sans les modifier
-- Le fichier `CHANGEMENTS.pdf` montre ce qui change entre le template et la correction

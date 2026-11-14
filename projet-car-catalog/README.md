@@ -22,12 +22,6 @@ Le projet est découpé **comme des commits** : chaque dossier est un projet Vit
 | 9 | `etape-9-architecture` | L’architecture feature-based : atomic design (`components/`), un écran = View / Scene / Adapter, hooks par feature, tests des adapters (voir `ARCHITECTURE.md`) | `src/features/cars/screens/HomeScreen/HomeScreen.view.jsx` |
 | 10 | `etape-10-ia` | L’IA : `CLAUDE.md`, `.mcp.json` (Playwright, Chrome DevTools, Figma), notre skill de refacto `migrate-to-feature` (+ `react-feature`), des exemples de prompts (voir `IA.md`) | `.claude/skills/migrate-to-feature/SKILL.md` |
 
-## Les changements entre les étapes
-
-Comme un historique de commits : ce qui est ajouté (en vert) et retiré (en rouge) d’une étape à l’autre, dans [CHANGEMENTS.md](CHANGEMENTS.md) (ou `CHANGEMENTS.pdf` à imprimer).
-
-> Attention : l’étape 9 (et la section « Étape 8 → 9 » des CHANGEMENTS) contient déjà `src/features/cars/screens/CarDetailsScreen/`, c’est-à-dire la correction de l’exercice 15. Ne pas la projeter avant l’exercice : montrer seulement `HomeScreen/` et `src/app/router.jsx`.
-
 ## Lancer une étape
 
 ```bash

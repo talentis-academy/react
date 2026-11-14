@@ -59,7 +59,6 @@ Le projet est découpé **comme des commits** : chaque dossier de `Projet-Car-Ca
 
 - Le **template de départ** est le dossier `etape-1-template` : on part de lui.
 - La **correction** de chaque étape est le dossier correspondant (`etape-2-api-liste`, `etape-3-details`…).
-- Le fichier `CHANGEMENTS.pdf` (ou `CHANGEMENTS.md`) montre ce qui est ajouté et retiré d’une étape à l’autre, comme un historique Git.
 
 ```bash
 cd etape-1-template   # ou une autre étape

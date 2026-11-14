@@ -245,4 +245,3 @@ export default Cart;
 - Les actions sont générées par `createSlice` ; le payload est le produit (`addToCart`) ou son id
 - Grâce à Immer, les reducers modifient le draft (`item.quantity += 1`) sans casser l’immutabilité
 - Les selectors calculent le nombre d’articles et le total : les composants restent simples
-- Le fichier `CHANGEMENTS.pdf` montre ce qui change entre le template et la correction
