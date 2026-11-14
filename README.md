@@ -9,20 +9,20 @@ Planning et supports : **[react.talentis.io](https://react.talentis.io)**
 | Exercice | Journée | Énoncé | Correction |
 |---|---|---|---|
 | 1 · Préparer l’environnement de travail | Jour 1 | [Énoncé](exercice-01/README.md) | Pas de correction (checklist dans l’énoncé) |
-| 2 · Créer votre premier projet avec Vite | Jour 1 | [Énoncé](exercice-02/README.md) | [Correction](exercice-02/CORRECTION.md) · [Code](exercice-02/correction) |
-| 3 · Découper CarCard en composants | Jour 2 | [Énoncé](exercice-03/README.md) · [Template](exercice-03/template) | [Correction](exercice-03/CORRECTION.md) · [Code](exercice-03/correction) |
-| 4 · Annuaire d’équipe | Jour 2 | [Énoncé](exercice-04/README.md) · [Template](exercice-04/template) | [Correction](exercice-04/CORRECTION.md) · [Code](exercice-04/correction) |
-| 5 · Manipuler un tableau | Jour 2 | [Énoncé](exercice-05/README.md) | [Correction](exercice-05/CORRECTION.md) · [Code](exercice-05/correction) |
-| 6 · Force du mot de passe | Jour 2 | [Énoncé](exercice-06/README.md) · [Template](exercice-06/template) | [Correction](exercice-06/CORRECTION.md) · [Code](exercice-06/correction) |
-| 7 · La maman et l’enfant | Jour 2 | [Énoncé](exercice-07/README.md) · [Template](exercice-07/template) | [Correction](exercice-07/CORRECTION.md) · [Code](exercice-07/correction) |
-| 8 · Formulaire d’enregistrement | Jour 2 | [Énoncé](exercice-08/README.md) · [Template](exercice-08/template) | [Correction](exercice-08/CORRECTION.md) · [Code](exercice-08/correction) |
-| 9 · De la maquette au composant React | Jour 2 | [Énoncé](exercice-09/README.md) · [Template](exercice-09/template) | [Correction](exercice-09/CORRECTION.md) · [Code](exercice-09/correction) |
-| 10 · Todo App | Jour 3 | [Énoncé](exercice-10/README.md) · [Template](exercice-10/template) | [Correction](exercice-10/CORRECTION.md) · [Code](exercice-10/correction) |
-| 11 · Page Comments avec un custom hook | Jour 3 | [Énoncé](exercice-11/README.md) · [Template](exercice-11/template) | [Correction](exercice-11/CORRECTION.md) · [Code](exercice-11/correction) |
-| 12 · Error Boundary avec react-error-boundary | Jour 3 | [Énoncé](exercice-12/README.md) | [Correction](exercice-12/CORRECTION.md) · [Code](exercice-12/correction) |
-| 13 · Login et Home sécurisée (React Router) | Jour 4 | [Énoncé](exercice-13/README.md) | [Correction](exercice-13/CORRECTION.md) · [Code](exercice-13/correction) |
-| 14 · Le panier d’achat avec Redux Toolkit | Jour 4 | [Énoncé](exercice-14/README.md) · [Template](exercice-14/template) | [Correction](exercice-14/CORRECTION.md) · [Code](exercice-14/correction) |
-| 15 · Migrer un écran vers View / Scene / Adapter | Jour 5 | [Énoncé](exercice-15/README.md) · [Template](exercice-15/template) | [Correction](exercice-15/CORRECTION.md) · [Code](exercice-15/correction) |
+| 2 · Créer votre premier projet avec Vite | Jour 1 | [Énoncé](exercice-02/README.md) | [Correction (Word)](exercice-02/Exercice_02_Correction.docx) · [Code](exercice-02/correction) |
+| 3 · Découper CarCard en composants | Jour 2 | [Énoncé](exercice-03/README.md) · [Template](exercice-03/template) | [Correction (Word)](exercice-03/Exercice_03_Correction.docx) · [Code](exercice-03/correction) |
+| 4 · Annuaire d’équipe | Jour 2 | [Énoncé](exercice-04/README.md) · [Template](exercice-04/template) | [Correction (Word)](exercice-04/Exercice_04_Correction.docx) · [Code](exercice-04/correction) |
+| 5 · Manipuler un tableau | Jour 2 | [Énoncé](exercice-05/README.md) | [Correction (Word)](exercice-05/Exercice_05_Correction.docx) · [Code](exercice-05/correction) |
+| 6 · Force du mot de passe | Jour 2 | [Énoncé](exercice-06/README.md) · [Template](exercice-06/template) | [Correction (Word)](exercice-06/Exercice_06_Correction.docx) · [Code](exercice-06/correction) |
+| 7 · La maman et l’enfant | Jour 2 | [Énoncé](exercice-07/README.md) · [Template](exercice-07/template) | [Correction (Word)](exercice-07/Exercice_07_Correction.docx) · [Code](exercice-07/correction) |
+| 8 · Formulaire d’enregistrement | Jour 2 | [Énoncé](exercice-08/README.md) · [Template](exercice-08/template) | [Correction (Word)](exercice-08/Exercice_08_Correction.docx) · [Code](exercice-08/correction) |
+| 9 · De la maquette au composant React | Jour 2 | [Énoncé](exercice-09/README.md) · [Template](exercice-09/template) | [Correction (Word)](exercice-09/Exercice_09_Correction.docx) · [Code](exercice-09/correction) |
+| 10 · Todo App | Jour 3 | [Énoncé](exercice-10/README.md) · [Template](exercice-10/template) | [Correction (Word)](exercice-10/Exercice_10_Correction.docx) · [Code](exercice-10/correction) |
+| 11 · Page Comments avec un custom hook | Jour 3 | [Énoncé](exercice-11/README.md) · [Template](exercice-11/template) | [Correction (Word)](exercice-11/Exercice_11_Correction.docx) · [Code](exercice-11/correction) |
+| 12 · Error Boundary avec react-error-boundary | Jour 3 | [Énoncé](exercice-12/README.md) | [Correction (Word)](exercice-12/Exercice_12_Correction.docx) · [Code](exercice-12/correction) |
+| 13 · Login et Home sécurisée (React Router) | Jour 4 | [Énoncé](exercice-13/README.md) | [Correction (Word)](exercice-13/Exercice_13_Correction.docx) · [Code](exercice-13/correction) |
+| 14 · Le panier d’achat avec Redux Toolkit | Jour 4 | [Énoncé](exercice-14/README.md) · [Template](exercice-14/template) | [Correction (Word)](exercice-14/Exercice_14_Correction.docx) · [Code](exercice-14/correction) |
+| 15 · Migrer un écran vers View / Scene / Adapter | Jour 5 | [Énoncé](exercice-15/README.md) · [Template](exercice-15/template) | [Correction (Word)](exercice-15/Exercice_15_Correction.docx) · [Code](exercice-15/correction) |
 
 ## Projet · Car Catalog (Jour 5)
 
