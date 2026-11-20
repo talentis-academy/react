@@ -1,8 +1,8 @@
 import "./App.css";
-import Home from "./pages/Home";
+import Home from "./pages/Home.jsx";
 
-// TODO (exercice) : entourer <Home /> avec le <Provider store={store}> de react-redux
 function App() {
+  // Avec Zustand, pas de Provider : App.jsx ne change pas
   return <Home />;
 }
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { storage, USER_UPDATED_EVENT } from "../utils/storage";
 
 // L'utilisateur connecté (ou null) et la déconnexion

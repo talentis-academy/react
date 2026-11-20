@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Favorites Feature', () => {
   test.beforeEach(async ({ page }) => {
     // Set up authentication in localStorage
+    // page.goto : ouvre l'URL dans le navigateur piloté par Playwright (baseURL + "/")
     await page.goto('/');
     await page.evaluate(() => {
       localStorage.setItem('auth_token', 'test-token-123');
@@ -18,6 +19,7 @@ test.describe('Favorites Feature', () => {
     await page.goto('/');
     
     // Wait for cars to load - use heading role to be more specific
+    // toBeVisible : Playwright attend que l'élément soit affiché (5 s par défaut), sinon le test échoue
     await expect(page.getByRole('heading', { name: 'Car Catalog' })).toBeVisible();
     await expect(page.locator('.car-card').first()).toBeVisible({ timeout: 10000 });
   });

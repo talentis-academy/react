@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet } from "react-router";
 import { MainLayout } from "@/components/templates";
 import { useCurrentUser } from "@/features/auth/hooks";
 

@@ -1,16 +1,139 @@
-/* Import de la police Google Fonts "Inter" avec différentes épaisseurs */
+/* La boutique : tout le style est ici, le JSX garde des classes simples */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
-/* Reset global pour tous les éléments */
 * {
-  box-sizing: border-box; /* Inclut padding et border dans la largeur/hauteur totale */
-  margin: 0; /* Supprime toutes les marges par défaut */
-  padding: 0; /* Supprime tous les paddings par défaut */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: "Inter", sans-serif; /* Applique la police Inter à tout le texte */
-  -webkit-font-smoothing: antialiased; /* Rend le texte plus lisse sur les écrans */
-  background-color: #111827; /* Couleur de fond gris très foncé */
-  color: #f9fafb; /* Couleur du texte blanc cassé */
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding: 48px 20px;
+  text-align: center;
+  color: #1f2140;
+  background: linear-gradient(180deg, #eef0ff 0%, #f8f9fc 100%);
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px 0;
+}
+
+/* Une carte produit */
+.item {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 24px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(80, 87, 244, 0.12);
+  transition: transform 0.2s;
+}
+
+.item:hover {
+  transform: translateY(-4px);
+}
+
+/* L'image du produit, dans un cercle de couleur */
+.item img {
+  width: 120px;
+  height: 120px;
+  padding: 20px;
+  border-radius: 50%;
+  background: #eef0ff;
+}
+
+/* Le stock, en petite pastille */
+.availability {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2e7d5b;
+  background: #e3f6ec;
+}
+
+.button {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 600;
+  color: white;
+  background: #5057f4;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #3c43d9;
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.quantity {
+  margin: 0;
+}
+
+.input {
+  width: 72px;
+  padding: 6px;
+  font: inherit;
+  text-align: center;
+  border: 1px solid #d5d7f5;
+  border-radius: 10px;
+}
+
+.input:disabled {
+  color: #9a9cb5;
+  background: #f3f4f8;
+}
+
+.page {
+  display: grid;
+  place-items: center;
+}
+
+.comments-section {
+  width: min(100%, 720px);
+  padding: 20px;
+  text-align: left;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(80, 87, 244, 0.12);
+}
+
+.comment {
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background: #f6f7ff;
+}
+
+.comment-name {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.comment-body {
+  font-size: 14px;
+  color: #4a4c68;
+  white-space: pre-wrap;
 }

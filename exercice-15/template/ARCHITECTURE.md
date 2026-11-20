@@ -6,9 +6,9 @@ Même application que l'étape 8 (mêmes routes, même rendu, mêmes tests e2e).
 
 | Dossier | Rôle |
 |---|---|
-| `app/` | Le démarrage de l'application : `router.jsx` (routes + loaders), `providers.jsx` (Redux + React Query + devtools), `store.js`, `RootLayout.jsx` (relie l'utilisateur connecté au template). |
+| `app/` | Le démarrage de l'application : `router.jsx` (routes + loaders), `providers.jsx` (React Query + devtools), `RootLayout.jsx` (relie l'utilisateur connecté au template). |
 | `lib/` | Les outils techniques partagés : `axiosQuery.js` (instance axios + token), `queryClient.js`, `config.js`. |
-| `components/` | Les composants UI réutilisables, en **atomic design**. Ils ne reçoivent que des props simples (texte, nombre, booléen, fonction) et ne connaissent ni l'API, ni Redux, ni le localStorage. |
+| `components/` | Les composants UI réutilisables, en **atomic design**. Ils ne reçoivent que des props simples (texte, nombre, booléen, fonction) et ne connaissent ni l'API, ni le store Zustand, ni le localStorage. |
 | `components/atoms` | Les plus petites briques : `Button`/`ButtonLink`, icônes, `ColorDot`, `StatusBadge`, `Price`, `Spinner`. |
 | `components/molecules` | Quelques atoms assemblés : `FavoriteButton`, `InfoRow`, `DetailItem`, `FormField`, `Loading`, `ErrorMessage`, `StatusMessage`. |
 | `components/organisms` | Des blocs complets : `CarCard`, `CarGrid`, `LoginForm`. |
@@ -18,7 +18,7 @@ Même application que l'étape 8 (mêmes routes, même rendu, mêmes tests e2e).
 Dans une feature :
 
 - `api/` : les appels HTTP (`carsApi.js`, `authApi.js`) ;
-- `hooks/` : les hooks React Query / Redux (`useCars`, `useCarDetails`, `useFavorites`, `useCurrentUser`, `useLogin`) ; les clés React Query sont dans `queryKeys.js` ;
+- `hooks/` : les hooks React Query / Zustand (`useCars`, `useCarDetails`, `useFavorites`, `useCurrentUser`, `useLogin`) ; les clés React Query sont dans `queryKeys.js` ;
 - `utils/`, `adapters/` : des fonctions pures (`colorUtils`, `carAdapter`, `authLoader`) ;
 - `screens/<Ecran>/` : un écran = 4 fichiers.
 
@@ -48,7 +48,7 @@ HomeScreen.view   ->  useCars(2012)            (hook React Query)
 
 L'adapter gère aussi les valeurs manquantes : une couleur inconnue donne du gris, un prix absent affiche « — », une réponse vide donne une liste vide.
 
-Les favoris stockés dans Redux restent les **objets bruts de l'API**. La View retrouve l'objet brut à partir de l'id cliqué (`findCarById`) avant d'appeler `toggleFavorite`.
+Les favoris stockés dans le store Zustand restent les **objets bruts de l'API**. La View retrouve l'objet brut à partir de l'id cliqué (`findCarById`) avant d'appeler `toggleFavorite`.
 
 ## Règles d'import
 
@@ -60,7 +60,7 @@ Les favoris stockés dans Redux restent les **objets bruts de l'API**. La View r
 
 | Type | Outil | Ce qu'on teste |
 |---|---|---|
-| Unitaire | Vitest (`npm test`, environnement node) | Les fonctions pures : les adapters (cas normaux, valeurs manquantes, limite de 6), `colorUtils`, `authLoader` (avec un stockage simulé), le slice des favoris. Ces tests sont rapides et n'ont besoin ni de navigateur ni de réseau. |
+| Unitaire | Vitest (`npm test`, environnement node) | Les fonctions pures : les adapters (cas normaux, valeurs manquantes, limite de 6), `colorUtils`, `authLoader` (avec un stockage simulé), le store des favoris (Zustand). Ces tests sont rapides et n'ont besoin ni de navigateur ni de réseau. |
 | End-to-end | Playwright (`npm run test:e2e`) | Le parcours réel dans le navigateur, avec la vraie API : ajouter, retirer et retrouver des favoris. |
 
 Grâce à la séparation View / adapter / Scene, la logique de transformation se teste sans afficher de composant. Les tests e2e vérifient que tout fonctionne ensemble.

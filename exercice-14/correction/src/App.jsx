@@ -1,14 +1,9 @@
 import "./App.css";
-import Home from "./pages/Home";
-import { Provider } from "react-redux";
-import { store } from "./store/store";
+import Home from "./pages/Home.jsx";
 
 function App() {
-  return (
-    <Provider store={store}>
-      <Home />
-    </Provider>
-  );
+  // Avec Zustand, pas de Provider : App.jsx ne change pas
+  return <Home />;
 }
 
 export default App;

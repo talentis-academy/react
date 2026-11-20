@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router";
 import RootLayout from "./RootLayout";
 import { HomeScreen } from "@/features/cars/screens/HomeScreen";
 // TODO (exercice 15) : remplacer par import { CarDetailsScreen } from "@/features/cars/screens/CarDetailsScreen";

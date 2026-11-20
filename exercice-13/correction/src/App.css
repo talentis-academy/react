@@ -1,33 +1,301 @@
-/* VERSION RESPONSIVE - S'adapte à tous les écrans (mobile, tablette, desktop) */
-
-/* Importation de la police Google Fonts Inter avec plusieurs graisses */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-
-/* Sélecteur universel qui cible tous les éléments HTML */
+/* Reset CSS : on enlève les styles par défaut du navigateur */
 * {
-  /* Force tous les éléments à inclure padding et border dans leur largeur/hauteur totale */
   box-sizing: border-box;
-  /* Supprime les marges par défaut du navigateur pour avoir un contrôle total */
+  /* inclut padding + border dans width/height */
   margin: 0;
-  /* Supprime les espacements internes par défaut du navigateur */
+  /* supprime les marges par défaut */
   padding: 0;
+  /* supprime les paddings par défaut */
 }
 
-/* Style global du corps de la page */
+/* Style global de la page */
 body {
-  /* Applique la police Inter importée, avec sans-serif comme police de secours */
-  font-family: "Inter", sans-serif;
-  /* Améliore le rendu des polices sur les navigateurs WebKit (Safari, Chrome) */
-  -webkit-font-smoothing: antialiased;
-  /* Améliore le rendu des polices sur Firefox pour Mac */
-  -moz-osx-font-smoothing: grayscale;
-
+  font-family: Arial, sans-serif;
+  /* police simple pour la formation */
   text-align: center;
-
-  padding: 20px;
+  /* centre les titres */
+  color: #222;
+  /* couleur du texte */
 }
 
+/* Container principal : centre le contenu à l'écran */
+.container {
+  /* min-height: 100vh; */
+  /* prend toute la hauteur de l'écran */
+  display: flex;
+  /* active Flexbox */
+  flex-direction: column;
+  /* éléments en colonne */
+  justify-content: center;
+  /* centrage vertical */
+  align-items: center;
+  /* centrage horizontal */
+  padding: 24px;
+  /* espace autour (mobile friendly) */
+}
+
+/* Titres */
 h1 {
-  padding: 20px;
+  margin-bottom: 8px;
+  /* espace sous le titre principal */
 }
 
+h2 {
+  margin-bottom: 20px;
+  /* espace sous le sous-titre */
+  font-weight: normal;
+  /* texte moins gras */
+  color: #666;
+  /* gris clair */
+}
+
+/* Formulaire */
+form {
+  width: 100%;
+  /* prend toute la largeur sur mobile */
+  max-width: 420px;
+  /* largeur max sur desktop */
+}
+
+/* Boîte du formulaire */
+.form {
+  background: white;
+  /* carte blanche */
+  border: 1px solid #ddd;
+  /* bordure grise */
+  border-radius: 12px;
+  /* coins arrondis */
+  padding: 18px;
+  /* espace interne */
+
+  display: flex;
+  /* Flexbox */
+  flex-direction: column;
+  /* éléments en colonne */
+  gap: 14px;
+  /* espace entre les éléments */
+}
+
+/* Groupe label + input */
+.form-group {
+  display: flex;
+  /* Flexbox */
+  flex-direction: column;
+  /* label au-dessus de l'input */
+  gap: 6px;
+  /* espace entre label et input */
+  text-align: left;
+  /* alignement à gauche */
+}
+
+/* Label */
+label {
+  font-size: 14px;
+  /* taille du texte */
+  color: #333;
+  /* couleur du label */
+}
+
+/* Input */
+input {
+  height: 40px;
+  /* hauteur du champ */
+  padding: 0 12px;
+  /* espace intérieur */
+  border: 1px solid #ccc;
+  /* bordure grise */
+  border-radius: 10px;
+  /* coins arrondis */
+  outline: none;
+  /* enlève le contour bleu */
+}
+
+/* état quand on clique dans l'input */
+input:focus {
+  border-color: #6c63ff;
+  /* bordure violette */
+}
+
+/* CHECKBOX (Terms & Conditions) */
+
+/* on aligne la checkbox + texte sur la même ligne */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* la checkbox ne doit pas prendre le style des inputs text/password */
+.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  accent-color: #6c63ff;
+  /* couleur de la case cochée (navigateurs modernes) */
+}
+
+/* style du lien des conditions */
+.checkbox a {
+  color: #6c63ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.checkbox a:hover {
+  text-decoration: underline;
+}
+
+/* Messages erreur & succès */
+.error {
+  color: #d93025;
+  /* rouge */
+  background: #fdecea;
+  /* fond rouge clair */
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.success {
+  color: #0f5132;
+  /* vert */
+  background: #d1e7dd;
+  /* fond vert clair */
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Bouton */
+.btn {
+  height: 42px;
+  /* hauteur du bouton */
+  border: none;
+  /* pas de bordure */
+  border-radius: 10px;
+  /* coins arrondis */
+  cursor: pointer;
+  /* curseur main */
+  background: #6c63ff;
+  /* couleur principale */
+  color: white;
+  /* texte blanc */
+  font-weight: bold;
+  /* texte en gras */
+}
+
+/* effet au survol */
+.btn:hover {
+  opacity: 0.9;
+  /* léger effet visuel */
+}
+
+/* ---------- Layout : header, page, footer ---------- */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f6f6fb;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  background: white;
+  border-bottom: 1px solid #e6e6f0;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 18px;
+  color: #6c63ff;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+}
+
+.nav a {
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #444;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav a:hover {
+  background: #f0efff;
+}
+
+/* NavLink ajoute la classe « active » sur le lien de la page en cours */
+.nav a.active {
+  background: #6c63ff;
+  color: white;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+}
+
+.footer {
+  padding: 14px;
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  border-top: 1px solid #e6e6f0;
+  background: white;
+}
+
+/* ---------- Carte (Home, 404) ---------- */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px 40px;
+  box-shadow: 0 8px 24px rgba(108, 99, 255, 0.12);
+  text-align: center;
+  max-width: 480px;
+}
+
+
+.link {
+  display: inline-block;
+  margin-top: 16px;
+  color: #6c63ff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Bouton « Se déconnecter » dans le header (à la place du lien Login quand on est connecté) */
+.nav-btn {
+  padding: 7px 14px;
+  border: 2px solid #6c63ff;
+  border-radius: 8px;
+  background: white;
+  color: #6c63ff;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background: #f0efff;
+}
+
+/* Texte d’une carte (Home) */
+.card-text {
+  margin-top: 12px;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+}

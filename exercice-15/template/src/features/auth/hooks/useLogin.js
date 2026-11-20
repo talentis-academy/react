@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { login } from "../api/authApi";
 import { storage, USER_UPDATED_EVENT } from "../utils/storage";
 
@@ -7,6 +7,7 @@ import { storage, USER_UPDATED_EVENT } from "../utils/storage";
 export const useLogin = () => {
   const navigate = useNavigate();
 
+  // useMutation : pour une action qui envoie des données (le login) ; elle part avec mutate(), pas au chargement
   return useMutation({
     mutationFn: ({ userName, password }) => login(userName, password),
     onSuccess: (response) => {

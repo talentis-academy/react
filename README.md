@@ -21,18 +21,19 @@ Planning et supports : **[react.talentis.io](https://react.talentis.io)**
 | 11 · Page Comments avec un custom hook | Jour 3 | [Énoncé](exercice-11/README.md) · [Template](exercice-11/template) | [Correction (Word)](exercice-11/Exercice_11_Correction.docx) · [Code](exercice-11/correction) |
 | 12 · Error Boundary avec react-error-boundary | Jour 3 | [Énoncé](exercice-12/README.md) | [Correction (Word)](exercice-12/Exercice_12_Correction.docx) · [Code](exercice-12/correction) |
 | 13 · Login et Home sécurisée (React Router) | Jour 4 | [Énoncé](exercice-13/README.md) | [Correction (Word)](exercice-13/Exercice_13_Correction.docx) · [Code](exercice-13/correction) |
-| 14 · Le panier d’achat avec Redux Toolkit | Jour 4 | [Énoncé](exercice-14/README.md) · [Template](exercice-14/template) | [Correction (Word)](exercice-14/Exercice_14_Correction.docx) · [Code](exercice-14/correction) |
-| 15 · Migrer un écran vers View / Scene / Adapter | Jour 5 | [Énoncé](exercice-15/README.md) · [Template](exercice-15/template) | [Correction (Word)](exercice-15/Exercice_15_Correction.docx) · [Code](exercice-15/correction) |
+| 14 · Le panier d’achat avec Zustand | Jour 4 | [Énoncé](exercice-14/README.md) · [Template](exercice-14/template) | [Correction (Word)](exercice-14/Exercice_14_Correction.docx) · [Code](exercice-14/correction) |
+| 15 · Migrer un écran vers View / Scene / Adapter | Jour 5 | [Énoncé](exercice-15/README.md) · [Template](exercice-15/template) | Publiée le jour 5, avec l’étape 9 du projet |
 
 ## Projet · Car Catalog (Jour 5)
 
-Le projet de fin de formation, découpé en 10 étapes comme des commits : chaque dossier est un projet complet qui ajoute une fonctionnalité. [Énoncé](projet-car-catalog/ENONCE.md) · [Les étapes](projet-car-catalog/README.md)
+Le projet de fin de formation, découpé en 11 étapes comme des commits : chaque dossier est un projet complet qui ajoute une fonctionnalité. Les étapes sont publiées au fil du jour 5 (après chaque défi) : faites `git pull` pour récupérer la dernière. [Énoncé](projet-car-catalog/ENONCE.md) · [Les étapes](projet-car-catalog/README.md)
 
 | Étapes | Contenu |
 |---|---|
-| 1 à 8 | Template et routes → API (React Query) → détails → favoris (Redux Toolkit) → login → routes protégées (loaders) → Error Boundary → tests (Vitest, Playwright) |
+| 1 à 8 | Template et routes → API (React Query) → détails → favoris (Zustand, persistants) → login → routes protégées (loaders) → Error Boundary → outillage de tests (Vitest, Playwright) |
 | 9 | Architecture feature-based : atomic design, un écran = View / Scene / Adapter, tests des adapters (exercice 15 : migrer la page de détails) |
-| 10 | L’IA : `CLAUDE.md`, MCP (Playwright, Chrome DevTools, Figma), notre skill de refacto `migrate-to-feature`, exemples de prompts |
+| 10 | Storybook : le catalogue des composants (atoms, molecules, organisms) |
+| 11 | L’IA : `CLAUDE.md`, MCP (Playwright, Chrome DevTools), notre skill de refacto `migrate-to-feature`, exemples de prompts |
 
 ## Lancer une correction
 
@@ -42,7 +43,7 @@ npm install
 npm run dev
 ```
 
-Les exercices 3, 4, 6, 7, 8, 9, 10, 11, 14 et 15 ont aussi un dossier `template/` : c’est le point de départ, à lancer de la même façon (`cd exercice-07/template`).
+Les exercices 3, 4, 6, 7, 8, 9, 10, 11, 13, 14 et 15 ont aussi un dossier `template/` : c’est le point de départ, à lancer de la même façon (`cd exercice-07/template`).
 
 L’exercice 5 se fait dans le navigateur : ouvrir `exercice-05/correction/correction.html` et regarder la console.
 

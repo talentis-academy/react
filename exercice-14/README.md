@@ -1,81 +1,80 @@
 > **Exercice 14 · Énoncé**
 
-# Le panier d’achat avec Redux Toolkit
+# La boutique avec Zustand
 
-*Une petite boutique : la liste des produits, le badge du panier et le panier partagent le même state global.*
+*La boutique de la démo Redux (téléphone, TV, caméra, avec une quantité sur chaque carte), cette fois avec un store Zustand.*
 
 | | |
 |---|---|
-| **Moment** | Jour 4 · Module 12 · Redux Toolkit |
-| **Durée** | 1 heure |
+| **Moment** | Jour 4 · Module 12 · Redux Toolkit et Zustand |
+| **Durée** | 30 minutes |
 | **Niveau** | Intermédiaire |
-| **Prérequis** | createSlice, configureStore, Provider, useSelector, useDispatch, payload |
+| **Prérequis** | La démo Redux et Redux Toolkit (slices, extraReducers), Zustand : create, set, selectors |
 
 ## Objectif
 
-Mettre en place un **state global** avec Redux Toolkit, partagé entre plusieurs composants qui ne se connaissent pas : la liste des produits ajoute au panier, le header affiche le nombre d’articles, le panier affiche les lignes et le total.
+Refaire la boutique de la démo avec **Zustand** : les stocks et les actions dans un **seul store**, lus avec un hook, sans Provider, sans slice et sans dispatch.
+
+Et la promo de la démo (« chaque TV achetée = un téléphone offert ») : avec Redux Toolkit, on l’a faite avec `extraReducers`. Avec Zustand, comment faire ?
 
 ## Le template de départ
 
-Le dossier `template/` est un projet Vite prêt à lancer : l’interface est déjà faite (même style que la carte catalogue). Il ne reste qu’à brancher Redux Toolkit.
+Le dossier `template/` est un projet Vite prêt à lancer : la page `Home` affiche les 3 cartes (téléphone, TV, caméra), avec un champ quantité et un bouton « Buy » sur chaque carte. Les stocks sont écrits en dur et les boutons ne font rien encore. Le style est déjà dans `App.css`.
 
 ```bash
 cd template
 npm install
+npm install zustand
 npm run dev
 ```
 
-| Fichier | Rôle |
-|---|---|
-| `src/data/products.js` | Les produits : MacBook Air, iPhone, AirPods, Apple Watch, iMac (non disponible), AirTag |
-| `src/components/Header.jsx` | Le titre et le badge du panier (nombre d’articles) |
-| `src/components/ProductList.jsx` et `ProductCard.jsx` | La liste des produits et le bouton « Ajouter au panier » |
-| `src/components/Cart.jsx` | Le panier : lignes, quantités (− / +), suppression (×), total, « Vider le panier » |
-
-Les endroits à compléter sont marqués `// TODO (exercice)`. Les packages `@reduxjs/toolkit` et `react-redux` sont déjà dans le `package.json`.
+Les endroits à compléter sont marqués `// TODO (exercice)`.
 
 ## Étapes
 
-1. Créer `src/store/cartSlice.js` avec `createSlice` : `name: "cart"`, `initialState: { items: [] }`
-2. Écrire les reducers : `addToCart` (payload = le produit ; s’il est déjà dans le panier, on augmente sa quantité), `increment` et `decrement` (payload = l’id ; à 0, la ligne disparaît), `removeFromCart` (payload = l’id), `clearCart`
-3. Exporter les actions et écrire les selectors : les lignes du panier, le nombre total d’articles, le prix total
-4. Créer le store dans `src/store/store.js` avec `configureStore`
-5. Dans `App.jsx`, entourer l’application avec `<Provider store={store}>`
-6. Brancher les composants : `ProductCard` dispatch `addToCart`, `Header` lit le nombre d’articles, `Cart` lit les lignes et le total, et dispatch les autres actions
+1. Installer Zustand : `npm install zustand`
+2. Créer `src/store/shopStore.js` : `export const useShopStore = create((set) => ({ … }))`, avec les stocks de départ : `phones: 5`, `tvs: 3`, `cameras: 8`
+3. Dans le même store, un objet `actions` avec les 3 actions écrites avec `set` : `buyPhone(quantity)`, `buyTV(quantity)`, `buyCamera(quantity)`, qui retirent la quantité du stock
+4. La promo : chaque TV achetée = un téléphone offert. `buyTV` retire aussi la quantité du stock de téléphones
+5. Dans `Home.jsx` : un `useState` par champ quantité (avec `onChange`), un selector par stock, un seul selector pour les actions (`useShopStore((state) => state.actions)`), et appeler l’action au clic sur « Buy »
+6. Pas de Provider : `App.jsx` ne change pas
 
 ## Conseils
 
-- Grâce à Immer, on peut écrire `item.quantity += 1` ou `state.items.push(...)` dans un reducer RTK
-- Un selector est une simple fonction : `(state) => state.cart.items`
-- Pour les totaux : `reduce` sur les lignes du panier
-- Installer l’extension Redux DevTools pour suivre chaque action
+- Un seul store pour les 3 produits : pas besoin d’un store par produit (avec Redux Toolkit, on avait 3 slices)
+- Pour partir du state actuel, on passe une fonction à `set` : `set((state) => ({ phones: state.phones - quantity }))`
+- `set` fusionne : on retourne seulement les valeurs qui changent, et on peut en changer plusieurs dans le même `set` (c’est l’idée de la promo)
+- Lire une seule valeur à la fois : `useShopStore((state) => state.phones)`. Le composant ne se re-rend que si cette valeur change
+- Les actions dans un objet `actions` : cet objet ne change jamais, donc un seul selector suffit pour les 3 actions, sans re-rendu inutile
+- Un input donne toujours du texte : `Number(e.target.value)`
 
 ## Bonus (optionnel)
 
-- Ne pas dépasser un stock maximum par produit
-- Garder le panier dans le `localStorage` pour le retrouver après un rechargement
-- Afficher « Déjà au panier (2) » sur la carte du produit
+- Ne jamais passer sous 0 : désactiver « Buy » quand la quantité demandée est plus grande que le stock
+- Garder les stocks après un rechargement avec le middleware `persist` (indice : regarder l’option `partialize`, pour ne pas enregistrer l’objet `actions`)
+- Brancher le middleware `devtools` pour suivre le store dans l’extension Redux DevTools
 
 ## Ressources utiles
 
-- Redux Toolkit, démarrage : <https://redux.js.org/toolkit/introduction/getting-started>
-- createSlice : <https://redux.js.org/toolkit/api/createSlice>
-- configureStore : <https://redux.js.org/toolkit/api/configureStore>
-- React Redux, les hooks : <https://react-redux.js.org/api/hooks>
-- Redux DevTools : <https://github.com/reduxjs/redux-devtools/tree/main/extension#installation>
+- Zustand, introduction : <https://zustand.docs.pmnd.rs/learn/getting-started/introduction>
+- Mettre à jour le state : <https://zustand.docs.pmnd.rs/learn/guides/updating-state>
+- L’API create : <https://zustand.docs.pmnd.rs/reference/apis/create>
+- Comparaison avec Redux, Context, Jotai… : <https://zustand.docs.pmnd.rs/learn/getting-started/comparison>
+- Middleware persist : <https://zustand.docs.pmnd.rs/reference/middlewares/persist>
+- Middleware devtools : <https://zustand.docs.pmnd.rs/reference/middlewares/devtools>
 
 ## Erreurs fréquentes à éviter
 
-- Oublier le `<Provider>` : useSelector plante (« could not find react-redux context value »)
-- Écrire `useSelector(state => state.items)` au lieu de `state.cart.items` : la clé vient du `reducer` de configureStore
-- Retourner un nouvel objet ET modifier le draft dans le même reducer : avec Immer, c’est l’un ou l’autre
+- Modifier le state directement (`state.phones -= quantity`) : sans Immer, l’écran ne se met pas à jour
+- Un selector qui retourne un nouvel objet (`useShopStore((state) => ({ phones: state.phones, tvs: state.tvs }))`) : boucle de rendus infinie en Zustand 5. Une valeur par appel, ou `useShallow`
+- Oublier `Number(...)` : `5 - "2"` marche par hasard, mais `"2" + 1` donne `"21"`
+- Ajouter un `<Provider>` par réflexe Redux : avec Zustand, il n’y en a pas
 
 ## Résultat attendu
 
-- [ ] « Ajouter au panier » ajoute le produit, ou augmente sa quantité
-- [ ] Le badge du header affiche le nombre total d’articles
-- [ ] Les boutons −, + et × mettent à jour la ligne et le total
-- [ ] « Vider le panier » remet tout à zéro
-- [ ] L’iMac (non disponible) ne peut pas être ajouté
+- [ ] « Buy » retire la quantité choisie du stock du produit
+- [ ] Acheter une TV retire aussi un téléphone par TV (la promo)
+- [ ] Les 3 cartes se mettent à jour sans Provider
+- [ ] Le store tient dans un seul fichier, `src/store/shopStore.js`
 
 Bon courage !

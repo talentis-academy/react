@@ -1,4 +1,4 @@
-import { redirect } from "react-router-dom";
+import { redirect } from "react-router";
 import { storage } from "./storage";
 
 // Loader de /favorites : pas de token => redirection vers /login (avant même d'afficher la page)

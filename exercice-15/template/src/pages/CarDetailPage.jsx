@@ -8,18 +8,17 @@
 // Puis brancher le router (src/app/router.jsx) sur le nouvel écran et supprimer ce fichier.
 // Modèle à suivre : src/features/cars/screens/HomeScreen/ (migrée en live).
 import { useQuery } from "@tanstack/react-query";
-import { useParams, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useParams, Link } from "react-router";
 import { fetchCarById } from "@/features/cars/api/carsApi";
-import { selectFavorites, toggleFavorite } from "@/features/favorites/favoritesSlice";
+import { selectFavorites, useFavoritesStore } from "@/features/favorites/favoritesStore";
 import { BackIcon, HeartIcon } from "@/components/atoms";
 import { Loading } from "@/components/molecules";
 import { getColorHex } from "@/features/cars/utils/colorUtils";
 
 export default function CarDetailPage() {
   const { id } = useParams();
-  const dispatch = useDispatch();
-  const favorites = useSelector(selectFavorites);
+  const favorites = useFavoritesStore(selectFavorites);
+  const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
 
   // L'id fait partie de la clé : chaque voiture a son propre cache
   const { data, isLoading, error } = useQuery({
@@ -52,7 +51,7 @@ export default function CarDetailPage() {
           <h1 className="detail-title">
             {car.car} {car.car_model}
           </h1>
-          <button className={`favorite-btn ${isFavorite ? "favorite-active" : ""}`} onClick={() => dispatch(toggleFavorite(car))}>
+          <button className={`favorite-btn ${isFavorite ? "favorite-active" : ""}`} onClick={() => toggleFavorite(car)}>
             <HeartIcon filled={isFavorite} />
           </button>
         </div>

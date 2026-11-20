@@ -9,11 +9,11 @@
 | **Moment** | Jour 5 · Module 14 · Architecture |
 | **Durée** | 45 minutes |
 | **Niveau** | Intermédiaire |
-| **Prérequis** | React Query (useQuery), Redux Toolkit, React Router (useParams), Vitest, la migration de la Home faite en live |
+| **Prérequis** | React Query (useQuery), Zustand, React Router (useParams), la migration de la Home et le test de son adapter faits en live |
 
 ## Objectif
 
-La page de détails (`/car/:id`) est encore écrite **« à l’ancienne »** : un seul composant qui récupère les données, lit Redux et affiche tout. Le but est de la découper en **View / Scene / Adapter**, comme la Home, **sans changer le rendu**, et de tester l’adapter.
+La page de détails (`/car/:id`) est encore écrite **« à l’ancienne »** : un seul composant qui récupère les données, lit le store Zustand des favoris et affiche tout. Le but est de la découper en **View / Scene / Adapter**, comme la Home, **sans changer le rendu**. En bonus : tester l’adapter.
 
 ## Rappel de la règle
 
@@ -51,30 +51,30 @@ Dans `src/features/cars/screens/CarDetailsScreen/` :
 
 - `CarDetailsScreen.view.jsx`
 - `CarDetailsScreen.adapter.js`
-- `CarDetailsScreen.adapter.test.js`
+- `CarDetailsScreen.adapter.test.js` (bonus)
 - `CarDetailsScreen.scene.jsx`
 - `index.js`
 
 ## Étapes
 
 1. **L’adapter.** Écrire `adaptCarDetails(response, favoriteIds = [])` : l’API renvoie `{ Car: {...} }`. Si la voiture est absente, renvoyer `null`. Sinon, renvoyer un objet avec `id`, `title`, `brand`, `model`, `colorHex`, `colorName`, `year`, `vin`, `priceLabel`, `isAvailable`, `statusLabel` et `isFavorite`. Astuce : `adaptCarBase(dto)` donne déjà la plupart des champs.
-2. **Le test de l’adapter.** Dans `CarDetailsScreen.adapter.test.js`, tester au moins : un DTO complet donne le bon modèle (`toEqual`), `isFavorite` vaut `true` si l’id est dans `favoriteIds`, une réponse vide donne `null`. Lancer `npm test`.
-3. **La Scene.** Copier le JSX de l’ancienne page dans `CarDetailsScreenScene({ car, onToggleFavorite })`. Remplacer les champs de l’API (`car.car_model`, `car.price`…) par ceux du modèle (`car.title`, `car.priceLabel`…) et le HTML répété par les composants existants (`DetailItem`, `FavoriteButton`, `ColorDot`, `Price`, `StatusBadge`).
-4. **La View.** `CarDetailsScreenView` lit l’id avec `useParams`, appelle `useCarDetails(id)` et `useFavorites()`, affiche `<Loading text="Loading car details..." />` pendant le chargement, « Car not found » en cas d’erreur ou de voiture absente, sinon la Scene. Attention : dans Redux on stocke l’**objet brut de l’API** (`data.Car`), pas le modèle adapté.
-5. **L’index.** `export { CarDetailsScreenView as CarDetailsScreen } from "./CarDetailsScreen.view";`
-6. **Le router.** Dans `src/app/router.jsx`, importer `CarDetailsScreen` depuis `@/features/cars/screens/CarDetailsScreen` et l’utiliser pour la route `car/:id`. Supprimer `src/pages/CarDetailPage.jsx`.
+2. **La Scene.** Copier le JSX de l’ancienne page dans `CarDetailsScreenScene({ car, onToggleFavorite })`. Remplacer les champs de l’API (`car.car_model`, `car.price`…) par ceux du modèle (`car.title`, `car.priceLabel`…) et le HTML répété par les composants existants (`DetailItem`, `FavoriteButton`, `ColorDot`, `Price`, `StatusBadge`).
+3. **La View.** `CarDetailsScreenView` lit l’id avec `useParams`, appelle `useCarDetails(id)` et `useFavorites()`, affiche `<Loading text="Loading car details..." />` pendant le chargement, « Car not found » en cas d’erreur ou de voiture absente, sinon la Scene. Attention : dans le store des favoris, on stocke l’**objet brut de l’API** (`data.Car`), pas le modèle adapté.
+4. **L’index.** `export { CarDetailsScreenView as CarDetailsScreen } from "./CarDetailsScreen.view";`
+5. **Le router.** Dans `src/app/router.jsx`, importer `CarDetailsScreen` depuis `@/features/cars/screens/CarDetailsScreen` et l’utiliser pour la route `car/:id`. Supprimer `src/pages/CarDetailPage.jsx`.
 
 ## Conseils
 
-- Commencer par l’adapter et son test : c’est du JavaScript pur, sans navigateur
-- La Scene ne doit importer ni hook, ni `react-redux`, ni `@tanstack/react-query`, ni l’API
+- Commencer par l’adapter (et, en bonus, son test) : c’est du JavaScript pur, sans navigateur
+- La Scene ne doit importer ni hook, ni le store Zustand, ni `@tanstack/react-query`, ni l’API
 - Utiliser l’alias `@` et les `index.js` : `@/components/molecules`, `@/features/favorites/hooks`
 - Garder les mêmes classes CSS et les mêmes textes : le rendu doit être identique
 
 ## Bonus (optionnel)
 
+- **Tester l’adapter**, comme le formateur l’a fait pour la Home : dans `CarDetailsScreen.adapter.test.js`, tester au moins qu’un DTO complet donne le bon modèle (`toEqual`), que `isFavorite` vaut `true` si l’id est dans `favoriteIds`, et qu’une réponse vide donne `null`. Lancer `npm test`.
 - Gérer les valeurs manquantes dans l’adapter : marque, modèle, VIN ou prix absents affichent « — » (`MISSING_VALUE`, via `orMissing`), une couleur inconnue donne du gris (`DEFAULT_COLOR`)
-- Ajouter le test correspondant : `adaptCarDetails({ Car: { id: 8 } })` ne plante pas
+- Ajouter le test des valeurs manquantes : `adaptCarDetails({ Car: { id: 8 } })` ne plante pas
 - Écrire un test e2e Playwright qui ouvre `/car/1` et vérifie le titre et le bouton favori
 
 ## Ressources utiles
@@ -95,7 +95,7 @@ Dans `src/features/cars/screens/CarDetailsScreen/` :
 
 - [ ] La page `/car/:id` a exactement le même rendu qu’avant (titre, grille, cœur favori, lien retour)
 - [ ] Le cœur ajoute et retire la voiture des favoris
-- [ ] `npm test` est vert, avec les nouveaux tests de `adaptCarDetails`
+- [ ] `npm test` est vert (et, en bonus, avec les nouveaux tests de `adaptCarDetails`)
 - [ ] `npm run test:e2e` est vert
 - [ ] `npm run build` passe
 - [ ] `src/pages/CarDetailPage.jsx` a disparu ; le router importe `CarDetailsScreen` par son `index.js`

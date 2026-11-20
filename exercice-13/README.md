@@ -6,7 +6,7 @@
 
 | | |
 |---|---|
-| **Moment** | Jour 4 · Module 10 · React Router v7 |
+| **Moment** | Jour 4 · Module 10 · React Router v8 |
 | **Durée** | 45 minutes |
 | **Niveau** | Intermédiaire |
 | **Prérequis** | createBrowserRouter, RouterProvider, Link / NavLink, useNavigate, routes imbriquées (Outlet) |
@@ -15,11 +15,37 @@
 
 Mettre en place une mini application React avec navigation, layout, et protection de route via un loader.
 
-## Installation
+## Le template de départ
+
+Le dossier `template/` contient seulement le **design** : les pages sont prêtes et bien découpées (la page Login reprend l’écran du formulaire), avec le CSS. React Router n’est pas encore installé : c’est vous qui créez toute la navigation.
 
 ```bash
-npm install react-router-dom
+cd template
+npm install
+npm run dev
 ```
+
+| Fichier | Rôle |
+|---|---|
+| `src/components/Layout.jsx` | Le header (logo, liens Home et Login), la zone de la page, le footer. Le style du bouton « Se déconnecter » (`nav-btn`) est prêt |
+| `src/pages/Login.jsx` | L’écran de login (email, mot de passe, bouton Login) |
+| `src/pages/Home.jsx` | La page à protéger |
+| `src/pages/NotFound.jsx` | La page 404 |
+| `src/auth.js` | Vide : c’est ici qu’on écrit la mini auth et le loader |
+| `src/App.jsx` | Affiche seulement la page Login pour l’instant |
+
+Les endroits à compléter sont marqués `// TODO (exercice)`.
+
+## Étapes
+
+1. Installer React Router : `npm install react-router`. Tout s’importe depuis `react-router`, sauf `RouterProvider`, qui vient de `react-router/dom`
+2. Dans `src/App.jsx` : créer le routeur avec `createBrowserRouter` : le Layout en parent, la Home en `index`, la page Login, la route 404 (`path: "*"`), puis l’afficher avec `RouterProvider`
+3. Dans `src/components/Layout.jsx` : remplacer les liens par des `NavLink` et la zone de la page par `<Outlet />`. Dans `NotFound.jsx` : le lien de retour avec `Link`
+4. Dans `src/auth.js` : une clé `TOKEN_KEY`, une fonction `isConnected()`, et le loader `requireAuthLoader` qui fait `throw redirect("/login")` si on n’est pas connecté. Le brancher sur la route Home
+5. Dans `src/pages/Login.jsx` : à l’envoi du formulaire, `e.preventDefault()`, enregistrer un token dans le `localStorage`, puis `navigate("/")`. Email et mot de passe : n’importe lesquels
+6. Dans `src/components/Layout.jsx` : si on est connecté, afficher un bouton « Se déconnecter » (classe `nav-btn`) à la place du lien Login ; au clic, supprimer le token puis `navigate("/login")`. Astuce : appelez `useLocation()` dans le Layout pour qu’il se redessine à chaque changement de page
+
+> **Astuce :** Astuce : `NavLink` ajoute tout seul la classe `active` sur le lien de la page en cours : le CSS du template la met déjà en valeur.
 
 ## Fonctionnalités attendues
 

@@ -12,14 +12,13 @@
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.11.2",
     "@tanstack/react-query": "^5.90.0",
     "@tanstack/react-query-devtools": "^5.90.0",
     "axios": "^1.13.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-redux": "^9.2.0",
-    "react-router-dom": "^7.11.0"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router": "^8.5.2",
+    "zustand": "^5.0.16"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",

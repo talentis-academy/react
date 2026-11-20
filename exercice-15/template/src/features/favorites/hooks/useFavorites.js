@@ -1,14 +1,13 @@
 import { useMemo } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectFavorites, toggleFavorite as toggleFavoriteAction } from "../favoritesSlice";
+import { selectFavorites, useFavoritesStore } from "../favoritesStore";
 
-// Les écrans n'utilisent jamais useSelector / useDispatch directement : tout passe par ce hook
+// Les écrans n'utilisent jamais useFavoritesStore directement : tout passe par ce hook
 export const useFavorites = () => {
-  const dispatch = useDispatch();
-  const favorites = useSelector(selectFavorites);
+  // Avec un selector, le composant se re-rend seulement quand les favoris changent
+  const favorites = useFavoritesStore(selectFavorites);
   const favoriteIds = useMemo(() => favorites.map((car) => car.id), [favorites]);
 
-  const toggleFavorite = (car) => dispatch(toggleFavoriteAction(car));
+  const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
 
   return { favorites, favoriteIds, toggleFavorite };
 };

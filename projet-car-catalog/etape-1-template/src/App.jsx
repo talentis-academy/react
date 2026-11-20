@@ -1,4 +1,6 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter } from "react-router";
+// React Router v8 : tout s'importe depuis "react-router", sauf RouterProvider, qui vient de "react-router/dom"
+import { RouterProvider } from "react-router/dom";
 import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";

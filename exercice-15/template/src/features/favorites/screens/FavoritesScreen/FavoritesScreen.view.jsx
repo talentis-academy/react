@@ -2,7 +2,7 @@ import { useFavorites } from "../../hooks";
 import { adaptFavoriteCars } from "./FavoritesScreen.adapter";
 import { FavoritesScreenScene } from "./FavoritesScreen.scene";
 
-// Pas d'appel API ici : les données viennent du store Redux
+// Pas d'appel API ici : les données viennent du store Zustand
 export function FavoritesScreenView() {
   const { favorites, toggleFavorite } = useFavorites();
 

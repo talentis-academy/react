@@ -1,10 +1,12 @@
 // TODO 6 : recevoir les props fullName, role, email, remote (bonus : showEmail, true par défaut)
-function MemberCard() {
+function MemberCard({ member }) {
+  const { fullName, role, email, remote } = member;
   return (
     <article className="member-card">
-      {/* TODO 7 : le nom dans un <h2>, le rôle dans <p className="role"> */}
-      {/* TODO 8 : « Email : [email] », ou « Email : N/A » si pas d'email (ternaire ? :) */}
-      {/* TODO 9 : le badge <span className="badge">Remote</span> seulement si remote (&&) */}
+      <h2>{fullName}</h2>
+      <p className="role">{role}</p>
+      {email ? email : "Email N/A"}
+      {remote && <span className="badge">Remote</span>}
     </article>
   );
 }
